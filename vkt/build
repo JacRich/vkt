@@ -1,0 +1,3 @@
+#!/bin/bash
+g++ "src/"*.cpp -g -Wall -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -Iheaders -lm -o "vkt" 
+
