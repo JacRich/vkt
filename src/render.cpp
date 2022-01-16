@@ -137,7 +137,7 @@ void render_init()
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
-  window = glfwCreateWindow(WIDTH, HEIGHT, "vkt", 0 == true? glfwGetPrimaryMonitor() : NULL, NULL);
+  window = glfwCreateWindow(WIDTH, HEIGHT, "vkt", config.fullscreen == true? glfwGetPrimaryMonitor() : NULL, NULL);
   if(window == NULL) { 
     printf("GLFW failed to create window"); 
     exit(0); 
@@ -167,8 +167,8 @@ void render_init()
 
   make_texture(&tex_atlas, "gamedata/las.jpg");
   
-  make_ubo(&ubo_view    , 128, 0);
-  make_ubo(&ubo_torch   , 32 * 2, 1);
+  make_ubo(&ubo_view , 128, 0);
+  make_ubo(&ubo_torch, 32 * 2, 1);
 
   glViewport(0,0, config.width, config.height);
   glfwSetFramebufferSizeCallback(window, on_resize);
@@ -194,9 +194,7 @@ void buildmeshes()
     if(cmeshes[i].chunk->update == true)
     { 
       cmeshes[i].chunk->update = false;
-      //double time = glfwGetTime();
       cmesh_build(&cmeshes[i], cmeshes[i].chunk);
-      //printf("Time: %.6f\n", glfwGetTime() - time);
       return;
     }
   }

@@ -38,12 +38,11 @@ void world_add_entity(entity_t** entity)
 
 int main()
 {
-  load_config(&config);
-  render_init(); // Always first
+  load_config(&config); // Always first
+  render_init();        // Always second 
   player_init(&player);
   veng_init  ();
   crosshair_init(&crosshair, 0.015f);
-  
  
   while(!glfwWindowShouldClose(window))
   {

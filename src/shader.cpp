@@ -5,21 +5,22 @@ static char* load_source(char const* path)
   char* buffer = 0;
   long length;
   FILE* f = fopen(path, "rb");
-
-  if(f)
-  {
+  if(f){
     fseek(f, 0, SEEK_END);
     length = ftell(f);
     fseek(f, 0, SEEK_SET);
     buffer = (char*)malloc((length+1)*sizeof(char));
-    if(buffer)
-    {
+    if(buffer){
       fread(buffer, sizeof(char), length, f);
     }
     fclose(f);
   }
-  buffer[length] = '\0';
+  else{
+    printf("FAILED TO LOAD SHADER: %s, EXITING\n", path);
+    exit(0);
+  }
 
+  buffer[length] = '\0';
   return buffer;
 }
 
