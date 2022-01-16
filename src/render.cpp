@@ -133,6 +133,7 @@ void render_init()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
   window = glfwCreateWindow(WIDTH, HEIGHT, "vkt", 0 == true? glfwGetPrimaryMonitor() : NULL, NULL);
   if(window == NULL) { 

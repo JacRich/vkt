@@ -212,7 +212,7 @@ static void make_path(char path[], ivec cord)
 
 void save_region(region_t* region)
 {
-    char path [20] = "savedata/r_";
+    char path [25] = "gamedata/savedata/r_";
     make_path(path, region->cord);
 
     FILE* file;
@@ -279,7 +279,7 @@ void save_region(region_t* region)
 
 void load_region(region_t* region)
 {
-    char path [20] = "savedata/r_";
+    char path [25] = "gamedata/savedata/r_";
     make_path(path, region->cord);
 
     if(access(path, F_OK) != 0) // Does file exist

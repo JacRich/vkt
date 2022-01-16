@@ -16,3 +16,8 @@ buildlinux:
 
 # if more make build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux
+
+# if on linux, run the bin/linux/$(EXECUTABLE_NAME) executable.
+run:
+	@echo "Running Linux executable"
+	./bin/linux/$(EXECUTABLE_NAME)

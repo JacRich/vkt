@@ -42,13 +42,13 @@ static void player_set_inputmode(int mode)
 
 static int load_player(player_t* player)
 {
-  if(access("savedata/player", F_OK) != 0){
+  if(access("gamedata/savedata/player", F_OK) != 0){
     printf("Failed to load player data, falling back to default\n");
     return 0;
   }
 
   FILE* file;
-  file = fopen("savedata/player", "rb");
+  file = fopen("gamedata/savedata/player", "rb");
   assert(file != NULL);
   
   player_t buffer;
@@ -64,7 +64,7 @@ static int load_player(player_t* player)
 static void save_player(player_t* player)
 {
   FILE* file;
-  file = fopen("savedata/player", "wb");
+  file = fopen("gamedata/savedata/player", "wb");
 
   fwrite((const void*)player, sizeof(player_t), 1, file);
 

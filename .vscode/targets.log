@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jan 16 02:08:09 2022
+# Make data base, printed on Sun Jan 16 02:55:00 2022
 
 # Variables
 
@@ -95,6 +95,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&iid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&sid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff","uploadToServer":true}
 # default
+ 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/igor
@@ -287,15 +288,13 @@ buildlinux:
 # automatic
 # ? := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=2/15=13%
 #  recipe to execute (from 'Makefile', line 11):
 	@echo "Compiling for Linux"
 	mkdir -p bin/linux
 	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
-	@cp las.jpg bin/linux
-	@cp -r shaders bin/linux
+	@cp -r gamedata bin/linux
 
 all: buildlinux
 #  Command line target.
@@ -315,7 +314,7 @@ all: buildlinux
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-16 02:07:58.15952979
+#  Last modified 2022-01-16 02:54:17.493499953
 #  File has been updated.
 #  Successfully updated.
 
@@ -333,12 +332,12 @@ Makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 302 B / avg = 9 B
-# current buf: size = 8162 B / used = 302 B / count = 33 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 299 B / avg = 9 B
+# current buf: size = 8162 B / used = 299 B / count = 33 / avg = 9 B
 
 # strcache performance: lookups = 45 / hit rate = 26%
 # hash-table stats:
 # Load=33/8192=0%, Rehash=0, Collisions=3/45=7%
-# Finished Make data base on Sun Jan 16 02:08:09 2022
+# Finished Make data base on Sun Jan 16 02:55:00 2022
 
  
