@@ -11,6 +11,9 @@ buildlinux:
 	@echo "Compiling for Linux"
 	mkdir -p bin/linux
 	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
+	@cp las.jpg bin/linux
+	@cp -r shaders bin/linux
 
 # if more make build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux
