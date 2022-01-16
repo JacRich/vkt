@@ -13,6 +13,7 @@ buildlinux:
 	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r gamedata bin/linux
+	@cp config bin/linux
 
 # if more make build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux

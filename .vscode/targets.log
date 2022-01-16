@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Jan 16 02:55:00 2022
+# Make data base, printed on Sun Jan 16 19:41:30 2022
 
 # Variables
 
@@ -95,7 +96,6 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&iid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&sid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff","uploadToServer":true}
 # default
- 
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/igor
@@ -108,9 +108,9 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 824487
+GIO_LAUNCHED_DESKTOP_FILE_PID = 886732
 # makefile (from 'Makefile', line 3)
-EXECUTABLE_NAME = "VkT"
+EXECUTABLE_NAME = "vkt"
 # automatic
 %F = $(notdir $%)
 # environment
@@ -164,7 +164,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d10a86f0-7c6f-43e2-9484-de18985cce42.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5f4bf261-067f-446f-b21c-dce6135d0236.sock
 # environment
 XDG_SESSION_ID = c1
 # environment
@@ -246,6 +246,7 @@ LANG = C
 # environment
 VSCODE_PID = 734777
 # variable set hash-table stats:
+ 
 # Load=117/1024=11%, Rehash=0, Collisions=11/149=7%
 
 # Pattern-specific Variable Values
@@ -254,10 +255,10 @@ VSCODE_PID = 734777
 
 # Directories
 
-# . (device 2050, inode 41551103): 14 files, no impossibilities.
-# src (device 2050, inode 41551549): 15 files, no impossibilities.
+# . (device 2050, inode 42600594): 12 files, no impossibilities.
+# src (device 2050, inode 42600700): 16 files, no impossibilities.
 
-# 29 files, no impossibilities in 2 directories.
+# 28 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -295,6 +296,7 @@ buildlinux:
 	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r gamedata bin/linux
+	@cp config bin/linux
 
 all: buildlinux
 #  Command line target.
@@ -314,7 +316,7 @@ all: buildlinux
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-16 02:54:17.493499953
+#  Last modified 2022-01-16 19:23:58.906009285
 #  File has been updated.
 #  Successfully updated.
 
@@ -324,20 +326,28 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+run:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 23):
+	@echo "Running Linux executable"
+	./bin/linux/$(EXECUTABLE_NAME)
+
 # files hash-table stats:
-# Load=5/1024=0%, Rehash=0, Collisions=0/18=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/19=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 299 B / avg = 9 B
-# current buf: size = 8162 B / used = 299 B / count = 33 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 301 B / avg = 9 B
+# current buf: size = 8162 B / used = 301 B / count = 33 / avg = 9 B
 
-# strcache performance: lookups = 45 / hit rate = 26%
+# strcache performance: lookups = 46 / hit rate = 28%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=3/45=7%
-# Finished Make data base on Sun Jan 16 02:55:00 2022
+# Load=33/8192=0%, Rehash=0, Collisions=3/46=7%
+# Finished Make data base on Sun Jan 16 19:41:30 2022
 
  

@@ -300,8 +300,12 @@ static void player_rotate()
   lastX = xpos;
   lastY = ypos;
 
+  // if windows is focused, allow movement
+  if (glfwGetWindowAttrib(window, GLFW_FOCUSED))
+  {
   player.yaw   += xDelta;
   player.pitch += yDelta;
+  }
 
   // Clamp Pitch
   player.pitch = player.pitch > 89.0f? 89.0f : player.pitch < -89.0f? -89.0f: player.pitch;
