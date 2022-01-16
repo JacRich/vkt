@@ -157,12 +157,12 @@ void render_init()
   glEnable   (GL_BLEND);
   glLineWidth(2.0f);
 
-  shader_make(&sh_world , "shaders/world.vert" , "shaders/world.frag" );
-  shader_make(&sh_cursor, "shaders/cursor.vert", "shaders/cursor.frag");
-  shader_make(&sh_cross , "shaders/cross.vert" , "shaders/cross.frag" );
-  shader_make(&sh_hud   , "shaders/hud.vert"   , "shaders/hud.frag"   );
+  shader_make(&sh_world , "gamedata/shaders/world.vert" , "gamedata/shaders/world.frag" );
+  shader_make(&sh_cursor, "gamedata/shaders/cursor.vert", "gamedata/shaders/cursor.frag");
+  shader_make(&sh_cross , "gamedata/shaders/cross.vert" , "gamedata/shaders/cross.frag" );
+  shader_make(&sh_hud   , "gamedata/shaders/hud.vert"   , "gamedata/shaders/hud.frag"   );
 
-  make_texture(&tex_atlas, "las.jpg");
+  make_texture(&tex_atlas, "gamedata/las.jpg");
   
   make_ubo(&ubo_view    , 128, 0);
   make_ubo(&ubo_torch   , 32 * 2, 1);

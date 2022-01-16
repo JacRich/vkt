@@ -1,0 +1,344 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Jan 16 02:08:09 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = cinnamon
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/igor/.Xauthority
+# environment
+GDMSESSION = cinnamon
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/igor/Documents/Dev/vkt
+# makefile
+SHELL = /bin/sh
+# environment
+GDM_LANG = en_US
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# makefile (from 'Makefile', line 6)
+objects = $(wildcard src/*.cpp)
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 1
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/igor/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = pt_BR.UTF-8
+# environment
+VSCODE_CWD = /home/igor
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/igor/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+SESSION_MANAGER = local/Igor-System:@/tmp/.ICE-unix/1127,unix/Igor-System:/tmp/.ICE-unix/1127
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 5)
+LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&iid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff&sid=0ff6989c-92fe-41e0-bb3a-bbef5686fcff","uploadToServer":true}
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/igor
+# environment
+LS_COLORS = 
+# environment
+INSIDE_NEMO_PYTHON = 
+# environment
+XDG_SESSION_DESKTOP = cinnamon
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 824487
+# makefile (from 'Makefile', line 3)
+EXECUTABLE_NAME = "VkT"
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# makefile (from 'Makefile', line 4)
+CPPARAMS = -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wextra
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/igor/Documents/Dev/vkt
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1200
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/igor
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/igor/.config/Code/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
+# environment
+LOGNAME = igor
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d10a86f0-7c6f-43e2-9484-de18985cce42.sock
+# environment
+XDG_SESSION_ID = c1
+# environment
+USER = igor
+# environment
+LC_MONETARY = pt_BR.UTF-8
+# makefile
+.DEFAULT_GOAL := buildlinux
+# environment
+XDG_CURRENT_DESKTOP = X-Cinnamon
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = pt_BR.UTF-8
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en_US
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-3e6d57c9-1.63.2-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/igor/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# environment
+LC_PAPER = pt_BR.UTF-8
+# environment
+NO_AT_BRIDGE = 1
+# environment
+CINNAMON_VERSION = 5.0.7
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = pt_BR.UTF-8
+# automatic
+<F = $(notdir $<)
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+LC_MEASUREMENT = pt_BR.UTF-8
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+LC_IDENTIFICATION = pt_BR.UTF-8
+# default
+.RECIPEPREFIX := 
+# environment
+LC_ADDRESS = pt_BR.UTF-8
+# environment
+LANG = C
+# environment
+VSCODE_PID = 734777
+# variable set hash-table stats:
+# Load=117/1024=11%, Rehash=0, Collisions=11/149=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2050, inode 41551103): 14 files, no impossibilities.
+# src (device 2050, inode 41551549): 15 files, no impossibilities.
+
+# 29 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+buildlinux:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := buildlinux
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+ 
+# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+#  recipe to execute (from 'Makefile', line 11):
+	@echo "Compiling for Linux"
+	mkdir -p bin/linux
+	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
+	@cp las.jpg bin/linux
+	@cp -r shaders bin/linux
+
+all: buildlinux
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-16 02:07:58.15952979
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=5/1024=0%, Rehash=0, Collisions=0/18=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 33 / storage = 302 B / avg = 9 B
+# current buf: size = 8162 B / used = 302 B / count = 33 / avg = 9 B
+
+# strcache performance: lookups = 45 / hit rate = 26%
+# hash-table stats:
+# Load=33/8192=0%, Rehash=0, Collisions=3/45=7%
+# Finished Make data base on Sun Jan 16 02:08:09 2022
+
+ 
