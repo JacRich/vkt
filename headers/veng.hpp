@@ -33,7 +33,7 @@ void veng_change_withcursor(cursor_t* cursor, uchar newValue, int collMode);
 void veng_tick();
 void veng_replace_tick(player_t* player);
 void veng_change_voxel(int pickmode, vhit voxel, uchar value);
-void* veng_terminate(void* args);
+void veng_terminate();
 
 region_t* find_region(vec pos);
 void save_region(region_t* region);

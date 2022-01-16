@@ -7,9 +7,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/unistd.h>
+
+#include "config.hpp"
 extern GLFWwindow* window; // From render
 
 extern player_t player;
+extern config_t config;
 
 cursor_t cursor, cursorRange;
 
@@ -292,8 +295,8 @@ static void player_rotate()
 {
   double xpos, ypos;
   glfwGetCursorPos(window, &xpos, &ypos);
-  float xDelta = (xpos - lastX) * 0.1f;
-  float yDelta = (lastY - ypos) * 0.1f;
+  float xDelta = (xpos - lastX) * config.looksens;
+  float yDelta = (lastY - ypos) * config.looksens;
   lastX = xpos;
   lastY = ypos;
 

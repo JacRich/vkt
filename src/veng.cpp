@@ -13,7 +13,7 @@ cmesh_t cmeshes[CHUNKS_LENGTH];
 
 region_t region;
 
-
+// Redundant right now
 region_t* find_region(vec pos)
 {
     if(!inRange(pos, region.pos, region.pos + ivec{(8*32),(8*32),(8*32)})){
@@ -319,18 +319,15 @@ void veng_init()
   load_region(&region);
   for(int i = 0; i < 512; i++)
   {
-    ivec fuck = index3d(i, 8);
-    region.chunks[fuck.x][fuck.y][fuck.z].pos = vec{fuck.x * 32, fuck.y * 32, fuck.z * 32};
+    ivec position = index3d(i, 8);
+    region.chunks[position.x][position.y][position.z].pos = vec{position.x * 32, position.y * 32, position.z * 32};
 
     cmesh_init(&cmeshes[i]);
-    cmesh_build(&cmeshes[i], &region.chunks[fuck.x][fuck.y][fuck.z]); 
+    cmesh_build(&cmeshes[i], &region.chunks[position.x][position.y][position.z]); 
   }
 }
 
-void* veng_terminate(void* args)
+void veng_terminate()
 {
-    double time = glfwGetTime();
     save_region(&region);
-    printf("Time: %.6f\n", glfwGetTime() - time);
-    return NULL;
 }

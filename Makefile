@@ -1,6 +1,6 @@
-# Makefile by Igor to Zac Rich
+# Makefile by Igor to Jac Rich
 # Below are some variables.
-EXECUTABLE_NAME = "VkT"
+EXECUTABLE_NAME = "vkt"
 CPPARAMS = -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wextra
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
 objects = $(wildcard src/*.cpp)

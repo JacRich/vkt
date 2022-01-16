@@ -8,13 +8,15 @@
 #include "perlin.hpp"
 #include "torch.hpp"
 #include "entity.hpp"
+#include "config.hpp"
+
 #include <pthread.h>   
 extern GLFWwindow* window; // From render
 extern torch_t torch;
 
 player_t player;
-
 crosshair_t crosshair;
+config_t config;
 
 float lastTime, deltaTime;
 unsigned long  framecount;
@@ -23,7 +25,7 @@ unsigned long  framecount;
 entity_t entities[MAX_ENTS];
 int entcount = 0;
 
-
+// My broke-ass ECS lmao
 void world_add_entity(entity_t** entity)
 {
   if(entcount > MAX_ENTS){
@@ -36,6 +38,7 @@ void world_add_entity(entity_t** entity)
 
 int main()
 {
+  load_config(&config);
   render_init(); // Always first
   player_init(&player);
   veng_init  ();
@@ -61,13 +64,8 @@ int main()
     framecount++;
   }
 
-  player_terminate(&player);
-
-  pthread_t thread;
-  pthread_create(&thread, NULL, veng_terminate, NULL);
-  pthread_join(thread, NULL);
-  //veng_terminate();
-
+  player_terminate(&player); 
+  veng_terminate  ();
   render_terminate();
   return 0;
 }

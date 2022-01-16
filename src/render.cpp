@@ -8,6 +8,7 @@
 #include <string>
 #include "mesh.hpp"
 #include "region.hpp"
+#include "config.hpp"
 
 #define MAX_MESHES 20
 mesh_t meshes[MAX_MESHES]; int meshcount = 0;
@@ -17,6 +18,7 @@ GLFWwindow* window;
 // From veng
 extern cmesh_t cmeshes[];
 extern region_t region;
+extern config_t config;
 
 // From player
 extern player_t player;
@@ -168,14 +170,14 @@ void render_init()
   make_ubo(&ubo_view    , 128, 0);
   make_ubo(&ubo_torch   , 32 * 2, 1);
 
-  glViewport(0,0, WIDTH, HEIGHT);
+  glViewport(0,0, config.width, config.height);
   glfwSetFramebufferSizeCallback(window, on_resize);
 }
 
 void update_ubos(player_t* player) 
 {
   worldview.view = glm::lookAt(player->pos, player->pos + player->front, player->up);
-  worldview.proj = glm::perspective(glm::radians(float(FOV)), (float)WIDTH / (float)HEIGHT, 0.001f, 1000.0f);
+  worldview.proj = glm::perspective(glm::radians(float(config.fov)), (float)config.width / (float)config.height, 0.001f, 1000.0f);
 
   ubo_set(&ubo_view , &worldview);
 
