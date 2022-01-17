@@ -1,4 +1,4 @@
-﻿#version 440 core
+#version 440 core
 layout (location = 0) uniform mat4 m_model;
 
 

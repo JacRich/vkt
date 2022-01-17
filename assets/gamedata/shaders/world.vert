@@ -1,4 +1,4 @@
-﻿#version 440 core
+#version 440 core
 // Vertex Data Attributes
 layout (location = 1) in ivec3 aPos      ;
 layout (location = 2) in int   aFaceIndex;
