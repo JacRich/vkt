@@ -129,7 +129,7 @@ static void on_resize(GLFWwindow* window, int width, int height)
 void render_init()
 {
   if(glfwInit() != GLFW_TRUE) { 
-    printf("GLFW failed to init"); 
+    printf("GLFW failed to init\n"); 
     exit(0); 
   }
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -139,13 +139,13 @@ void render_init()
 
   window = glfwCreateWindow(WIDTH, HEIGHT, "vkt", config.fullscreen == true? glfwGetPrimaryMonitor() : NULL, NULL);
   if(window == NULL) { 
-    printf("GLFW failed to create window"); 
+    printf("GLFW failed to create window\n");
     exit(0); 
   }
   glfwMakeContextCurrent(window);
 
   if(glewInit() != GLEW_OK) { 
-    printf("GLEW failed to init"); 
+    printf("GLEW failed to init\n"); 
     exit(0); 
   }
 
