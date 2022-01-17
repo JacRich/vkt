@@ -1,4 +1,4 @@
-﻿#version 440 core
+#version 440 core
 layout (binding = 0) uniform sampler2D atlas;
 
 in vec3 Normal ;

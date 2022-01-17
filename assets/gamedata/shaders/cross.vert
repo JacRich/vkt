@@ -1,4 +1,4 @@
-﻿#version 440 core
+#version 440 core
 layout (location = 0) in vec2 aPos;
 
 // Grab View Matrices from UBO

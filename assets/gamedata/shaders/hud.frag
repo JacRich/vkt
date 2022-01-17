@@ -1,4 +1,4 @@
-﻿#version 440 core
+#version 440 core
 layout (binding = 0) uniform sampler2D atlas;
 
 layout (location = 2) uniform int blockId;
