@@ -21,4 +21,4 @@ all: buildlinux
 # if on linux, run the bin/linux/$(EXECUTABLE_NAME) executable.
 run:
 	@echo "Running Linux executable"
-	./bin/linux/$(EXECUTABLE_NAME)
+	(cd bin/linux && ./$(EXECUTABLE_NAME))
