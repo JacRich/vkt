@@ -444,8 +444,7 @@ static void player_move_fly(player_t* player)
 static void cursor_move()
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if(hit.state != HIT_TRUE)
-  {
+  if(hit.state != HIT_TRUE){
     cursor.mesh->drawflags = DF_DEPTH_TEST;
     cursorRange.mesh->drawflags = DF_DEPTH_TEST;
     return;

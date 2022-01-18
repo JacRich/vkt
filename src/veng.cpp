@@ -136,10 +136,12 @@ vhit veng_raycast(int range, vec rayStart, vec rayDir)
             {
                 lastTest.voxel = test.voxel;
                 lastTest.pos   = test.pos;
+                lastTest.chunk = test.chunk;
             }
             voxelFound = true;
             test.voxelLast = lastTest.voxel;
             test.posLast   = lastTest.pos;
+            test.chunkLast = lastTest.chunk;
               
             return test;             
         }
@@ -183,7 +185,7 @@ void veng_change_voxel(int pickmode, vhit voxel, uchar value)
 
         case(PICK_NORMAL):
         *voxel.voxelLast = value;
-        voxel.chunk->update = true;
+        voxel.chunkLast->update = true;
         break;
     }
 }
