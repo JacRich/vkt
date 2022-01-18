@@ -138,8 +138,15 @@ void render_init()
   glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
   window = glfwCreateWindow(WIDTH, HEIGHT, "vkt", config.fullscreen == true? glfwGetPrimaryMonitor() : NULL, NULL);
-  if(window == NULL) { 
-    printf("GLFW failed to create window\n");
+  if(window == NULL) {
+    printf("GLFW failed to create window with code: ");
+    int code = glfwGetError(NULL);
+    printf("%d\n", code);
+    if (code == 65543) {
+        printf("GLFW_VERSION_UNAVAILABLE: The requested OpenGL or OpenGL ES version (including any requested context or framebuffer hints) is not available on this machine.\n");
+    } else if (code == 65540) {
+        printf("GLFW_INVALID_VALUE: One of the arguments to the function was an invalid value, for example requesting a non-existent OpenGL or OpenGL ES version like 2.7.\n");
+    }
     exit(0); 
   }
   glfwMakeContextCurrent(window);
