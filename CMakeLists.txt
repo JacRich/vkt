@@ -5,11 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(headers)
 
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-
-add_subdirectory(./glfw-3.3.6)
 file(COPY ./assets/config DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ./assets/gamedata DESTINATION ${CMAKE_BINARY_DIR})
 
@@ -46,6 +41,7 @@ add_executable(vkt
         src/veng.cpp
         src/world.cpp)
 
+find_package(glfw3 3.3 REQUIRED)
 target_link_libraries(vkt glfw)
 find_package(OpenGL REQUIRED)
 target_link_libraries(vkt OpenGL::GL)

@@ -10,6 +10,7 @@ To compile the project, you will need the following dependencies:
 |libGL|libgl-dev|libglvnd|
 |libGLEW|libglew-dev|glew|
 |libglfw|libglfw3-dev|glfw-wayland / glfw-x11|
+|libglm|libglm-dev|glm|
 |libX11|libx11-dev|libx11|
 |libXxf86vm|libxxf86vn-dev|libxxf86vm|
 |libXrandr|libxrandr-dev|libxrandr|
