@@ -1,7 +1,24 @@
 # Makefile by Igor to Jac Rich
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
-CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall
+
+# Added option to build with clang instead of g++ -David (B1QUAD)
+# Uncomment line 7 and comment line 8 to use clang++
+# CXX = "clang++"
+CXX = "g++"
+CPPARAMS := -g -std=gnu++14 -Wall
+
+# Set g++ specific flags
+ifeq ($(CXX),g++)
+	CPPARAMS += -fdiagnostics-color=always -fdiagnostics-show-labels
+endif
+
+# Set clang++ specific flags
+# ifeq used because there is no else if in GNU make
+ifeq ($(CXX),clang++)
+	CPPARAMS += -Wgcc-compat -Woption -fdiagnostics-show-option -fdiagnostics-show-category   
+endif
+
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
 objects = $(wildcard src/*.cpp)
 
@@ -11,7 +28,7 @@ objects = $(wildcard src/*.cpp)
 buildlinux:
 	@echo "Compiling for Linux"
 	mkdir -p bin/linux
-	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	$(CXX) $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/linux/
 
