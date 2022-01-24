@@ -13,7 +13,7 @@ ifeq ($(CXX),g++)
 	CPPARAMS += -fdiagnostics-color=always -fdiagnostics-show-labels
 endif
 
-# Set clang++ specific glags
+# Set clang++ specific flags
 # ifeq used because there is no else if in GNU make
 ifeq ($(CXX),clang++)
 	CPPARAMS += -Wgcc-compat -Woption -fdiagnostics-show-option -fdiagnostics-show-category   
