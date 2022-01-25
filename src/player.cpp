@@ -1,28 +1,17 @@
-#include "globaldef.hpp"
-#include "player.hpp"
-#include "veng.hpp"
-#include "render.hpp"
-#include "torch.hpp"
-#include "world.hpp"
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/unistd.h>
+#include "globaldef.hpp"
 
+#include "player.hpp"
+#include "veng.hpp"
+#include "perlin.hpp"
 #include "config.hpp"
-extern config_t config;
-config_key_t keys;
 
-// From render
-extern GLFWwindow* window;
+player_t player;
+cursor_t cursor, cursorRange; 
 
-cursor_t cursor, cursorRange;
-
-// From world
-extern float deltaTime;
-extern torch_t torch;
-extern player_t player;
 double lastX, lastY;
-
 
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
@@ -56,7 +45,7 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   // Switch flying / walking
   if (key == keys.switchmov){
-    player.moveMode = !player.moveMode;
+    player.editor = !player.editor;
   }
 
   if(key == GLFW_KEY_ESCAPE){
@@ -267,11 +256,13 @@ static vec make_clip(player_t *player)
 
 static void player_move_walk(player_t *player)
 {
-  vec movedir = {0, 0, 0};
-  movedir += glfwGetKey(window, keys.forward) ?  player->front_walk : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.backward)? -player->front_walk : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.left   ) ? -player->right_walk : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.right  ) ?  player->right_walk : vec{0,0,0};
+  const vec zero = {0, 0, 0};
+  vec movedir    = {0, 0, 0};
+
+  movedir += glfwGetKey(window, keys.forward) ?  player->front_walk : zero;
+  movedir += glfwGetKey(window, keys.backward)? -player->front_walk : zero;
+  movedir += glfwGetKey(window, keys.left   ) ? -player->right_walk : zero;
+  movedir += glfwGetKey(window, keys.right  ) ?  player->right_walk : zero;
 
   // Apply mov vel
   if (glm::length(player->vel) < 8.0f){
@@ -295,11 +286,13 @@ static void player_move_walk(player_t *player)
 
 static void player_move_fly(player_t *player)
 {
-  vec movedir = {0, 0, 0};
-  movedir += glfwGetKey(window, keys.forward ) ?  player->front : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.backward) ? -player->front : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.left    ) ? -player->right : vec{0,0,0};
-  movedir += glfwGetKey(window, keys.right   ) ?  player->right : vec{0,0,0};
+  const vec zero = {0, 0, 0};
+  vec movedir    = {0, 0, 0};
+
+  movedir += glfwGetKey(window, keys.forward ) ?  player->front : zero;
+  movedir += glfwGetKey(window, keys.backward) ? -player->front : zero;
+  movedir += glfwGetKey(window, keys.left    ) ? -player->right : zero;
+  movedir += glfwGetKey(window, keys.right   ) ?  player->right : zero;
 
   // Apply mov vel
   if (glm::length(player->vel) < 12.0f){
@@ -318,8 +311,7 @@ static void player_move_fly(player_t *player)
 }
 
 
-
-static void cursor_move()
+static void move_cursors()
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if(hit.state != HIT_TRUE){
@@ -355,23 +347,20 @@ static void cursor_move()
   }
 }
 
-void player_tick(void* owner)
+void player_tick()
 {
-  player_t *player_ptr = (player_t *)owner;
-  torch.pos = player_ptr->pos;
+  float perlin = perlin_sampleOctave(gameTime, gameTime, gameTime,  0.35, 20);
+  float offset = perlin * 0.35f;
+  player.lightColor = vec{1.0f, 0.7f, 0.5f} + offset;
 
-  switch (player.moveMode)
-  {
-  case (MM_WALK):
-    player_move_walk(&player);
-    break;
-
-  case (MM_FLY):
+  if(player.editor){
     player_move_fly(&player);
-    break;
   }
-
-  cursor_move();
+  else{
+    player_move_walk(&player);
+  }
+  
+  move_cursors();
   glfwPollEvents();
 }
 
@@ -406,17 +395,10 @@ static void save_player(player_t* player)
   fclose(file);
 }
 
-void player_init(player_t *player)
+void player_init()
 {
-  load_player(player);
-  load_config_key(&keys);
-
-  world_add_entity(&player->entity);
-  player->entity->func_tick = player_tick;
-  player->entity->owner = player;
-
-  torch_init(&torch);
-
+  load_player(&player);
+  
   glfwGetCursorPos(window, &lastX, &lastY);
 
   cursor_init(&cursor);
@@ -433,7 +415,7 @@ void player_init(player_t *player)
   glfwSetCursorPosCallback(window, ms_pos_callback);
 }
 
-void player_terminate(player_t *player)
+void player_terminate()
 {
-  save_player(player);
+  save_player(&player);
 }

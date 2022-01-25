@@ -2,7 +2,6 @@
 #include "shader.hpp"
 #include "cmesh.hpp"
 #include "crosshair.hpp"
-#include "torch.hpp"
 #include "mesh.hpp"
 #include "region.hpp"
 #include "config.hpp"
@@ -11,15 +10,9 @@
 #include <string>
 #include <pthread.h>
 
-// From world
-extern float lastTime, deltaTime;
-extern unsigned long  framecount;
-// From veng
-extern config_t config;    
-extern region_t regions[]; 
-
 cmesh_t* cmeshes;
 GLFWwindow* window;
+crosshair_t crosshair;
 
 #define MAX_MESHES 20
 mesh_t meshes[MAX_MESHES]; int meshcount = 0;
@@ -29,7 +22,6 @@ texture_t tex_atlas;
 ubo_t     ubo_view, ubo_torch, ubo_fullbrighttoggle;
 
 view_t  worldview;
-torch_t torch    ;
 
 
 static void draw_mesh(mesh_t* mesh)
@@ -101,7 +93,7 @@ void render_addmesh(mesh_t** mesh)
   meshcount++;
 }
 
-void render_attach_cmeshes()
+void render_attach_cmeshes(region_t regions[REGION_COUNT])
 {
   int mesh = 0;
 
@@ -169,7 +161,8 @@ void render_init()
   glViewport(0,0, config.width, config.height);
 
   glfwSetFramebufferSizeCallback(window, on_resize);
-
+  
+  crosshair_init(&crosshair, 0.015f);
   // Init chunk meshes
   cmeshes = (cmesh_t*)malloc(sizeof(cmesh_t) * CMESH_COUNT);
   for(int i = 0; i < CMESH_COUNT; i++)
@@ -192,7 +185,7 @@ static void tick_build_cmeshes()
   }
 }
 
-void render_tick(player_t* player)
+void render_tick()
 {
   //glViewport(0,0, config.width, config.height);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -201,12 +194,12 @@ void render_tick(player_t* player)
  
   tick_build_cmeshes();
 
-  draw_chunks(player);
+  draw_chunks(&player);
   for(int i = 0; i < meshcount; i++){
     draw_mesh(&meshes[i]);
   }
 
-  worldview.view = glm::lookAt(player->pos, player->pos + player->front, player->up);
+  worldview.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
   worldview.proj = glm::perspective(glm::radians(float(config.fov)), (float)config.width / (float)config.height, 0.001f, 1000.0f);
 
   glBindBuffer(GL_UNIFORM_BUFFER, ubo_view.handle);
@@ -216,8 +209,8 @@ void render_tick(player_t* player)
   glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(config.fullbright), &config.fullbright);
 
   glBindBuffer(GL_UNIFORM_BUFFER, ubo_torch.handle);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(vec), &torch.pos);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)16, sizeof(vec), &torch.color);
+  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(vec), &player.pos);
+  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)16, sizeof(vec), &player.lightColor);
 
   glfwSwapBuffers   (window);
   glfwSetWindowTitle(window, ("FPS: " + std::to_string(1.0 / deltaTime)).c_str());

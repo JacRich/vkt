@@ -33,17 +33,20 @@ struct player_t
 
   int reach = 20;
   
-  int moveMode  = MM_FLY   ;
+  int editor = true;
   int inputMode = IM_BLOCKS;
 
   float pitch = 0.0f, yaw = 0.0f;
 
   bool grounded = false;
 
-  entity_t* entity;
+  vec lightColor = vec{1.0f, 0.45f, 0.05f};
 };
 
-void player_init(player_t*);
-void player_terminate(player_t*);
+extern player_t player;
+
+void player_init();
+void player_tick();
+void player_terminate();
 
 #endif

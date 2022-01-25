@@ -203,18 +203,18 @@ void veng_change_voxel(vhit voxel, int pickmode, uchar value)
 }
 
 
-void veng_init(player_t* player)
+void veng_init()
 {
-  ivec player_region = region_cord(player->pos); 
+  ivec player_region = region_cord(player.pos); 
 
   region_set_pos(&regions[0], player_region);
   region_load   (&regions[0]);
   regions[0].inUse = true;
 
-  render_attach_cmeshes();
+  render_attach_cmeshes(regions);
 }
 
-void veng_tick(player_t* player)
+void veng_tick()
 {
   
 }

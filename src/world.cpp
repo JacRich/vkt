@@ -5,17 +5,9 @@
 #include "render.hpp"
 #include "ivec.hpp"
 #include "crosshair.hpp"
-#include "perlin.hpp"
-#include "torch.hpp"
 #include "entity.hpp"
 #include "config.hpp"
 
-extern GLFWwindow* window; // From render
-extern torch_t torch;
-
-player_t player;
-crosshair_t crosshair;
-config_t config;
 
 float lastTime, deltaTime;
 unsigned long  framecount;
@@ -37,12 +29,11 @@ void world_add_entity(entity_t** entity)
 }
 
 int main()
-{
-  load_config(&config); // Always first
-  render_init();        // Always second 
-  player_init(&player);
-  veng_init  (&player);
-  crosshair_init(&crosshair, 0.015f);
+{ 
+  config_init();  // Always first
+  render_init();  // Always second 
+  player_init();
+  veng_init  ();
  
   while(!glfwWindowShouldClose(window))
   {
@@ -58,14 +49,14 @@ int main()
       entities[i].func_tick(entities[i].owner);
     }
     
-    render_tick(&player);
-    veng_tick  (&player);
+    player_tick();
+    render_tick();
+    veng_tick  ();
     framecount++;
     gameTime += deltaTime;
   }
 
-  player_terminate(&player);
-
+  player_terminate();
   veng_terminate();
   render_terminate();
   return 0;

@@ -2,7 +2,6 @@
 #include "ivec.hpp"
 
 
-
 ivec region_cord(vec worldpos)
 {
   return ivec{int(worldpos.x) / REGION_WIDTH, int(worldpos.y) / REGION_WIDTH, int(worldpos.z) / REGION_WIDTH };

@@ -14,8 +14,8 @@
 #define PICK_NORMAL 1
 
 
-void veng_init(player_t*);
-void veng_tick(player_t*);
+void veng_init();
+void veng_tick();
 void veng_terminate();
 
 void veng_change_voxel(vhit voxel, int pickmode, uchar value);

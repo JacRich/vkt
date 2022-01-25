@@ -27,4 +27,11 @@ using vec4 = glm::vec4;
 
 extern uint sh_world, sh_cursor, sh_cross, sh_hud;
 
+extern float lastTime, deltaTime;
+extern unsigned long  framecount;
+extern float gameTime;
+
+extern GLFWwindow* window;
+
+
 #endif

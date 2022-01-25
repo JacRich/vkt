@@ -29,7 +29,6 @@ add_executable(vkt
         headers/render.hpp
         headers/shader.hpp
         headers/stb_image.hpp
-        headers/torch.hpp
         headers/veng.hpp
         headers/vhit.hpp
         headers/world.hpp
@@ -44,7 +43,6 @@ add_executable(vkt
         src/player.cpp
         src/render.cpp
         src/shader.cpp
-        src/torch.cpp
         src/veng.cpp
         src/world.cpp)
 

@@ -84,12 +84,10 @@ void cursor_snapto(cursor_t* cursor, vhit hit)
   vec dir = (hit.pos - hit.posLast) * 1.0f;
   float dot = glm::dot(dir, {1.0f, 1.0f, 1.0f});
 
-  if(dot > 0)
-  {
+  if(dot > 0){
     cursor->mesh->pos = hit.pos - (vec{dir.x, dir.y,  dir.z} * (float)cursor->size);
   }
-  else
-  {
+  else{
     cursor->mesh->pos = hit.posLast;
   }
 }
@@ -99,12 +97,10 @@ void cursor_embed(cursor_t* cursor, vhit hit)
   vec dir = (hit.pos - hit.posLast) * 1.0f;
   float dot = glm::dot(dir, {1.0f, 1.0f, 1.0f});
     
-  if(dot > 0)
-  {
+  if(dot > 0){
     cursor->mesh->pos = hit.pos;
   }
-  else
-  {
+  else{
     cursor->mesh->pos = hit.posLast + (vec{dir.x, dir.y,  dir.z} * (float)cursor->size);
   }
 }
@@ -140,6 +136,12 @@ void cursor_shrink(cursor_t* cursor)
 void cursor_setcolor(cursor_t* cursor, vec4 color)
 {
   cursor->mesh->color = color;
+}
+
+
+void cursor_tick()
+{
+
 }
 
 void cursor_init(cursor_t* cursor)

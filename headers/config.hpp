@@ -1,6 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include "globaldef.hpp"
+
+#include <GLFW/glfw3.h>
 
 struct config_t
 {
@@ -41,8 +42,9 @@ struct config_key_t
   int input_id = GLFW_KEY_TAB;
 };
 
+extern config_t   config;
+extern config_key_t keys;
 
-void load_config(config_t* config);
-void load_config_key(config_key_t* config);
+void config_init();
 
 #endif

@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/unistd.h>
+#include <string.h>
+
+config_t   config;
+config_key_t keys;
+
 
 void load_config(config_t* config) 
 {
@@ -150,3 +155,10 @@ void load_config_key(config_key_t* config)
 
   fclose(file);
 }
+
+void config_init()
+{
+  load_config(&config);
+  load_config_key(&keys);
+}
+

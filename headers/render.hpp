@@ -19,11 +19,11 @@ struct view_t
   mat4 view, proj;
 };
 
-void render_attach_cmeshes();
+void render_attach_cmeshes(region_t regions[REGION_COUNT]);
 void render_addmesh(mesh_t** mesh);
 
 void render_init();
-void render_tick(player_t* player);
+void render_tick();
 void render_terminate();
 
 #endif
