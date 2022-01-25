@@ -23,17 +23,14 @@ void load_config(config_t* config)
   while(!feof(file)) 
 	{
     fgets(linebuf, 100, file);
-    
     // Is line a comment or empty?
-    if (linebuf[0] == '#' || strlen(linebuf) < 4){
+    if(linebuf[0] == '#' || strlen(linebuf) < 4){
       continue;
     }
 
-    if (sscanf(linebuf, " editorcoll = %s", scanbuf)){
-      int ec = strtol(scanbuf, NULL, 10);
-      if(ec == 0 || ec == 1){
-        config->editorcoll = ec;
-      }
+    int editor_collision;
+    if(sscanf(linebuf, " editorcoll = %i", &editor_collision)){
+      config->editorcoll = editor_collision;  
     }
 
     if (sscanf(linebuf, " fullbright = %s", scanbuf)){
@@ -50,9 +47,10 @@ void load_config(config_t* config)
     if (sscanf(linebuf, " height = %s", scanbuf)){
       config->height = strtol(scanbuf, NULL, 10);
     }
-
-    if (sscanf(linebuf, " fov = %s", scanbuf)){
-      config->fov = strtod(scanbuf, NULL);
+    
+    float fov = 12;
+    if (sscanf(linebuf, " fov = %f", &fov)){
+      config->fov = fov;
     }
 
     if (sscanf(linebuf, " movespeed = %s", scanbuf)){
@@ -69,6 +67,10 @@ void load_config(config_t* config)
 
     if (sscanf(linebuf, " jumpforce = %s", scanbuf)){
       config->jumpForce = strtod(scanbuf, NULL);
+    }
+
+    if (sscanf(linebuf, " looksens = %s", scanbuf)){
+      config->looksens = strtod(scanbuf, NULL);
     }
   }
 
