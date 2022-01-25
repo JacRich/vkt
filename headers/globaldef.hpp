@@ -9,8 +9,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-using uchar = u_int8_t ;
-using uint  = u_int32_t;
+using uchar = uint8_t ;
+using uint  = uint32_t;
 
 using mat4 = glm::mat4;
 using vec  = glm::vec3;
