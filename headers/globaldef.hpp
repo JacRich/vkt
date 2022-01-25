@@ -20,13 +20,10 @@ using vec4 = glm::vec4;
 #define FACE_SIZE 30
 #define VOXELS_LENGTH 32 * 32 * 32
 
-#define WIDTH 1280
-#define HEIGHT 720
-#define FOV 90
-
-#define RENDER_LENGTH 8
-#define CHUNKS_LENGTH 512
-
+#define REGION_CROOT       4   // Cube root
+#define REGION_WIDTH       128 // 4 * 32
+#define REGION_CHUNK_COUNT 64  // 4^3
+#define REGION_COUNT       27
 
 extern uint sh_world, sh_cursor, sh_cross, sh_hud;
 

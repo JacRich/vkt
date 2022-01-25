@@ -10,16 +10,18 @@
 
 struct vhit
 {
-    int state = HIT_NULL;
-    
-    uchar* voxel     = NULL;
-    uchar* voxelLast = NULL;
-    
-    chunk_t* chunk     = NULL;
-    chunk_t* chunkLast = NULL;
+  int state = HIT_NULL;
+  
+  uchar* voxel     = NULL;
+  uchar* voxelLast = NULL;
+  
+  chunk_t* chunk     = NULL;
+  chunk_t* chunkLast = NULL;
 
-    vec pos    ;
-    vec posLast;
+  vec pos    ;
+  vec posLast;
+
+  float distance = 0.0f;
 };
 
 #endif

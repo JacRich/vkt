@@ -114,10 +114,14 @@ void cursor_centerOn(cursor_t* cursor, vhit hit)
   cursor->mesh->pos = {hit.pos.x - (cursor->size / 2), hit.pos.y - (cursor->size / 2), hit.pos.z - (cursor->size / 2) };
 }
 
+void cursor_snap_chunk(cursor_t* cursor, chunk_t* chunk)
+{
+  cursor->mesh->pos = chunk->pos;
+}
+
 void cursor_grow(cursor_t* cursor)
 {
-  if(cursor->size > 21)
-  {
+  if(cursor->size > 31){
     return;
   }
   cursor->size++;
@@ -126,8 +130,7 @@ void cursor_grow(cursor_t* cursor)
 
 void cursor_shrink(cursor_t* cursor)
 {
-  if(cursor->size <= 3)
-  {
+  if(cursor->size <= 3){
     return;
   }
   cursor->size--;
@@ -142,14 +145,14 @@ void cursor_setcolor(cursor_t* cursor, vec4 color)
 void cursor_init(cursor_t* cursor)
 {
   render_addmesh(&cursor->mesh);
+  
+  // Set mesh params
   cursor->mesh->shader = sh_cursor;
-
   cursor->mesh->vertcount = 48;
-
   cursor->mesh->primtype = GL_LINES;
   cursor->mesh->scale = vec{cursor->size + 0.01f};
 
-  uint vbo; // No need to save static buffer handle
+  uint vbo;
   glGenVertexArrays(1, &cursor->mesh->vao);
   glGenBuffers     (1, &vbo);
   

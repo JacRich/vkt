@@ -16,7 +16,7 @@ static char* load_source(char const* path)
     fclose(f);
   }
   else{
-    printf("FAILED TO LOAD SHADER: %s, EXITING\n", path);
+    printf("FAILED TO LOAD SHADER AT: %s, EXITING\n", path);
     exit(0);
   }
 
@@ -24,7 +24,7 @@ static char* load_source(char const* path)
   return buffer;
 }
 
-static void compile_shader(uint* handle, uint type, char const* source)
+static void compile_shader(shader_t* handle, uint type, char const* source)
 {
   *handle = glCreateShader(type);
   glShaderSource(*handle, 1, &source, NULL);
@@ -42,7 +42,7 @@ static void compile_shader(uint* handle, uint type, char const* source)
   }
 }
 
-void shader_make(uint* handle, char const* vertPath, char const* fragPath)
+void shader_make(shader_t* handle, char const* vertPath, char const* fragPath)
 {
   char const* vertSource = load_source(vertPath);
   char const* fragSource = load_source(fragPath);
@@ -64,54 +64,27 @@ void shader_make(uint* handle, char const* vertPath, char const* fragPath)
   glDeleteShader(fs);
 }
 
-void shader_make(uint* handle, char const* vertPath, char const* fragPath, char const* geoPath)
-{
-  char const* vertSource = load_source(vertPath);
-  char const* fragSource = load_source(fragPath);
-  char const* geoSource  = load_source(geoPath );
-
-  *handle = glCreateProgram();
-  uint vs, gs, fs;
-  compile_shader(&vs, GL_VERTEX_SHADER  , vertSource);
-  compile_shader(&fs, GL_FRAGMENT_SHADER, fragSource);
-  compile_shader(&gs, GL_GEOMETRY_SHADER, geoSource);
-  free((void*)vertSource);
-  free((void*)fragSource);
-  free((void*)geoSource );
-
-  glAttachShader(*handle, vs);
-  glAttachShader(*handle, fs);
-  glAttachShader(*handle, gs);
-  glLinkProgram (*handle);
-
-  glValidateProgram(*handle); // ERROR HANDLING IS FOR PUSS
-
-  glDeleteShader(vs);
-  glDeleteShader(gs);
-  glDeleteShader(fs);
-}
-
-void shader_setInt(uint handle, const char* name, int value)
+void shader_setInt(shader_t handle, const char* name, int value)
 {
   glUniform1i(glGetUniformLocation(handle, name), value);
 }
 
-void shader_setFloat(uint handle, const char* name, float value)
+void shader_setFloat(shader_t handle, const char* name, float value)
 {
   glUniform1f(glGetUniformLocation(handle, name), value); 
 }
 
-void shader_setVec3(uint handle, const char* name, vec value)
+void shader_setVec3(shader_t handle, const char* name, vec value)
 {
   glUniform3fv(glGetUniformLocation(handle, name), 1, &value[0]); 
 }
 
-void shader_setVec4(uint handle, const char* name, vec4 value)
+void shader_setVec4(shader_t handle, const char* name, vec4 value)
 {
   glUniform4fv(glGetUniformLocation(handle, name), 1, &value[0]); 
 }
 
-void shader_setMat4(uint handle, const char* name, float* value)
+void shader_setMat4(shader_t handle, const char* name, float* value)
 {
   glUniformMatrix4fv(glGetUniformLocation(handle, name), 1, GL_TRUE, value);
 }

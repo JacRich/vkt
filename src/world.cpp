@@ -10,7 +10,6 @@
 #include "entity.hpp"
 #include "config.hpp"
 
-#include <pthread.h>   
 extern GLFWwindow* window; // From render
 extern torch_t torch;
 
@@ -20,15 +19,16 @@ config_t config;
 
 float lastTime, deltaTime;
 unsigned long  framecount;
+float gameTime = 0.0f;
 
 #define MAX_ENTS 10
 entity_t entities[MAX_ENTS];
 int entcount = 0;
 
-// My broke-ass ECS lmao
+
 void world_add_entity(entity_t** entity)
 {
-  if(entcount > MAX_ENTS){
+  if(entcount >= MAX_ENTS){
     printf("Over Max Entities!\n");
     return;
   }
@@ -41,7 +41,7 @@ int main()
   load_config(&config); // Always first
   render_init();        // Always second 
   player_init(&player);
-  veng_init  ();
+  veng_init  (&player);
   crosshair_init(&crosshair, 0.015f);
  
   while(!glfwWindowShouldClose(window))
@@ -58,13 +58,15 @@ int main()
       entities[i].func_tick(entities[i].owner);
     }
     
-    render_tick();
-    veng_tick  ();
+    render_tick(&player);
+    veng_tick  (&player);
     framecount++;
+    gameTime += deltaTime;
   }
 
-  player_terminate(&player); 
-  veng_terminate  ();
+  player_terminate(&player);
+
+  veng_terminate();
   render_terminate();
   return 0;
 }

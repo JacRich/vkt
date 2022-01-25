@@ -1,6 +1,7 @@
 #ifndef MESH_H
 #define MESH_H
 #include "globaldef.hpp"
+#include "shader.hpp"
 
 #define DF_VIS        0x01
 #define DF_DEPTH_TEST 0x02
@@ -12,7 +13,7 @@ struct mesh_t
 
   uint vao = 0;
   uint vertcount = 0;
-  uint shader;
+  shader_t shader;
 
   vec  pos;
   vec  scale;

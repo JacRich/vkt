@@ -11,7 +11,7 @@ To compile the project, you will need the following dependencies:
 |libGLEW|libglew-dev|glew|
 |libglfw|libglfw3-dev|glfw-wayland / glfw-x11|
 |libX11|libx11-dev|libx11|
-|libXxf86vm|libxxf86vm-dev|libxxf86vm|
+|libXxf86vm|libxxf86vn-dev|libxxf86vm|
 |libXrandr|libxrandr-dev|libxrandr|
 |libpthread|libpthread-stubs0-dev|glibcs|
 |libXi|libxi-dev|libxi|

@@ -2,14 +2,13 @@
 #include "world.hpp"
 #include "perlin.hpp"
 
-extern float lastTime, deltaTime;
-extern unsigned long framecount;
+extern float gameTime;
 
 void torch_tick(void* owner)
 {
   torch_t* torch = (torch_t*)owner;
 
-  float perlin = perlin_sampleOctave(framecount * 0.002, framecount * 0.002, framecount * 0.002,  0.35, 20);
+  float perlin = perlin_sampleOctave(gameTime, gameTime, gameTime,  0.35, 20);
   float offset = perlin * 0.35f;
   torch->color = vec{1.0f, 0.7f, 0.5f} + offset;
 }
