@@ -28,7 +28,7 @@ The CXX compiler identification is GNU, found in "C:/Users/gshah/Documents/vkt/c
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_68eac && [1/2] Building C object CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_b42c1 && [1/2] Building C object CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj
 Using built-in specs.
 COLLECT_GCC=C:\Users\gshah\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\mingw\bin\gcc.exe
 Target: x86_64-w64-mingw32
@@ -36,8 +36,8 @@ Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_
 Thread model: posix
 Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (GCC) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/'
- C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_68eac.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\ccVEkgjU.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/'
+ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b42c1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\cc4wqZRf.s
 GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -58,13 +58,13 @@ GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 23424b72d090e8b977a96775bde79257
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/'
- as -v -o CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj C:\Users\gshah\AppData\Local\Temp\ccVEkgjU.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/'
+ as -v -o CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj C:\Users\gshah\AppData\Local\Temp\cc4wqZRf.s
 GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37
 COMPILER_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/
 LIBRARY_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.'
-[2/2] Linking C static library libcmTC_68eac.a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.'
+[2/2] Linking C static library libcmTC_b42c1.a
 
 
 
@@ -87,7 +87,7 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_68eac && [1/2] Building C object CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_b42c1 && [1/2] Building C object CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\gshah\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\mingw\bin\gcc.exe]
   ignore line: [Target: x86_64-w64-mingw32]
@@ -95,8 +95,8 @@ Parsed C implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 11.2.0 (GCC) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/']
-  ignore line: [ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_68eac.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\ccVEkgjU.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/']
+  ignore line: [ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b42c1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\cc4wqZRf.s]
   ignore line: [GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
   ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -117,8 +117,8 @@ Parsed C implicit link information from above output:
   ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 23424b72d090e8b977a96775bde79257]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/']
-  ignore line: [ as -v -o CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj C:\Users\gshah\AppData\Local\Temp\ccVEkgjU.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/']
+  ignore line: [ as -v -o CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj C:\Users\gshah\AppData\Local\Temp\cc4wqZRf.s]
   ignore line: [GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37]
   ignore line: [COMPILER_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/]
@@ -128,8 +128,8 @@ Parsed C implicit link information from above output:
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_68eac.dir/CMakeCCompilerABI.c.']
-  ignore line: [[2/2] Linking C static library libcmTC_68eac.a]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b42c1.dir/CMakeCCompilerABI.c.']
+  ignore line: [[2/2] Linking C static library libcmTC_b42c1.a]
   ignore line: []
   ignore line: []
   implicit libs: []
@@ -141,7 +141,7 @@ Parsed C implicit link information from above output:
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_e6830 && [1/2] Building CXX object CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_bf914 && [1/2] Building CXX object CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj
 Using built-in specs.
 COLLECT_GCC=C:\Users\gshah\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\mingw\bin\g++.exe
 Target: x86_64-w64-mingw32
@@ -149,8 +149,8 @@ Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_
 Thread model: posix
 Supported LTO compression algorithms: zlib
 gcc version 11.2.0 (GCC) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/'
- C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_e6830.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\cc7VQiGv.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/'
+ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bf914.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\ccNPUSPc.s
 GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -177,13 +177,13 @@ GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 916242a6eadede3a42d72bc0142b939f
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/'
- as -v -o CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\gshah\AppData\Local\Temp\cc7VQiGv.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/'
+ as -v -o CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\gshah\AppData\Local\Temp\ccNPUSPc.s
 GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37
 COMPILER_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/
 LIBRARY_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.'
-[2/2] Linking CXX static library libcmTC_e6830.a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.'
+[2/2] Linking CXX static library libcmTC_bf914.a
 
 
 
@@ -212,7 +212,7 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_e6830 && [1/2] Building CXX object CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_bf914 && [1/2] Building CXX object CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\gshah\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\mingw\bin\g++.exe]
   ignore line: [Target: x86_64-w64-mingw32]
@@ -220,8 +220,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [Supported LTO compression algorithms: zlib]
   ignore line: [gcc version 11.2.0 (GCC) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/']
-  ignore line: [ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_e6830.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\cc7VQiGv.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/']
+  ignore line: [ C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bf914.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\gshah\AppData\Local\Temp\ccNPUSPc.s]
   ignore line: [GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
   ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -248,8 +248,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 916242a6eadede3a42d72bc0142b939f]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/']
-  ignore line: [ as -v -o CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\gshah\AppData\Local\Temp\cc7VQiGv.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/']
+  ignore line: [ as -v -o CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\gshah\AppData\Local\Temp\ccNPUSPc.s]
   ignore line: [GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37]
   ignore line: [COMPILER_PATH=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../libexec/gcc/]
@@ -259,8 +259,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6830.dir/CMakeCXXCompilerABI.cpp.']
-  ignore line: [[2/2] Linking CXX static library libcmTC_e6830.a]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_bf914.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [[2/2] Linking CXX static library libcmTC_bf914.a]
   ignore line: []
   ignore line: []
   implicit libs: []
@@ -272,16 +272,16 @@ Parsed CXX implicit link information from above output:
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_28d9a && [1/2] Building C object CMakeFiles/cmTC_28d9a.dir/CheckIncludeFile.c.obj
-[2/2] Linking C static library libcmTC_28d9a.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_21ad2 && [1/2] Building C object CMakeFiles/cmTC_21ad2.dir/CheckIncludeFile.c.obj
+[2/2] Linking C static library libcmTC_21ad2.a
 
 
 
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_ee6b8 && [1/2] Building C object CMakeFiles/cmTC_ee6b8.dir/src.c.obj
-[2/2] Linking C static library libcmTC_ee6b8.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_adc3f && [1/2] Building C object CMakeFiles/cmTC_adc3f.dir/src.c.obj
+[2/2] Linking C static library libcmTC_adc3f.a
 
 
 Source file was:
@@ -308,24 +308,24 @@ int main(void)
 Determining if the include file dinput.h exists passed with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_5c2a7 && [1/2] Building C object CMakeFiles/cmTC_5c2a7.dir/CheckIncludeFile.c.obj
-[2/2] Linking C static library libcmTC_5c2a7.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_5fc86 && [1/2] Building C object CMakeFiles/cmTC_5fc86.dir/CheckIncludeFile.c.obj
+[2/2] Linking C static library libcmTC_5fc86.a
 
 
 
 Determining if the include file xinput.h exists passed with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_df102 && [1/2] Building C object CMakeFiles/cmTC_df102.dir/CheckIncludeFile.c.obj
-[2/2] Linking C static library libcmTC_df102.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_7dcfe && [1/2] Building C object CMakeFiles/cmTC_7dcfe.dir/CheckIncludeFile.c.obj
+[2/2] Linking C static library libcmTC_7dcfe.a
 
 
 
 Performing C SOURCE FILE Test _GLFW_HAS_DEP succeeded with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_eef66 && [1/2] Building C object CMakeFiles/cmTC_eef66.dir/src.c.obj
-[2/2] Linking C static library libcmTC_eef66.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_b98ce && [1/2] Building C object CMakeFiles/cmTC_b98ce.dir/src.c.obj
+[2/2] Linking C static library libcmTC_b98ce.a
 
 
 Source file was:
@@ -333,8 +333,8 @@ int main(void) { return 0; }
 Performing C SOURCE FILE Test _GLFW_HAS_ASLR succeeded with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_441f1 && [1/2] Building C object CMakeFiles/cmTC_441f1.dir/src.c.obj
-[2/2] Linking C static library libcmTC_441f1.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_16f62 && [1/2] Building C object CMakeFiles/cmTC_16f62.dir/src.c.obj
+[2/2] Linking C static library libcmTC_16f62.a
 
 
 Source file was:
@@ -342,8 +342,8 @@ int main(void) { return 0; }
 Performing C SOURCE FILE Test _GLFW_HAS_64ASLR succeeded with the following output:
 Change Dir: C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_54a73 && [1/2] Building C object CMakeFiles/cmTC_54a73.dir/src.c.obj
-[2/2] Linking C static library libcmTC_54a73.a
+Run Build Command(s):C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe cmTC_01822 && [1/2] Building C object CMakeFiles/cmTC_01822.dir/src.c.obj
+[2/2] Linking C static library libcmTC_01822.a
 
 
 Source file was:
