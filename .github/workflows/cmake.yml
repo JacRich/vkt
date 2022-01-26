@@ -60,7 +60,6 @@ jobs:
         dir
         cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_MAKE_PROGRAM=ninja -G Ninja ./
         dir
-        cd build && dir
 
     - name: Build
       # Build your program with the given configuration
