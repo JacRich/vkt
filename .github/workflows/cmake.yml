@@ -56,6 +56,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
     - shell: msys2 {0}
       run: |
+        pacman --noconfirm --needed -Sy pkg-config make mingw-w64-i686-toolchain mingw-w64-i686-cmake mingw-w64-i686-zlib mingw-w64-i686-SDL2 mingw-w64-i686-SDL2_image mingw-w64-i686-SDL2_mixer
         cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
         
     - name: Build
