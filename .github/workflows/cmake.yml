@@ -55,9 +55,7 @@ jobs:
         git clone https://github.com/nigels-com/glew.git glew
         cd glew
         dir
-        make
-        make install
-        make install.all
+        make buildwin
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
