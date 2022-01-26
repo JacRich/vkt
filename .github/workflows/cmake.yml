@@ -59,7 +59,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -I headers -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglew32 -lglfw3 -lgdi32 -lm
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       # Build your program with the given configuration
