@@ -55,7 +55,6 @@ jobs:
         git clone https://github.com/nigels-com/glew.git glew
         cd glew
         dir
-        pacman -S gcc make mingw-w64-i686-gcc mingw-w64-x86_64-gcc
         make
         make install
         make install.all
