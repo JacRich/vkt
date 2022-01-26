@@ -41,11 +41,11 @@ all: buildlinux buildwin
 
 # if on linux, cd to bin/linux/ and run ./$(EXECUTABLE_NAME) executable, this is needed since
 # when running from the terminal, the current directory is the root of the project.
-# if on windows, run the bin/windows/$(EXECUTABLE_NAME) executable.
+# if on windows, cd to bin/windows/ and run ./$(EXECUTABLE_NAME).exe executable.
 ifeq ($(OS),Windows_NT)
 run:
 	@echo "Running on Windows"
-	bin/windows/$(EXECUTABLE_NAME)
+	@cd bin/windows/; ./$(EXECUTABLE_NAME).exe
 else
 run:
 	@echo "Running on Linux"

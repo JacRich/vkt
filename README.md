@@ -2,6 +2,7 @@
 <p align="center">VkT is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
 
 ## Compiling
+### Linux
 To compile the project, you will need the following dependencies:
 
 | name | package debian based | package arch based |
@@ -20,6 +21,17 @@ To compile the project, you will need the following dependencies:
 |libXinerama|libxinerama-dev|libxinerama|
 |libXcursor|libxcursor-dev|libxcursor|
 |libm|libc6-dev|glibc|
+
+### Windows
+To compile on Windows, you'll need to follow these steps:
+
+1. Download MSYS2 from https://www.msys2.org/ and follow steps 1-7 on the main page
+2. Run this command in the MSYS2 shell: `pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm`
+3. Add the folder `msys64/mingw64/bin` to PATH
+4. Either `git clone` this repository or download and extract the zip
+5. In the MinGW shell, `cd` to the repository and run `make buildwin_msys`
+
+The program can be started using the .exe in the new bin/windows folder, or through the command `make run`
 
 ## Contributing
 To contribute to the project, submit a pull request.
