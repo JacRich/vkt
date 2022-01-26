@@ -5,13 +5,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sun Jan 16 19:41:30 2022
+# Make data base, printed on Tue Jan 25 23:46:47 2022
 
 # Variables
 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
@@ -29,6 +29,8 @@ VSCODE_LOG_NATIVE = false
 GTK3_MODULES = xapp-gtk3-module
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 6)
+LDWINDOWSFLAGS = -I headers -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglew32 -lglfw3 -lgdi32 -lm
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -47,7 +49,7 @@ GDM_LANG = en_US
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
-# makefile (from 'Makefile', line 6)
+# makefile (from 'Makefile', line 7)
 objects = $(wildcard src/*.cpp)
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
@@ -86,7 +88,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/Igor-System:@/tmp/.ICE-unix/1127,unix/Igor-System:/tmp/.ICE-unix/1127
+SESSION_MANAGER = local/Igor-System:@/tmp/.ICE-unix/1183,unix/Igor-System:/tmp/.ICE-unix/1183
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 5)
@@ -108,7 +110,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 886732
+GIO_LAUNCHED_DESKTOP_FILE_PID = 723531
 # makefile (from 'Makefile', line 3)
 EXECUTABLE_NAME = "vkt"
 # automatic
@@ -116,7 +118,7 @@ EXECUTABLE_NAME = "vkt"
 # environment
 DISPLAY = :0
 # makefile (from 'Makefile', line 4)
-CPPARAMS = -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wextra
+CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -128,7 +130,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1200
+SSH_AGENT_PID = 1257
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -153,6 +155,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
+ 
 # environment
 XDG_VTNR = 7
 # environment
@@ -164,7 +167,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5f4bf261-067f-446f-b21c-dce6135d0236.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-28c3d136-fb44-4b5b-a7f7-c2ae77d9e548.sock
 # environment
 XDG_SESSION_ID = c1
 # environment
@@ -244,10 +247,10 @@ LC_ADDRESS = pt_BR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 734777
+VSCODE_PID = 475402
 # variable set hash-table stats:
  
-# Load=117/1024=11%, Rehash=0, Collisions=11/149=7%
+# Load=118/1024=12%, Rehash=0, Collisions=11/150=7%
 
 # Pattern-specific Variable Values
 
@@ -255,10 +258,10 @@ VSCODE_PID = 734777
 
 # Directories
 
-# . (device 2050, inode 42600594): 12 files, no impossibilities.
-# src (device 2050, inode 42600700): 16 files, no impossibilities.
+# . (device 2050, inode 32245647): 15 files, no impossibilities.
+# src (device 2050, inode 40112150): 17 files, no impossibilities.
 
-# 28 files, no impossibilities in 2 directories.
+# 32 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -290,15 +293,14 @@ buildlinux:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/15=13%
-#  recipe to execute (from 'Makefile', line 11):
+#  recipe to execute (from 'Makefile', line 13):
 	@echo "Compiling for Linux"
 	mkdir -p bin/linux
 	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
-	@cp -r gamedata bin/linux
-	@cp config bin/linux
+	@cp -r assets/* bin/linux
 
-all: buildlinux
+all: buildlinux buildwin
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -316,9 +318,21 @@ all: buildlinux
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-16 19:23:58.906009285
+#  Last modified 2022-01-25 23:41:47.817908727
 #  File has been updated.
 #  Successfully updated.
+
+buildwin:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 20):
+	@echo "Compiling for Windows"
+	mkdir -p bin/windows
+	x86_64-w64-mingw32-g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
+	@cp -r assets/* bin/windows
+	@cp lib/glew32.dll bin/windows
 
 # Not a target:
 .DEFAULT:
@@ -330,24 +344,24 @@ run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 23):
+#  recipe to execute (from 'Makefile', line 32):
 	@echo "Running Linux executable"
-	./bin/linux/$(EXECUTABLE_NAME)
+	(cd bin/linux && ./$(EXECUTABLE_NAME))
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/19=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 301 B / avg = 9 B
-# current buf: size = 8162 B / used = 301 B / count = 33 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 38 / storage = 347 B / avg = 9 B
+# current buf: size = 8162 B / used = 347 B / count = 38 / avg = 9 B
 
-# strcache performance: lookups = 46 / hit rate = 28%
+# strcache performance: lookups = 53 / hit rate = 28%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=3/46=7%
-# Finished Make data base on Sun Jan 16 19:41:30 2022
+# Load=38/8192=0%, Rehash=0, Collisions=3/53=6%
+# Finished Make data base on Tue Jan 25 23:46:47 2022
 
  

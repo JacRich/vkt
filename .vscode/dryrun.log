@@ -1,10 +1,14 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/igor/Documents/Dev/vkt'
+ 
 echo "Compiling for Linux"
+ 
 mkdir -p bin/linux
-g++ src/torch.cpp src/cmesh.cpp src/veng.cpp src/mesh.cpp src/render.cpp src/cursor.cpp src/ivec.cpp src/perlin.cpp src/crosshair.cpp src/player.cpp src/chunk.cpp src/config.cpp src/world.cpp src/shader.cpp -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wextra -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm -o bin/linux/"vkt"
+ 
+g++ src/cmesh.cpp src/region.cpp src/mesh.cpp src/render.cpp src/cursor.cpp src/ivec.cpp src/veng.cpp src/perlin.cpp src/crosshair.cpp src/player.cpp src/texture.cpp src/chunk.cpp src/config.cpp src/world.cpp src/shader.cpp -g -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm -o bin/linux/"vkt"
+ 
 echo "Copying assets..."
-cp -r gamedata bin/linux
-cp config bin/linux
+ 
+cp -r assets/* bin/linux
 make: Leaving directory '/home/igor/Documents/Dev/vkt'
  
