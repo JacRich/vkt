@@ -1,7 +1,7 @@
 # Makefile by Igor to Jac Rich
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
-CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wextra -Wno-unused-result -O2
+CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
 LDWINDOWSFLAGS = -I headers -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglew32 -lglfw3 -lgdi32 -lm
 objects = $(wildcard src/*.cpp)
@@ -28,7 +28,15 @@ buildwin:
 	@cp -r assets/* bin/windows
 	@cp lib/glew32.dll bin/windows
 
-# if more make build commands are made for other platforms, add them here, this will run them all.
+# Command for building to windows from windows (MSYS2)
+buildwin_msys:
+    @echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
+	@mkdir -p bin/windows
+    g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+    @echo "Copying assets..."
+	@cp -r assets/* bin/windows/
+
+# if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
 # if on linux, cd to bin/linux/ and run ./$(EXECUTABLE_NAME) executable, this is needed since
