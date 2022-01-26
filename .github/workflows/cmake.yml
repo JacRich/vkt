@@ -16,17 +16,34 @@ jobs:
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - VS_VERSION: Visual Studio 16
+            VS_VER: 2019
+            SDK: release-1911 # gisinternals SDK version still to 2017
+            MSVC_VER: 1920
+            platform: x86
+            PROJ_BRANCH: "7.2"
+            LIBWEBP_URL: "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.3-windows-x86.zip"
+            LIBZSTD_URL: "https://github.com/facebook/zstd/releases/download/v1.4.5/zstd-v1.4.5-win32.zip"
+            LIBDEFLATE_URL: "https://github.com/ebiggers/libdeflate/releases/download/v1.6/libdeflate-1.6-windows-i686-bin.zip"
+
+    env:
+        VS_VERSION: ${{ matrix.VS_VERSION }}
+        VS_VER: ${{ matrix.VS_VER }}
+        SDK: ${{ matrix.SDK }}
+        MSVC_VER: ${{ matrix.MSVC_VER }}
+        platform: ${{ matrix.platform }}
+        PROJ_BRANCH: "${{ matrix.PROJ_BRANCH }}"
+        LIBWEBP_URL: "${{ matrix.LIBWEBP_URL }}"
+        LIBZSTD_URL: "${{ matrix.LIBZSTD_URL }}"
+        LIBDEFLATE_URL: "${{ matrix.LIBDEFLATE_URL }}"
+        APPVEYOR: true # to skip some tests
+        PYTHON_VERSION: "3.7.9"
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Install GLEW
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: |
-        git clone https://github.com/microsoft/vcpkg
-        .\vcpkg\bootstrap-vcpkg.bat
-        .\vcpkg\vcpkg install glew
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
