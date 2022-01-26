@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db40d498-9d77-4f63-97bc-f56966210c2d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vkt.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeRCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/las.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/player" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cross.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cross.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cursor.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cursor.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/hud.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/hud.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/world.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/world.vert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/GenerateMappings.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/MacOSXBundleInfo.plist.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/i686-w64-mingw32-clang.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/i686-w64-mingw32.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/modules/FindEpollShim.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/modules/FindOSMesa.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/modules/FindWaylandProtocols.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/modules/FindXKBCommon.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/x86_64-w64-mingw32-clang.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMake/x86_64-w64-mingw32.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/CONTRIBUTORS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/cmake_uninstall.cmake.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/getopt.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/getopt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad/gl.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad/khrplatform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad/vk_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad/vulkan.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad_gl.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/glad_vulkan.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/linmath.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/mingw/_mingw_dxhelper.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/mingw/dinput.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/mingw/xinput.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/nuklear.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/nuklear_glfw_gl2.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/stb_image_write.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/tinycthread.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/tinycthread.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/deps/vs2008/stdint.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/CODEOWNERS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/Doxyfile.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/DoxygenLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/SUPPORT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/build.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/compat.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/compile.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/context.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/extra.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/extra.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/extra.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/bc_s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/bdwn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/build_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/build_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/closed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/compat_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/compat_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/compile_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/compile_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/context_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/context_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/deprecated.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/dir_1357527d313180d9ef816e7eb4556513.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/dir_397e67d9ed078d65734e47f77659a0d8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/dir_4e47cedb51244b8bb7c2a64e32093b43.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/dir_cee0cdc0f52d89cdd1c7c3c3d5df28f8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/doc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/doxygen.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/doxygen.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/dynsections.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/extra.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/files.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/folderclosed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/folderopen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/glfw3_8h.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/glfw3_8h_source.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/glfw3native_8h.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/glfw3native_8h_source.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__buttons.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__context.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__errors.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__gamepad__axes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__gamepad__buttons.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__hat__state.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__init.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__input.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__joysticks.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__keys.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__mods.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__monitor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__native.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__shapes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__vulkan.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/group__window.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/input_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/input_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/internal_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/internals_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/intro_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/intro_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/main_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/menudata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/modules.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/monitor_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/monitor_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/moving_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/moving_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/nav_f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/nav_g.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/nav_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/news.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/news_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/pages.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/quick_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/quick_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_10.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_11.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_9.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_b.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_c.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_c.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_e.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_f.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/all_f.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/classes_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/classes_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/close.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/defines_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/defines_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/files_8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/functions_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/functions_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_9.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/groups_a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/mag_sel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/nomatches.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_9.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/pages_a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/search.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/search_l.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/search_m.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/search_r.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/searchdata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/typedefs_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/typedefs_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/search/variables_7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/spaces.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/splitbar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/structGLFWgamepadstate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/structGLFWgammaramp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/structGLFWimage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/structGLFWvidmode.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/sync_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/sync_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/tab_a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/tab_b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/tab_h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/tab_s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/vulkan_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/vulkan_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/window_8dox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/html/window_guide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/input.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/internal.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/intro.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/main.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/monitor.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/moving.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/news.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/quick.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/spaces.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/vulkan.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/docs/window.dox" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/boing.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/gears.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/glfw.icns" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/glfw.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/glfw.rc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/heightmap.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/offscreen.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/particles.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/sharing.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/simple.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/splitview.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/examples/wave.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/include/GLFW/glfw3.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/include/GLFW/glfw3native.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_init.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_joystick.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_joystick.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_monitor.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_time.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/cocoa_window.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/context.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/egl_context.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/egl_context.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/glfw3.pc.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/glfw3Config.cmake.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/glfw_config.h.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/glx_context.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/glx_context.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/input.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/internal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/linux_joystick.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/linux_joystick.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/mappings.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/mappings.h.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/monitor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/nsgl_context.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/nsgl_context.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_joystick.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_joystick.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_monitor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/null_window.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/osmesa_context.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/osmesa_context.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/posix_thread.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/posix_thread.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/posix_time.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/posix_time.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/vulkan.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wgl_context.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wgl_context.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_joystick.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_joystick.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_monitor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_thread.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_time.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/win32_window.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/window.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wl_init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wl_monitor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wl_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/wl_window.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/x11_init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/x11_monitor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/x11_platform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/x11_window.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/xkb_unicode.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/src/xkb_unicode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/clipboard.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/cursor.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/empty.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/events.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/gamma.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/glfwinfo.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/icon.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/iconify.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/inputlag.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/joysticks.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/monitors.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/msaa.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/opacity.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/reopen.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/tearing.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/threads.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/timeout.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/title.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/triangle-vulkan.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glfw-3.3.6/tests/windows.c" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.2" />
+  </component>
+  <component name="ProjectId" id="24DcD9UHKyVXKNmf2vkOYNziwZR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gshah\Documents\vkt" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db40d498-9d77-4f63-97bc-f56966210c2d" name="Changes" comment="" />
+      <created>1643168483553</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1643168483553</updated>
+      <workItem from="1643168488509" duration="528000" />
+      <workItem from="1643169112382" duration="1133000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
