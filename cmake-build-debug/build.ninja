@@ -40,41 +40,6 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = C$:/Users/gshah/Documents/vkt/cmake-build-debug/
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target STATIC_GLEW
-
-
-#############################################
-# Order-only phony target for STATIC_GLEW
-
-build cmake_object_order_depends_target_STATIC_GLEW: phony || CMakeFiles/STATIC_GLEW.dir
-
-build CMakeFiles/STATIC_GLEW.dir/headers/GL/glew.c.obj: C_COMPILER__STATIC_GLEW_Debug C$:/Users/gshah/Documents/vkt/headers/GL/glew.c || cmake_object_order_depends_target_STATIC_GLEW
-  DEP_FILE = CMakeFiles\STATIC_GLEW.dir\headers\GL\glew.c.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers
-  OBJECT_DIR = CMakeFiles\STATIC_GLEW.dir
-  OBJECT_FILE_DIR = CMakeFiles\STATIC_GLEW.dir\headers\GL
-  TARGET_COMPILE_PDB = CMakeFiles\STATIC_GLEW.dir\STATIC_GLEW.pdb
-  TARGET_PDB = libSTATIC_GLEW.pdb
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target STATIC_GLEW
-
-
-#############################################
-# Link the static library libSTATIC_GLEW.a
-
-build libSTATIC_GLEW.a: C_STATIC_LIBRARY_LINKER__STATIC_GLEW_Debug CMakeFiles/STATIC_GLEW.dir/headers/GL/glew.c.obj
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles\STATIC_GLEW.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\STATIC_GLEW.dir\STATIC_GLEW.pdb
-  TARGET_FILE = libSTATIC_GLEW.a
-  TARGET_PDB = libSTATIC_GLEW.pdb
-
 
 #############################################
 # Utility command for list_install_components
@@ -88,124 +53,112 @@ build list_install_components: phony
 #############################################
 # Order-only phony target for vkt
 
-build cmake_object_order_depends_target_vkt: phony || cmake_object_order_depends_target_STATIC_GLEW cmake_object_order_depends_target_glfw
+build cmake_object_order_depends_target_vkt: phony || cmake_object_order_depends_target_glfw
 
 build CMakeFiles/vkt.dir/src/chunk.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/chunk.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\chunk.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/cmesh.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/cmesh.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\cmesh.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/config.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/config.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\config.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/crosshair.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/crosshair.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\crosshair.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/cursor.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/cursor.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\cursor.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/ivec.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/ivec.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\ivec.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/mesh.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/mesh.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\mesh.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/perlin.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/perlin.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\perlin.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/player.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/player.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\player.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
+
+build CMakeFiles/vkt.dir/src/region.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/region.cpp || cmake_object_order_depends_target_vkt
+  DEP_FILE = CMakeFiles\vkt.dir\src\region.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
+  OBJECT_DIR = CMakeFiles\vkt.dir
+  OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
 
 build CMakeFiles/vkt.dir/src/render.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/render.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\render.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/shader.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/shader.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\shader.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
+
+build CMakeFiles/vkt.dir/src/texture.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/texture.cpp || cmake_object_order_depends_target_vkt
+  DEP_FILE = CMakeFiles\vkt.dir\src\texture.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
+  OBJECT_DIR = CMakeFiles\vkt.dir
+  OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
 
 build CMakeFiles/vkt.dir/src/veng.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/veng.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\veng.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 build CMakeFiles/vkt.dir/src/world.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gshah/Documents/vkt/src/world.cpp || cmake_object_order_depends_target_vkt
   DEP_FILE = CMakeFiles\vkt.dir\src\world.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include
+  INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -isystem C:/Users/gshah/Documents/vkt/glew-2.1.0/include
   OBJECT_DIR = CMakeFiles\vkt.dir
   OBJECT_FILE_DIR = CMakeFiles\vkt.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_PDB = ..\build\vkt.pdb
 
 
 # =============================================================================
@@ -213,18 +166,17 @@ build CMakeFiles/vkt.dir/src/world.cpp.obj: CXX_COMPILER__vkt_Debug C$:/Users/gs
 
 
 #############################################
-# Link the executable ..\build\vkt.exe
+# Link the executable vkt.exe
 
-build ../build/vkt.exe: CXX_EXECUTABLE_LINKER__vkt_Debug CMakeFiles/vkt.dir/src/chunk.cpp.obj CMakeFiles/vkt.dir/src/cmesh.cpp.obj CMakeFiles/vkt.dir/src/config.cpp.obj CMakeFiles/vkt.dir/src/crosshair.cpp.obj CMakeFiles/vkt.dir/src/cursor.cpp.obj CMakeFiles/vkt.dir/src/ivec.cpp.obj CMakeFiles/vkt.dir/src/mesh.cpp.obj CMakeFiles/vkt.dir/src/perlin.cpp.obj CMakeFiles/vkt.dir/src/player.cpp.obj CMakeFiles/vkt.dir/src/render.cpp.obj CMakeFiles/vkt.dir/src/shader.cpp.obj CMakeFiles/vkt.dir/src/veng.cpp.obj CMakeFiles/vkt.dir/src/world.cpp.obj | glfw-3.3.6/src/libglfw3.a libSTATIC_GLEW.a || glfw-3.3.6/src/libglfw3.a libSTATIC_GLEW.a
+build vkt.exe: CXX_EXECUTABLE_LINKER__vkt_Debug CMakeFiles/vkt.dir/src/chunk.cpp.obj CMakeFiles/vkt.dir/src/cmesh.cpp.obj CMakeFiles/vkt.dir/src/config.cpp.obj CMakeFiles/vkt.dir/src/crosshair.cpp.obj CMakeFiles/vkt.dir/src/cursor.cpp.obj CMakeFiles/vkt.dir/src/ivec.cpp.obj CMakeFiles/vkt.dir/src/mesh.cpp.obj CMakeFiles/vkt.dir/src/perlin.cpp.obj CMakeFiles/vkt.dir/src/player.cpp.obj CMakeFiles/vkt.dir/src/region.cpp.obj CMakeFiles/vkt.dir/src/render.cpp.obj CMakeFiles/vkt.dir/src/shader.cpp.obj CMakeFiles/vkt.dir/src/texture.cpp.obj CMakeFiles/vkt.dir/src/veng.cpp.obj CMakeFiles/vkt.dir/src/world.cpp.obj | glfw-3.3.6/src/libglfw3.a ../glew-2.1.0/lib/glew32.lib || glfw-3.3.6/src/libglfw3.a
   FLAGS = -g
-  LINK_LIBRARIES = glfw-3.3.6/src/libglfw3.a  -lopengl32  libSTATIC_GLEW.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = glfw-3.3.6/src/libglfw3.a  -lopengl32  ../glew-2.1.0/lib/glew32.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\vkt.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\vkt.dir\
-  TARGET_FILE = ..\build\vkt.exe
+  TARGET_FILE = vkt.exe
   TARGET_IMPLIB = libvkt.dll.a
-  TARGET_PDB = ..\build\vkt.pdb
+  TARGET_PDB = vkt.exe.dbg
 
 
 #############################################
@@ -413,8 +365,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw_Debug C
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -423,8 +373,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_Debug C$:/
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/input.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -433,8 +381,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_Debug C$:
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -443,8 +389,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_Debug C
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -453,8 +397,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_Debug C$
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -463,8 +405,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_Debug C$
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -473,8 +413,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_Debu
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -483,8 +421,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw_
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -493,8 +429,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw_D
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -503,8 +437,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_Debu
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -513,8 +445,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw_De
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -523,8 +453,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw_De
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -533,8 +461,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_Deb
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -543,8 +469,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_Deb
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 build glfw-3.3.6/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw_Debug C$:/Users/gshah/Documents/vkt/glfw-3.3.6/src/osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
@@ -553,8 +477,6 @@ build glfw-3.3.6/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw_
   INCLUDES = -IC:/Users/gshah/Documents/vkt/headers -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/include -IC:/Users/gshah/Documents/vkt/glfw-3.3.6/src -IC:/Users/gshah/Documents/vkt/cmake-build-debug/glfw-3.3.6/src
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
 
 
 # =============================================================================
@@ -569,9 +491,8 @@ build glfw-3.3.6/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Debug glfw-3.3.6/
   OBJECT_DIR = glfw-3.3.6\src\CMakeFiles\glfw.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = glfw-3.3.6\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_FILE = glfw-3.3.6\src\libglfw3.a
-  TARGET_PDB = glfw-3.3.6\src\libglfw3.pdb
+  TARGET_PDB = glfw3.a.dbg
 
 
 #############################################
@@ -631,8 +552,6 @@ build glfw-3.3.6/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}glfw-3.3
 # =============================================================================
 # Target aliases.
 
-build STATIC_GLEW: phony libSTATIC_GLEW.a
-
 build glfw: phony glfw-3.3.6/src/libglfw3.a
 
 build libglfw3.a: phony glfw-3.3.6/src/libglfw3.a
@@ -641,9 +560,7 @@ build uninstall: phony glfw-3.3.6/uninstall
 
 build update_mappings: phony glfw-3.3.6/src/update_mappings
 
-build vkt: phony ../build/vkt.exe
-
-build vkt.exe: phony ../build/vkt.exe
+build vkt: phony vkt.exe
 
 # =============================================================================
 # Folder targets.
@@ -653,7 +570,7 @@ build vkt.exe: phony ../build/vkt.exe
 #############################################
 # Folder: C:/Users/gshah/Documents/vkt/cmake-build-debug
 
-build all: phony libSTATIC_GLEW.a ../build/vkt.exe glfw-3.3.6/all
+build all: phony vkt.exe glfw-3.3.6/all
 
 # =============================================================================
 
@@ -676,14 +593,14 @@ build glfw-3.3.6/src/all: phony glfw-3.3.6/src/libglfw3.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../glfw-3.3.6/CMakeLists.txt ../glfw-3.3.6/cmake_uninstall.cmake.in ../glfw-3.3.6/src/CMakeLists.txt ../glfw-3.3.6/src/glfw3.pc.in ../glfw-3.3.6/src/glfw3Config.cmake.in ../glfw-3.3.6/src/glfw_config.h.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCompilerIdDetection.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDependentOption.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCXXCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompileFeatures.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompilerABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompilerId.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineRCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeFindBinUtils.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseLibraryArchitecture.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystem.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCXXCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCompilerCommon.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestRCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.c.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ROCMClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindThreads.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/GNUInstallDirs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/FeatureTesting.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-Determine-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../glfw-3.3.6/CMakeLists.txt ../glfw-3.3.6/cmake_uninstall.cmake.in ../glfw-3.3.6/src/CMakeLists.txt ../glfw-3.3.6/src/glfw3.pc.in ../glfw-3.3.6/src/glfw3Config.cmake.in ../glfw-3.3.6/src/glfw_config.h.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDependentOption.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindGLEW.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindThreads.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/GNUInstallDirs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/SelectLibraryConfigurations.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../glfw-3.3.6/CMakeLists.txt ../glfw-3.3.6/cmake_uninstall.cmake.in ../glfw-3.3.6/src/CMakeLists.txt ../glfw-3.3.6/src/glfw3.pc.in ../glfw-3.3.6/src/glfw3Config.cmake.in ../glfw-3.3.6/src/glfw_config.h.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCCompilerABI.c C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCompilerIdDetection.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDependentOption.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCXXCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompileFeatures.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompilerABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineCompilerId.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineRCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDetermineSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeFindBinUtils.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseLibraryArchitecture.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCCompiler.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystem.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCXXCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestCompilerCommon.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeTestRCCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.c.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/ROCMClang-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindThreads.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/GNUInstallDirs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/FeatureTesting.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-Determine-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../glfw-3.3.6/CMakeLists.txt ../glfw-3.3.6/cmake_uninstall.cmake.in ../glfw-3.3.6/src/CMakeLists.txt ../glfw-3.3.6/src/glfw3.pc.in ../glfw-3.3.6/src/glfw3Config.cmake.in ../glfw-3.3.6/src/glfw_config.h.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeDependentOption.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindGLEW.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/FindThreads.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/GNUInstallDirs.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/SelectLibraryConfigurations.cmake C$:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/win/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeRCCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
 
 
 #############################################

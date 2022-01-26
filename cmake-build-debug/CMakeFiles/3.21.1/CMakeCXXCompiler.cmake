@@ -86,6 +86,6 @@ endif()
 
 
 set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/include;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/x86_64-w64-mingw32/include")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;mingw32;gcc_s;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;iconv;mingw32;gcc_s;gcc;moldname;mingwex;kernel32")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib/gcc;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/x86_64-w64-mingw32/lib;C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/mingw/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

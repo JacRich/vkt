@@ -1,20 +1,5 @@
 C:\Users\gshah\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/gshah/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe -G Ninja C:\Users\gshah\Documents\vkt
-CMake Error at CMakeLists.txt:44 (find_package):
-  By not providing "Findglfw3.cmake" in CMAKE_MODULE_PATH this project has
-  asked CMake to find a package configuration file provided by "glfw3", but
-  CMake did not find one.
-
-  Could not find a package configuration file provided by "glfw3" (requested
-  version 3.3) with any of the following names:
-
-    glfw3Config.cmake
-    glfw3-config.cmake
-
-  Add the installation prefix of "glfw3" to CMAKE_PREFIX_PATH or set
-  "glfw3_DIR" to a directory containing one of the above files.  If "glfw3"
-  provides a separate development package or SDK, be sure it has been
-  installed.
-
-
--- Configuring incomplete, errors occurred!
-See also "C:/Users/gshah/Documents/vkt/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Using Win32 for window creation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/gshah/Documents/vkt/cmake-build-debug
