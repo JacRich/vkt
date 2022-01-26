@@ -1,18 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/build")
 project(vkt)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(headers)
 
-set(GLFW_BUILD_DOCS OFF CACHE BOOL  "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-
-add_library(STATIC_GLEW headers/GL/glew.c)
-add_subdirectory(./glfw-3.3.6)
 file(COPY ./assets/config DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ./assets/gamedata DESTINATION ${CMAKE_BINARY_DIR})
 
@@ -49,7 +41,11 @@ add_executable(vkt
         src/veng.cpp
         src/world.cpp)
 
+find_package(glfw3 3.3 REQUIRED)
 target_link_libraries(vkt glfw)
 find_package(OpenGL REQUIRED)
 target_link_libraries(vkt OpenGL::GL)
-target_link_libraries(vkt STATIC_GLEW)
+find_package(GLEW REQUIRED)
+include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARIES})
+target_link_libraries(vkt GLEW::GLEW)
