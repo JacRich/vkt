@@ -1,7 +1,7 @@
 width = 1280
 height = 720
 
-fov = 90
+fov = 90.0
 looksens = 0.05
 movespeed = 80.0
 renderdist = 180.0

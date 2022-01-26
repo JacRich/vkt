@@ -13,7 +13,7 @@ chunk_t* veng_find_chunk(vec worldpos)
   }
   vec relativepos = worldpos - region_ptr->pos;
   ivec chunkIndex = vec_to_ivec(relativepos);
-  chunkIndex = ivec{chunkIndex.x / 32, chunkIndex.y / 32, chunkIndex.z / 32};
+  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
 
   return &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
 }
@@ -47,10 +47,10 @@ vhit veng_find_voxel(vec worldpos)
   vec relativepos = worldpos - region_ptr->pos;
 
   ivec voxelIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
-  voxelIndex = ivec{voxelIndex.x % 32, voxelIndex.y % 32, voxelIndex.z % 32};
+  voxelIndex = ivec{voxelIndex.x % CHUNK_CROOT, voxelIndex.y % CHUNK_CROOT, voxelIndex.z % CHUNK_CROOT};
 
   ivec chunkIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
-  chunkIndex = ivec{chunkIndex.x / 32, chunkIndex.y / 32, chunkIndex.z / 32};
+  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
 
   int voxelValue = region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
   uchar *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
@@ -203,13 +203,19 @@ void veng_change_voxel(vhit voxel, int pickmode, uchar value)
 }
 
 
+
 void veng_init()
 {
   ivec player_region = region_cord(player.pos); 
 
-  region_set_pos(&regions[0], player_region);
-  region_load   (&regions[0]);
-  regions[0].inUse = true;
+  for(int i = 0; i < REGION_COUNT; i++)
+  {
+    ivec cord = index3d(i, REGION_CROOT) - ivec{1,1,1};
+    //print_ivec(cord);
+    region_set_pos(&regions[i], cord + player_region);
+    region_load   (&regions[i]);
+    regions[i].inUse = true;
+  }
 
   render_attach_cmeshes(regions);
 }

@@ -18,11 +18,13 @@ using vec4 = glm::vec4;
 
 #define VERT_SIZE 5
 #define FACE_SIZE 30
-#define VOXELS_LENGTH 32 * 32 * 32
 
-#define REGION_CROOT       4   // Cube root
-#define REGION_WIDTH       128 // 4 * 32
-#define REGION_CHUNK_COUNT 64  // 4^3
+#define CHUNK_CROOT   64
+#define VOXELS_LENGTH 64 * 64 * 64
+
+#define REGION_CROOT       2   // Cube root
+#define REGION_WIDTH       128 // 2 * 64
+#define REGION_CHUNK_COUNT 8   // 2^3
 #define REGION_COUNT       27
 
 extern uint sh_world, sh_cursor, sh_cross, sh_hud;

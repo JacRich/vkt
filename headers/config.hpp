@@ -17,7 +17,6 @@ struct config_t
 
   float moveSpeed = 80.0f;
   float friction  = 12.0f;
-  float jumpForce = 6.0f ;
 };
 
 struct config_key_t

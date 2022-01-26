@@ -13,7 +13,7 @@ struct cursor_t
 
 void cursor_snapto(cursor_t* cursor, vhit hit);
 void cursor_embed(cursor_t* cursor, vhit hit);
-void cursor_centerOn(cursor_t* cursor, vhit hit);
+void cursor_center(cursor_t* cursor, vhit hit);
 void cursor_snap_chunk(cursor_t* cursor, chunk_t* chunk);
 
 void cursor_grow(cursor_t* cursor);

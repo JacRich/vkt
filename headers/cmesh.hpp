@@ -3,7 +3,7 @@
 #include "globaldef.hpp"
 #include "chunk.hpp"
 
-#define BUFFER_SIZE 300000
+#define BUFFER_SIZE 2500000
 
 struct cmesh_t
 {
@@ -14,7 +14,6 @@ struct cmesh_t
   int vertcount = 0;
 
   uchar vertdata[BUFFER_SIZE];
-  bool needToSend = false;
 };
 
 void cmesh_build(cmesh_t* mesh);

@@ -105,7 +105,7 @@ void cursor_embed(cursor_t* cursor, vhit hit)
   }
 }
 
-void cursor_centerOn(cursor_t* cursor, vhit hit)
+void cursor_center(cursor_t* cursor, vhit hit)
 {
   cursor->mesh->pos = {hit.pos.x - (cursor->size / 2), hit.pos.y - (cursor->size / 2), hit.pos.z - (cursor->size / 2) };
 }
@@ -117,7 +117,7 @@ void cursor_snap_chunk(cursor_t* cursor, chunk_t* chunk)
 
 void cursor_grow(cursor_t* cursor)
 {
-  if(cursor->size > 31){
+  if(cursor->size > 25){
     return;
   }
   cursor->size++;

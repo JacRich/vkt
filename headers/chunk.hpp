@@ -5,7 +5,7 @@
 
 struct chunk_t
 {
-  uchar voxels [32][32][32];
+  uchar voxels [CHUNK_CROOT][CHUNK_CROOT][CHUNK_CROOT];
   vec   pos  = {0.0f, 0.0f, 0.0f};
   ivec  cord = {0, 0, 0}; 
 

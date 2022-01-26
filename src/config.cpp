@@ -8,7 +8,7 @@ config_t   config;
 config_key_t keys;
 
 
-void load_config(config_t* config) 
+static void load_config(config_t* config) 
 {
   if(access("config", F_OK) != 0){      
     printf("%s\n", "Failed to load config, falling back to default");
@@ -17,9 +17,7 @@ void load_config(config_t* config)
 
 	FILE *file = fopen("config", "r");
   char linebuf[100];
-	char scanbuf[100];
 
-  // Is there a beter way to do this? Probably
   while(!feof(file)) 
 	{
     fgets(linebuf, 100, file);
@@ -33,51 +31,51 @@ void load_config(config_t* config)
       config->editorcoll = editor_collision;  
     }
 
-    if (sscanf(linebuf, " fullbright = %s", scanbuf)){
-      int fb = strtol(scanbuf, NULL, 10);
-      if(fb == 0 || fb == 1){
-        config->fullbright = fb;
-      }
+    int fullbright;
+    if (sscanf(linebuf, " fullbright = %i", &fullbright)){ 
+      config->fullbright = fullbright; 
     }
 
-    if (sscanf(linebuf, " width = %s", scanbuf)){
-      config->width = strtol(scanbuf, NULL, 10);
+    int width;
+    if (sscanf(linebuf, " width = %i", &width)){
+      config->width = width;
     }
 
-    if (sscanf(linebuf, " height = %s", scanbuf)){
-      config->height = strtol(scanbuf, NULL, 10);
+    int height;
+    if (sscanf(linebuf, " height = %i", &height)){
+      config->height = height;
     }
     
-    float fov = 12;
+    float fov;
     if (sscanf(linebuf, " fov = %f", &fov)){
       config->fov = fov;
     }
 
-    if (sscanf(linebuf, " movespeed = %s", scanbuf)){
-      config->moveSpeed = strtod(scanbuf, NULL);
+    float movespeed;
+    if (sscanf(linebuf, " movespeed = %f", &movespeed)){
+      config->moveSpeed = movespeed;
     }
 
-    if (sscanf(linebuf, " friction = %s", scanbuf)){
-      config->friction = strtod(scanbuf, NULL);
+    float friction;
+    if (sscanf(linebuf, " friction = %f", &friction)){
+      config->friction = friction;
     }
 
-    if (sscanf(linebuf, " renderdist = %s", scanbuf)){
-      config->renderdist = strtod(scanbuf, NULL);
+    float renderdist;
+    if (sscanf(linebuf, " renderdist = %f", &renderdist)){
+      config->renderdist = renderdist;
     }
 
-    if (sscanf(linebuf, " jumpforce = %s", scanbuf)){
-      config->jumpForce = strtod(scanbuf, NULL);
-    }
-
-    if (sscanf(linebuf, " looksens = %s", scanbuf)){
-      config->looksens = strtod(scanbuf, NULL);
+    float looksens;
+    if (sscanf(linebuf, " looksens = %f", &looksens)){
+      config->looksens = looksens;
     }
   }
 
   fclose(file);
 }
 
-void load_config_key(config_key_t* config)
+static void load_config_key(config_key_t* config)
 {
   if(access("config", F_OK) != 0){      
     printf("%s\n", "Failed to load config, falling back to default");
@@ -86,72 +84,83 @@ void load_config_key(config_key_t* config)
 
 	FILE *file = fopen("config_keys", "r");
   char linebuf[100];
-	char scanbuf[100];
-
-  // Is there a beter way to do this? Probably
+  
   while(!feof(file)) 
 	{
     fgets(linebuf, 100, file);
-
     // Is line a comment or empty?
     if (linebuf[0] == '#' || strlen(linebuf) < 4){
       continue;
     }
 
-    if (sscanf(linebuf, " backward = %s", scanbuf)){
-      config->backward = strtol(scanbuf, NULL, 10);
+    int backward;
+    if (sscanf(linebuf, " backward = %i", &backward)){
+      config->backward = backward;
     }
 
-    if (sscanf(linebuf, " forward = %s", scanbuf)){
-      config->forward = strtol(scanbuf, NULL, 10);
+    int forward;
+    if (sscanf(linebuf, " forward = %i", &forward)){
+      config->forward = forward;
     }
 
-    if (sscanf(linebuf, " im_blocks = %s", scanbuf)){
-      config->im_blocks = strtol(scanbuf, NULL, 10);
+    int im_blocks;
+    if (sscanf(linebuf, " im_blocks = %i", &im_blocks)){
+      config->im_blocks = im_blocks;
     }
 
-    if (sscanf(linebuf, " im_range = %s", scanbuf)){
-      config->im_range = strtol(scanbuf, NULL, 10);
+    int im_range;
+    if (sscanf(linebuf, " im_range = %i", &im_range)){
+      config->im_range = im_range;
     }
 
-    if (sscanf(linebuf, " im_range_replace = %s", scanbuf)){
-      config->im_range_replace = strtol(scanbuf, NULL, 10);
+    int im_range_replace;
+    if (sscanf(linebuf, " im_range_replace = %i", &im_range_replace)){
+      config->im_range_replace = im_range_replace;
     }
 
-    if (sscanf(linebuf, " input_id = %s", scanbuf)){
-      config->input_id = strtol(scanbuf, NULL, 10);
+    int input_id;
+    if (sscanf(linebuf, " input_id = %i", &input_id)){
+      config->input_id = input_id;
     }
 
-    if (sscanf(linebuf, " jump = %s", scanbuf)){
-      config->jump = strtol(scanbuf, NULL, 10);
+    int jump;
+    if (sscanf(linebuf, " jump = %i", &jump)){
+      config->jump = jump;
     }
 
-    if (sscanf(linebuf, " left = %s", scanbuf)){
-      config->left = strtol(scanbuf, NULL, 10);
+    int left;
+    if (sscanf(linebuf, " left = %i", &left)){
+      config->left = left;
     }
 
-    if (sscanf(linebuf, " right = %s", scanbuf)){
-      config->right = strtol(scanbuf, NULL, 10);
+    int right;
+    if (sscanf(linebuf, " right = %i", &right)){
+      config->right = right;
     }
 
-    if (sscanf(linebuf, " toggle_coll = %s", scanbuf)){
-      config->toggle_coll = strtol(scanbuf, NULL, 10);
+    int toggle_coll;
+    if (sscanf(linebuf, " toggle_coll = %i", &toggle_coll)){
+      config->toggle_coll = toggle_coll;
     }
 
-    if (sscanf(linebuf, " toggle_cursor = %s", scanbuf)){
-      config->toggle_cursor = strtol(scanbuf, NULL, 10);
+    int toggle_cursor;
+    if (sscanf(linebuf, " toggle_cursor = %i", &toggle_cursor)){
+      config->toggle_cursor = toggle_cursor;
     }
 
-    if (sscanf(linebuf, " toggle_fullbright = %s", scanbuf)){
-      config->toggle_fullbright = strtol(scanbuf, NULL, 10);
+    int toggle_fullbright;
+    if (sscanf(linebuf, " toggle_fullbright = %i", &toggle_fullbright)){
+      config->toggle_fullbright = toggle_fullbright;
     }
 
-    if (sscanf(linebuf, " toggle_fullscreen = %s", scanbuf)){
-      config->toggle_fullscreen = strtol(scanbuf, NULL, 10);
+    int toggle_fullscreen;
+    if (sscanf(linebuf, " toggle_fullscreen = %i", &toggle_fullscreen)){
+      config->toggle_fullscreen = toggle_fullscreen;
     }
 
-    if (sscanf(linebuf, " switchmov = %s", scanbuf)){
-      config->switchmov = strtol(scanbuf, NULL, 10);
+    int switchmov;
+    if (sscanf(linebuf, " switchmov = %i", &switchmov)){
+      config->switchmov = switchmov;
     }
   }
 

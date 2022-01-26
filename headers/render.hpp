@@ -6,7 +6,7 @@
 #include "region.hpp"
 #include "player.hpp"
 
-#define CMESH_COUNT 64 * 27
+#define CMESH_COUNT 8 * 27
 
 struct ubo_t
 {

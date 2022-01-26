@@ -4,9 +4,6 @@
 #include "chunk.hpp"
 #include "ivec.hpp"
 
-#define REGION_NULL 0x01
-#define REGION_IS   0x02
-
 struct region_t
 {
   bool inUse = false;

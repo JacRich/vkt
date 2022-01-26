@@ -90,7 +90,7 @@ void cmesh_build(cmesh_t* mesh)
 {          
   for (int i = 0; i < VOXELS_LENGTH; i++)
   {               
-    ivec index    = index3d(i, 32);
+    ivec index    = index3d(i, CHUNK_CROOT);
     vec  voxelPos = ivec_to_vec(index);
 
     int value = mesh->chunk->voxels[index.x][index.y][index.z];
@@ -100,7 +100,7 @@ void cmesh_build(cmesh_t* mesh)
     }                                                                        
 
     // Y+
-    if(index.y == 31) // Litteral "edge" case amirite haha
+    if(index.y == (CHUNK_CROOT - 1)) // Litteral "edge" case amirite haha
     {
       addFace(mesh, 0, voxelPos, value);
     }
@@ -110,7 +110,7 @@ void cmesh_build(cmesh_t* mesh)
     }
 
     // X+
-    if(index.x == 31)
+    if(index.x == (CHUNK_CROOT - 1))
     {
       addFace(mesh, 1, voxelPos, value);
     }
@@ -140,7 +140,7 @@ void cmesh_build(cmesh_t* mesh)
     }
 
     // Z+
-    if(index.z == 31)
+    if(index.z == (CHUNK_CROOT - 1))
     {
       addFace(mesh, 4, voxelPos, value);
     }

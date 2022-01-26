@@ -6,7 +6,7 @@ void chunk_fill_perlin(chunk_t* chunk)
 {   
   for(int i = 0; i < VOXELS_LENGTH; i++)
   {
-    ivec index = index3d(i, 32);
+    ivec index = index3d(i, CHUNK_CROOT);
 
     const double samplingScale = 38;
     double perlinSample = perlin_3d((chunk->pos.x + index.x + 500) / samplingScale, 
@@ -24,11 +24,11 @@ void chunk_fill_perlin(chunk_t* chunk)
 
 void chunk_fill(chunk_t* chunk, uchar value)
 {   
-  for(int x = 0; x < 32; x++)
+  for(int x = 0; x < CHUNK_CROOT; x++)
   {
-    for(int y = 0; y < 32; y++)
+    for(int y = 0; y < CHUNK_CROOT; y++)
     {
-      for(int z = 0; z < 32; z++)
+      for(int z = 0; z < CHUNK_CROOT; z++)
       {             
         chunk->voxels[x][y][z] = value;            
       }

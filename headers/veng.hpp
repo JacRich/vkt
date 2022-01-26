@@ -13,7 +13,6 @@
 #define PICK_HIT    0
 #define PICK_NORMAL 1
 
-
 void veng_init();
 void veng_tick();
 void veng_terminate();

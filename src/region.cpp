@@ -45,7 +45,7 @@ void region_save(region_t *region)
 
     for (int i = 0; i < VOXELS_LENGTH; i++)
     {
-      ivec voxelIndex = index3d(i, 32);
+      ivec voxelIndex = index3d(i, CHUNK_CROOT);
       int voxelValue = region->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
 
       // Are we at the end?
@@ -78,7 +78,7 @@ void region_save(region_t *region)
         continue;
       }
 
-      ivec nextVoxel = index3d(i + 1, 32);
+      ivec nextVoxel = index3d(i + 1, CHUNK_CROOT);
       if (voxelValue != region->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[nextVoxel.x][nextVoxel.y][nextVoxel.z])
       {
         buffer.value = voxelValue;
@@ -126,7 +126,7 @@ void region_load(region_t *region)
       // Loop for size of buffer, adding the sector buffer's value into the chunk
       for (int j = 0; j < buffer.size; j++)
       {
-        ivec index = index3d(voxel, 32);
+        ivec index = index3d(voxel, CHUNK_CROOT);
         region->chunks[chunkindex.x][chunkindex.y][chunkindex.z].voxels[index.x][index.y][index.z] = buffer.value;
         voxel++;
       }
@@ -174,21 +174,8 @@ void region_set_pos(region_t *region, ivec cord)
     ivec position = index3d(i, REGION_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z]; 
 
-    chunk->pos = vec{position.x * 32, position.y * 32, position.z * 32} + region->pos;
+    chunk->pos = vec{position.x * CHUNK_CROOT, position.y * CHUNK_CROOT, position.z * CHUNK_CROOT} + region->pos;
     //chunk_fill_perlin(chunk);
     chunk->update = true;
   }
-}
-
-
-
-bool is_cord_empty(region_t regions[REGION_COUNT], ivec cord)
-{
-  for (int i = 0; i < REGION_COUNT; i++)
-  {
-    if(regions[i].cord == cord){
-      return false;
-    }
-  }
-  return true;
 }

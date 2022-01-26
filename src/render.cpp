@@ -8,7 +8,6 @@
 #include "texture.hpp"
 
 #include <string>
-#include <pthread.h>
 
 cmesh_t* cmeshes;
 GLFWwindow* window;
@@ -20,8 +19,7 @@ mesh_t meshes[MAX_MESHES]; int meshcount = 0;
 shader_t  sh_world, sh_cursor, sh_cross, sh_hud;
 texture_t tex_atlas;
 ubo_t     ubo_view, ubo_torch, ubo_fullbrighttoggle;
-
-view_t  worldview;
+view_t    worldview;
 
 
 static void draw_mesh(mesh_t* mesh)
@@ -44,7 +42,7 @@ static void draw_mesh(mesh_t* mesh)
   glDrawArrays(mesh->primtype, 0, mesh->vertcount);
 }
 
-static void draw_chunks(player_t* player)
+static void draw_cmeshes(player_t* player)
 {
   glUseProgram(sh_world);
   glActiveTexture(GL_TEXTURE0);
@@ -58,7 +56,7 @@ static void draw_chunks(player_t* player)
       continue;
     }
     // Janky way to limit render dist
-    if(glm::length((cmeshes[i].chunk->pos + vec{16.0f,16.0f,16.0f}) - player->pos) > config.renderdist){
+    if(glm::length((cmeshes[i].chunk->pos + vec{32.0f,32.0f,32.0f}) - player->pos) > config.renderdist){
       continue;
     }
     
@@ -108,6 +106,22 @@ void render_attach_cmeshes(region_t regions[REGION_COUNT])
     }
   }
 }
+
+
+static void tick_build_cmeshes()
+{
+  for(int i = 0; i < CMESH_COUNT; i++)
+  {
+    if(!cmeshes[i].chunk->update){
+      continue;
+    }
+    cmesh_build(&cmeshes[i]);
+    cmesh_send(&cmeshes[i]);
+    cmeshes[i].chunk->update = false;
+    return;
+  }
+}
+
 
 void render_init()
 {
@@ -171,30 +185,16 @@ void render_init()
   }
 }
 
-
-static void tick_build_cmeshes()
-{
-  for(int i = 0; i < CMESH_COUNT; i++)
-  {
-    if(cmeshes[i].chunk->update == true){
-      cmesh_build(&cmeshes[i]);
-      cmesh_send(&cmeshes[i]);
-      cmeshes[i].chunk->update = false;
-      return;
-    }
-  }
-}
-
 void render_tick()
 {
   //glViewport(0,0, config.width, config.height);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+ 
  
   tick_build_cmeshes();
 
-  draw_chunks(&player);
+  draw_cmeshes(&player);
   for(int i = 0; i < meshcount; i++){
     draw_mesh(&meshes[i]);
   }

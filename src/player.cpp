@@ -8,10 +8,9 @@
 #include "perlin.hpp"
 #include "config.hpp"
 
+double lastX, lastY;
 player_t player;
 cursor_t cursor, cursorRange; 
-
-double lastX, lastY;
 
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
@@ -53,7 +52,7 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
   }
 
   if(key == keys.jump && player.grounded){
-    player.vel += vec{0, config.jumpForce, 0};
+    player.vel += vec{0, 6, 0};
   }
 
   if(key == GLFW_KEY_HOME){
@@ -319,8 +318,8 @@ static void move_cursors()
     cursorRange.mesh->drawflags = DF_DEPTH_TEST;
     return;
   }
-  cursor_embed(&cursor, hit);
-  cursor_centerOn(&cursorRange, hit);
+  cursor_embed (&cursor, hit);
+  cursor_center(&cursorRange, hit);
 
   switch (player.inputMode)
   {
