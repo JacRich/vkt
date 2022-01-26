@@ -18,32 +18,34 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
+        fail-fast: false
         include:
-          - VS_VERSION: Visual Studio 16
-            VS_VER: 2019
-            SDK: release-1911 # gisinternals SDK version still to 2017
-            MSVC_VER: 1920
-            platform: x86
-            PROJ_BRANCH: "7.2"
-            LIBWEBP_URL: "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.3-windows-x86.zip"
-            LIBZSTD_URL: "https://github.com/facebook/zstd/releases/download/v1.4.5/zstd-v1.4.5-win32.zip"
-            LIBDEFLATE_URL: "https://github.com/ebiggers/libdeflate/releases/download/v1.6/libdeflate-1.6-windows-i686-bin.zip"
-
-    env:
-        VS_VERSION: ${{ matrix.VS_VERSION }}
-        VS_VER: ${{ matrix.VS_VER }}
-        SDK: ${{ matrix.SDK }}
-        MSVC_VER: ${{ matrix.MSVC_VER }}
-        platform: ${{ matrix.platform }}
-        PROJ_BRANCH: "${{ matrix.PROJ_BRANCH }}"
-        LIBWEBP_URL: "${{ matrix.LIBWEBP_URL }}"
-        LIBZSTD_URL: "${{ matrix.LIBZSTD_URL }}"
-        LIBDEFLATE_URL: "${{ matrix.LIBDEFLATE_URL }}"
-        APPVEYOR: true # to skip some tests
-        PYTHON_VERSION: "3.7.9"
-
+          - { icon: '⬛', sys: mingw32 }
+          - { icon: '🟦', sys: mingw64 }
+          - { icon: '🟨', sys: ucrt64  } # Experimental!
+          - { icon: '🟧', sys: clang64 } # Experimental!
+    name: 🚧${{ matrix.icon }} ${{ matrix.sys }}
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v2
+
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: '${{ matrix.icon }} Setup MSYS2'
+      with:
+        msystem: ${{matrix.sys}}
+        update: true
+        install: >-
+          git
+          make
+        pacboy: >-
+          toolchain:p
+          cmake:p
+          ninja:p
     
     - name: Set up MinGW
       uses: egor-tensin/setup-mingw@v2
