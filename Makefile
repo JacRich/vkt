@@ -28,7 +28,15 @@ buildwin:
 	@cp -r assets/* bin/windows
 	@cp lib/glew32.dll bin/windows
 
-# if more make build commands are made for other platforms, add them here, this will run them all.
+# Command for building to windows from windows (MSYS2)
+buildwin_msys:
+    @echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
+	@mkdir -p bin/windows
+    g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+    @echo "Copying assets..."
+	@cp -r assets/* bin/windows/
+
+# if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
 # if on linux, cd to bin/linux/ and run ./$(EXECUTABLE_NAME) executable, this is needed since

@@ -16,7 +16,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -25,17 +24,11 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
 
-# Directories bin
+# Directory bin
 bin/
-bin/linux/config
-bin/linux/vkt
-bin/linux/gamedata/savedata/player
-bin/linux/gamedata/savedata/r_0_0_0
