@@ -59,7 +59,7 @@ jobs:
       run: |
         dir
         cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_MAKE_PROGRAM=ninja -G Ninja ./
-        cmake --configure .
+        cmake -S . `-D CMAKE_BUILD_TYPE=Release`
         dir
 
     - name: Build
