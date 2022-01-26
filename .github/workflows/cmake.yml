@@ -18,7 +18,6 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        fail-fast: false
         include:
           - { icon: '⬛', sys: mingw32 }
           - { icon: '🟦', sys: mingw64 }
