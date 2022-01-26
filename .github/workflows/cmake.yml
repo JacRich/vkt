@@ -59,6 +59,8 @@ jobs:
       run: |
         dir
         cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_MAKE_PROGRAM=ninja -G Ninja ./
+        dir
+        cd build && dir
         
     - name: Configure CMake 2
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
