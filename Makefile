@@ -3,7 +3,7 @@
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm 
-LDWINDOWSFLAGS = -I headers -lopengl32 -lglew32 -lglfw3 -lm -static-libstdc++ -static-libgcc
+LDWINDOWSFLAGS = -I headers -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglew32 -lglfw3 -lgdi32 -lm
 objects = $(wildcard src/*.cpp)
 
 # creates directory bin/linux if not existent
