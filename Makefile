@@ -2,7 +2,7 @@
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
-LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
+LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm 
 LDWINDOWSFLAGS = -I headers -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglew32 -lglfw3 -lgdi32 -lm
 objects = $(wildcard src/*.cpp)
 
@@ -30,10 +30,11 @@ buildwin:
 
 # Command for building to windows from windows (MSYS2)
 buildwin_msys:
-    @echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
+	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
-    g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
-    @echo "Copying assets..."
+
+	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
 
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
@@ -41,11 +42,11 @@ all: buildlinux buildwin
 
 # if on linux, cd to bin/linux/ and run ./$(EXECUTABLE_NAME) executable, this is needed since
 # when running from the terminal, the current directory is the root of the project.
-# if on windows, run the bin/windows/$(EXECUTABLE_NAME) executable.
+# if on windows, cd to bin/windows/ and run ./$(EXECUTABLE_NAME).exe executable.
 ifeq ($(OS),Windows_NT)
 run:
 	@echo "Running on Windows"
-	bin/windows/$(EXECUTABLE_NAME)
+	@cd bin/windows/; ./$(EXECUTABLE_NAME).exe
 else
 run:
 	@echo "Running on Linux"

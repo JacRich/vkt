@@ -7,7 +7,6 @@
     <generated>
       <config projectName="vkt" targetName="glfw" />
       <config projectName="vkt" targetName="update_mappings" />
-      <config projectName="vkt" targetName="STATIC_GLEW" />
       <config projectName="vkt" targetName="vkt" />
       <config projectName="vkt" targetName="uninstall" />
     </generated>
@@ -19,200 +18,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db40d498-9d77-4f63-97bc-f56966210c2d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/glew32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/libglfw3.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/query/cache-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/cache-v2-66acd23d8c8fd5976a5f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/cmakeFiles-v1-9a0a315b99edae770fd1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-21c85710ac5038a0e7c1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/directory-.-Release-d0094a50bb2071803777.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/directory-glfw-3.3.6-Release-79649ed495b81fc0b368.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/directory-glfw-3.3.6.src-Release-4bba3423b00ae4c18340.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2022-01-26T07-45-58-0644.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-STATIC_GLEW-Release-792aee628932c06dc1b0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-glfw-Release-fac1efa2acc4b1876d9b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-uninstall-Release-df52f93297f85aa5a6af.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-update_mappings-Release-8fab7b2d7d8773d8dffe.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-vkt-Release-bcb3cdc5e6567fe31df4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/toolchains-v1-c5c0ff8f2ccb96746ee1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeRCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.21.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/las.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/player" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_-1_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_-1_0_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_-1_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_0_0_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/savedata/r_1_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/cross.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/cross.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/cursor.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/cursor.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/hud.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/hud.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/world.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gamedata/shaders/world.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets-release.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/cmake_uninstall.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/src/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/src/glfw3.pc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/src/glfw3Config.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/src/glfw3ConfigVersion.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/glfw-3.3.6/src/glfw_config.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-66804652aa1cfd5415d2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-6365ccd09104b0b2724d.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-6d011f53300bfcd0a29c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-glfw-3.3.6-Debug-274af625067216e4b83b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-glfw-3.3.6.src-Debug-4bba3423b00ae4c18340.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-01-26T07-45-58-0593.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-STATIC_GLEW-Debug-55a227e1c9af728b27ff.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-glfw-Debug-a9caea5dc7911839ab52.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-uninstall-Debug-7370f33e0ba2058d84af.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-update_mappings-Debug-29818621582488259479.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-vkt-Debug-c10e64f64da9999ab2a5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-c5c0ff8f2ccb96746ee1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeRCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/las.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/player" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_-1_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_-1_0_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_-1_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_0_0_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_-1_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/savedata/r_1_0_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cross.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cross.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cursor.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/cursor.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/hud.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/hud.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/world.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/gamedata/shaders/world.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets-debug.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/cmake_uninstall.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/src/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/src/glfw3.pc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/src/glfw3Config.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/src/glfw3ConfigVersion.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/glfw-3.3.6/src/glfw_config.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/configurationCache.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/configurationCache.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/dryrun.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/dryrun.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,11 +90,6 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="STATIC_GLEW" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="vkt" TARGET_NAME="STATIC_GLEW" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="glfw" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="vkt" TARGET_NAME="glfw" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -298,7 +111,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.STATIC_GLEW" />
       <item itemvalue="CMake Application.vkt" />
       <item itemvalue="CMake Application.uninstall" />
       <item itemvalue="CMake Application.glfw" />
