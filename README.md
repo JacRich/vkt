@@ -6,8 +6,27 @@
 ## Downloads
 If you'd just like to just download and try, there are precompiled binaries available for Windows and Linux which you can download here:
 
-| ### [Windows](https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip) | ### [Linux](https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip) |
-|---------|-------|
+<table>
+<tr>
+<th align="center">
+<img width="441" height="1">
+<p> 
+<small>
+[Windows](https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip)
+</small>
+</p>
+</th>
+<th align="center">
+<img width="441" height="1">
+<p> 
+<small>
+[Linux](https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip)
+</small>
+</p>
+</th>
+</tr>
+<tr>
+</table>
 
 ## Compiling
 ### Linux
@@ -43,9 +62,3 @@ The program can be started using the .exe in the new bin/windows folder, or thro
 
 ## Contributing
 To contribute to the project, submit a pull request.
-
-<style>
-    table {
-        width: 100%;
-    }
-</style>
