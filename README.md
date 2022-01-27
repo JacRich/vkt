@@ -1,6 +1,10 @@
 <h1 align="center">VKT</h1>
 <p align="center">VkT is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
 
+## Downloads
+Currently, precompiled binaries are only available for Windows, you can download them here (*jac, pls insert the download link once you've set up nightly.link)<br>
+For Linux, currently you'll have to compile from source
+
 ## Compiling
 ### Linux
 To compile the project, you will need the following dependencies:
