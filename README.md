@@ -4,7 +4,7 @@
 <br>
 
 ## Downloads
-Currently, precompiled binaries are only available for Windows, you can download them here (*jac, pls insert the download link once you've set up nightly.link)<br>
+Currently, precompiled binaries are only available for Windows, you can download them here (*jac, pls insert the download link once you've set up nightly.link*)<br>
 For Linux, currently you'll have to compile from source
 
 ## Compiling
