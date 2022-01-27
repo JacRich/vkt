@@ -20,17 +20,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { icon: '⬛', sys: mingw32 }
-          - { icon: '🟦', sys: mingw64 }
-          - { icon: '🟨', sys: ucrt64  } # Experimental!
-          - { icon: '🟧', sys: clang64 } # Experimental!
-    name: 🚧${{ matrix.icon }} ${{ matrix.sys }}
+          - { icon: '✅', sys: mingw64 }
+          - { icon: '⚠️', sys: ucrt64  } # Experimental!
+          - { icon: '⚠️', sys: clang64 } # Experimental!
+    name: ${{ matrix.icon }} ${{ matrix.sys }}
     defaults:
       run:
         shell: msys2 {0}
     steps:
 
-    - name: '🧰 Checkout'
+    - name: 'Checkout'
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
