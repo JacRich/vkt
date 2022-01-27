@@ -60,14 +60,10 @@ jobs:
 
     - name: Build Windows
       run: make buildwin_msys
-
-    - name: Test
-      working-directory: ${{github.workspace}}
-      run: cd build && ctest -C ${{env.BUILD_TYPE}}
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.3.1
       with:
         name: ${{ matrix.sys }}
-        path: ./build
+        path: ./bin/windows
       
