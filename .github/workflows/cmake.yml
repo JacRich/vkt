@@ -51,6 +51,12 @@ jobs:
       uses: egor-tensin/setup-mingw@v2
       with:
         platform: x64
+        
+    - name: Install Dependencies
+      run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm --noconfirm
+
+    - name: Add to Path
+      run: export PATH="mingw64/bin:$PATH"
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
