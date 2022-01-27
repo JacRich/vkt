@@ -32,3 +32,5 @@
 
 # Directory bin
 bin/
+
+cmake-build-debug/
