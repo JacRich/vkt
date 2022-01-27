@@ -49,6 +49,17 @@ To compile the project, you will need the following dependencies:
 |libXcursor|libxcursor-dev|libxcursor|
 |libm|libc6-dev|glibc|
 
+#### Ubuntu
+
+1.
+```
+sudo apt-get -y install g++ libgl-dev libglew-dev libglfw3-dev libglm-dev libx11-dev libxxf86vm-dev libxrandr-dev libpthread-stubs0-dev libxi-dev libc6-dev libxinerama-dev libxcursor-dev libc6-dev
+```
+2. Then `git clone` this repository or download and extract the zip
+3. Finally, you should be able to cd into the repo and run `make buildlinux`
+
+The program can be started using the file in the new bin/linux folder, or through the command `make run`
+
 ### Windows
 To compile on Windows, you'll need to follow these steps:
 
