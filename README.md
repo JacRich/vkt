@@ -6,9 +6,9 @@
 ## Downloads
 If you'd just like to just download and try, there are precompiled binaries available for Windows and Linux which you can download here:
 
-### (Windows)[https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip]
+### [Windows](https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip)
 
-### (Linux)[https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip]
+### [Linux](https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip)
 
 ## Compiling
 ### Linux
