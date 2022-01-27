@@ -32,22 +32,22 @@ If you'd just like to just download and try, there are precompiled binaries avai
 ### Linux
 To compile the project, you will need the following dependencies:
 
-| name | package debian based | package arch based |
-|---|---|---|
-|g++|g++|gcc|
-|libGL|libgl-dev|libglvnd|
-|libGLEW|libglew-dev|glew|
-|libglfw|libglfw3-dev|glfw-wayland / glfw-x11|
-|libglm|libglm-dev|glm|
-|libX11|libx11-dev|libx11|
-|libXxf86vm|libxxf86vm-dev|libxxf86vm|
-|libXrandr|libxrandr-dev|libxrandr|
-|libpthread|libpthread-stubs0-dev|glibcs|
-|libXi|libxi-dev|libxi|
-|libdl|libc6-dev|glibc|
-|libXinerama|libxinerama-dev|libxinerama|
-|libXcursor|libxcursor-dev|libxcursor|
-|libm|libc6-dev|glibc|
+| name | package debian based | package arch based | package fedora based |
+|---|---|---|---|
+|g++|g++|gcc|gcc-c++|
+|libGL|libgl-dev|libglvnd|mesa-libGL-devel|
+|libGLEW|libglew-dev|glew|glew-devel|
+|libglfw|libglfw3-dev|glfw-wayland / glfw-x11|glfw-devel|
+|libglm|libglm-dev|glm|glm-devel|
+|libX11|libx11-dev|libx11|libX11-1.7.3.1-1.fc36|
+|libXxf86vm|libxxf86vm-dev|libxxf86vm|libXxf86vm-devel|
+|libXrandr|libxrandr-dev|libxrandr|libXrandr-devel|
+|libpthread|libpthread-stubs0-dev|glibcs|libpthread-stubs-devel|
+|libXi|libxi-dev|libxi|libXi-devel|
+|libdl|libc6-dev|glibc|glibc-devel|
+|libXinerama|libxinerama-dev|libxinerama|libXinerama|
+|libXcursor|libxcursor-dev|libxcursor|libXcursor|
+|libm|libc6-dev|glibc|glibc-devel|
 
 #### Ubuntu
 
