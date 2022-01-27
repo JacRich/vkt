@@ -4,8 +4,11 @@
 <br>
 
 ## Downloads
-Currently, precompiled binaries are only available for Windows, you can download them here (*jac, pls insert the download link once you've set up nightly.link*)<br>
-For Linux, currently you'll have to compile from source
+If you'd just like to just download and try, there are precompiled binaries available for Windows and Linux which you can download here:
+
+### (Windows)[https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip]
+
+### (Linux)[https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip]
 
 ## Compiling
 ### Linux
