@@ -1,0 +1,41 @@
+name: Make
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+
+    - name: Install Dependencies
+      run: sudo apt-get -y install mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm
+
+    - name: Add to Path
+      run: export PATH="mingw64/bin:$PATH"
+
+    - name: Build Linux
+      run: make buildlinux
+      
+    - name: Upload Linux
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: "linux"
+        path: ./bin/linux
+      
