@@ -51,7 +51,7 @@ To compile the project, you will need the following dependencies:
 
 #### Ubuntu
 
-1.
+
 ```
 sudo apt-get -y install g++ libgl-dev libglew-dev libglfw3-dev libglm-dev libx11-dev libxxf86vm-dev libxrandr-dev libpthread-stubs0-dev libxi-dev libc6-dev libxinerama-dev libxcursor-dev libc6-dev
 ```
