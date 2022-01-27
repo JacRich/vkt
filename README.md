@@ -12,7 +12,7 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <img width="441" height="1">
 <p> 
 <small>
-[Windows](https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip)
+  <a href="https://nightly.link/garv-shah/vkt/workflows/make-windows/main/windows.zip">Windows</a>
 </small>
 </p>
 </th>
@@ -20,7 +20,7 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <img width="441" height="1">
 <p> 
 <small>
-[Linux](https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip)
+  <a href="https://nightly.link/garv-shah/vkt/workflows/make-linux/main/linux.zip">Linux</a>
 </small>
 </p>
 </th>
