@@ -53,7 +53,7 @@ jobs:
         platform: x64
 
     - name: Install Dependencies
-      run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm
+      run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm --noconfirm
 
     - name: Add to Path
       run: export PATH="mingw64/bin:$PATH"
