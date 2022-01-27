@@ -43,3 +43,9 @@ The program can be started using the .exe in the new bin/windows folder, or thro
 
 ## Contributing
 To contribute to the project, submit a pull request.
+
+<style>
+    table {
+        width: 100%;
+    }
+</style>
