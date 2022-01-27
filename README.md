@@ -1,6 +1,6 @@
 <h1 align="center">VKT</h1>
 <p align="center">VkT is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
-<img src="https://cdn.discordapp.com/attachments/934901281703747635/935902064242987108/unknown.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<p align="center"> <img src="https://cdn.discordapp.com/attachments/934901281703747635/935902064242987108/unknown.png"> </p>
 
 ## Downloads
 Currently, precompiled binaries are only available for Windows, you can download them here (*jac, pls insert the download link once you've set up nightly.link)<br>
