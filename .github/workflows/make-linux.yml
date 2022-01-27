@@ -18,17 +18,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    
-    - name: Set up MinGW
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        platform: x64
 
     - name: Install Dependencies
-      run: sudo apt-get -y install mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm
-
-    - name: Add to Path
-      run: export PATH="mingw64/bin:$PATH"
+      run: sudo apt-get -y install g++ libgl-dev libglew-dev libglfw3-dev libglm-dev libx11-dev libxxf86vn-dev libxrandr-dev libpthread-stubs0-dev libxi-dev libc6-dev libxinerama-dev libxcursor-dev libc6-dev
 
     - name: Build Linux
       run: make buildlinux
