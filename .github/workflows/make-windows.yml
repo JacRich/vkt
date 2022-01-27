@@ -1,4 +1,4 @@
-name: Make
+name: Make Windows
 
 on:
   push:
@@ -59,18 +59,9 @@ jobs:
     - name: Build Windows
       run: make buildwin_msys
       
-    - name: Build Linux
-      run: make buildlinux
-      
     - name: Upload Windows
       uses: actions/upload-artifact@v2.3.1
       with:
         name: "windows"
         path: ./bin/windows
-        
-    - name: Upload Linux
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: "linux"
-        path: ./bin/linux
       
