@@ -55,7 +55,7 @@ jobs:
       run: export PATH="mingw64/bin:$PATH"
 
     - name: g++ syslink
-      if: matrix.sys == clang64
+      if: matrix.sys == 'clang64'
       run: ln -s g++-9 g++
 
     - name: Build Windows
