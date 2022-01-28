@@ -54,7 +54,15 @@ jobs:
     - name: Add to Path
       run: export PATH="mingw64/bin:$PATH"
       
+    - name: Setup Bazel
+      uses: abhinavsingh/setup-bazel@v3
+      
+    - name: Use Bazel (Windows only)
+      if: matrix.os == 'windows'
+      run: ./bazel.exe -h
+      
     - name: Bazel Clean (for clang)
+      if: matrix.os != 'windows'
       run: bazel clean --expunge
 
     - name: Build Windows
