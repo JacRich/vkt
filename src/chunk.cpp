@@ -1,5 +1,5 @@
-#include "chunk.hpp"
-#include "perlin.hpp"
+#include "chunk.h"
+#include "perlin.h"
 
 
 void chunk_fill_perlin(chunk_t* chunk)

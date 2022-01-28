@@ -1,13 +1,14 @@
-#include "render.hpp"
-#include "shader.hpp"
-#include "cmesh.hpp"
-#include "crosshair.hpp"
-#include "mesh.hpp"
-#include "region.hpp"
-#include "config.hpp"
-#include "texture.hpp"
+#include "render.h"
+#include "shader.h"
+#include "cmesh.h"
+#include "crosshair.h"
+#include "mesh.h"
+#include "region.h"
+#include "config.h"
+#include "texture.h"
 
 #include <string>
+#include <thread>
 
 cmesh_t* cmeshes;
 GLFWwindow* window;
@@ -20,6 +21,8 @@ shader_t  sh_world, sh_cursor, sh_cross, sh_hud;
 texture_t tex_atlas;
 ubo_t     ubo_view, ubo_torch, ubo_fullbrighttoggle;
 view_t    worldview;
+
+static std::thread thread; static bool thread_active = true;
 
 
 static void draw_mesh(mesh_t* mesh)
@@ -42,21 +45,18 @@ static void draw_mesh(mesh_t* mesh)
   glDrawArrays(mesh->primtype, 0, mesh->vertcount);
 }
 
-static void draw_cmeshes(player_t* player)
+static void draw_cmeshes()
 {
-  glUseProgram(sh_world);
+  glUseProgram   (sh_world);
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, tex_atlas);
-  glEnable(GL_DEPTH_TEST);
+  glBindTexture  (GL_TEXTURE_2D, tex_atlas);
+  glEnable       (GL_DEPTH_TEST);
 
   mat4 m_model;
   for(int i = 0; i < CMESH_COUNT; i++)
   {
-    if(cmeshes[i].chunk == NULL){
-      continue;
-    }
     // Janky way to limit render dist
-    if(glm::length((cmeshes[i].chunk->pos + vec{32.0f,32.0f,32.0f}) - player->pos) > config.renderdist){
+    if(glm::length((cmeshes[i].chunk->pos + vec{32.0f,32.0f,32.0f}) - player.pos) > config.renderdist){
       continue;
     }
     
@@ -91,36 +91,62 @@ void render_addmesh(mesh_t** mesh)
   meshcount++;
 }
 
+
+static void tick_build_cmeshes()
+{
+  while(!glfwWindowShouldClose(window))
+  {
+    if(!thread_active){
+      continue;
+    }
+    for(int i = 0; i < CMESH_COUNT; i++)
+    {
+      if(cmeshes[i].chunk->update == true && !cmeshes[i].needsend){
+        cmeshes[i].needsend = true;
+        cmesh_build(&cmeshes[i]);
+        
+        cmeshes[i].chunk->update = false;
+        thread_active = false;
+        break;
+      }
+    }
+  }
+}
+
+static void tick_send_cmeshes()
+{
+  if(thread_active){
+    return;
+  }
+  for(int i = 0; i < CMESH_COUNT; i++)
+  {
+    if(cmeshes[i].needsend == true){
+      cmesh_send(&cmeshes[i]);
+      cmeshes[i].needsend = false;
+      thread_active = true;
+      return;
+    }
+  }
+}
+
 void render_attach_cmeshes(region_t regions[REGION_COUNT])
 {
   int mesh = 0;
-
-  for(int i = 0; i < 27; i++)
+  for(int i = 0; i < REGION_COUNT; i++)
   {  
     for(int j = 0; j < REGION_CHUNK_COUNT; j++)
     {
-      ivec chunkIndex = index3d(j, REGION_CROOT);
+      ivec chunkIndex = index3d(j, REGION_CHUNKS_CROOT);
       cmeshes[mesh].chunk = &regions[i].chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
       cmeshes[mesh].chunk->update = true;
       mesh++;
     }
   }
+
+  thread = std::thread(tick_build_cmeshes);
 }
 
 
-static void tick_build_cmeshes()
-{
-  for(int i = 0; i < CMESH_COUNT; i++)
-  {
-    if(!cmeshes[i].chunk->update){
-      continue;
-    }
-    cmesh_build(&cmeshes[i]);
-    cmesh_send(&cmeshes[i]);
-    cmeshes[i].chunk->update = false;
-    return;
-  }
-}
 
 
 void render_init()
@@ -132,9 +158,8 @@ void render_init()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+  //glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
-  //window = glfwCreateWindow(config.width, config.height, "vkt", config.fullscreen == true? glfwGetPrimaryMonitor() : NULL, NULL);
   window = glfwCreateWindow(config.width, config.height, "vkt", NULL, NULL);
   
   if(window == NULL) { 
@@ -177,24 +202,26 @@ void render_init()
   glfwSetFramebufferSizeCallback(window, on_resize);
   
   crosshair_init(&crosshair, 0.015f);
+  
   // Init chunk meshes
   cmeshes = (cmesh_t*)malloc(sizeof(cmesh_t) * CMESH_COUNT);
-  for(int i = 0; i < CMESH_COUNT; i++)
-  {
+  for(int i = 0; i < CMESH_COUNT; i++){
     cmesh_init(&cmeshes[i]);
   }
 }
+
+
+
 
 void render_tick()
 {
   //glViewport(0,0, config.width, config.height);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
- 
- 
-  tick_build_cmeshes();
 
-  draw_cmeshes(&player);
+  tick_send_cmeshes();
+  draw_cmeshes();
+
   for(int i = 0; i < meshcount; i++){
     draw_mesh(&meshes[i]);
   }
@@ -218,6 +245,9 @@ void render_tick()
 
 void render_terminate()
 {
+  thread.join();
+  thread.~thread();
+
   free(cmeshes);
   glfwDestroyWindow(window);
   glfwTerminate(); 

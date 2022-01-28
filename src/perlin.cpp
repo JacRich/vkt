@@ -1,4 +1,4 @@
-﻿#include "perlin.hpp"
+﻿#include "perlin.h"
 
 // All numbers 0-255 layed out randomly then copy pasted
 int p[] =

@@ -1,10 +1,15 @@
 #include <stdio.h>
-#include "ivec.hpp"
+#include "ivec.h"
 
 
 ivec region_cord(vec worldpos)
 {
-  return ivec{int(worldpos.x) / REGION_WIDTH, int(worldpos.y) / REGION_WIDTH, int(worldpos.z) / REGION_WIDTH };
+  ivec result;
+  result.x = worldpos.x > 0? int(worldpos.x / REGION_WIDTH) : int(worldpos.x / REGION_WIDTH) + -1;
+  result.y = worldpos.y > 0? int(worldpos.y / REGION_WIDTH) : int(worldpos.y / REGION_WIDTH) + -1;
+  result.z = worldpos.z > 0? int(worldpos.z / REGION_WIDTH) : int(worldpos.z / REGION_WIDTH) + -1;
+
+  return result;
 }
 
 int taxi_dist(ivec left, ivec right)

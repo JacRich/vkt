@@ -1,5 +1,5 @@
-#include "crosshair.hpp"
-#include "render.hpp"
+#include "crosshair.h"
+#include "render.h"
 
 void crosshair_init(crosshair_t* crosshair, float width)
 {

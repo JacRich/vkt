@@ -1,6 +1,6 @@
-#include "globaldef.hpp"
-#include "cmesh.hpp"
-#include "chunk.hpp"
+#include "globaldef.h"
+#include "cmesh.h"
+#include "chunk.h"
 
 // Vertex Data of a unit cube
 const uchar unitcube[6][FACE_SIZE] =
