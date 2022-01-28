@@ -53,6 +53,9 @@ jobs:
 
     - name: Add to Path
       run: export PATH="mingw64/bin:$PATH"
+      
+    - name: Bazel Clean (for clang)
+      run: bazel clean --expunge
 
     - name: Build Windows
       run: make buildwin_msys
