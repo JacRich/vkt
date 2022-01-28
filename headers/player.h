@@ -1,8 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "globaldef.hpp"
-#include "ivec.hpp"
-#include "entity.hpp"
+#include "globaldef.h"
+#include "ivec.h"
+#include "entity.h"
 
 enum INPUT_MODES
 {
@@ -19,7 +19,7 @@ enum MOVEMENT_MODES
 
 struct player_t
 {
-  vec pos = {16.0f,16.0f,16.0f};
+  vec pos = {200.0f, 200.0f, 200.0f};
   vec vel;
 
   vec front = {0.0f, 0.0f,-1.0f};

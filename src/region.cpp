@@ -1,13 +1,13 @@
-#include "region.hpp"
+#include "region.h"
 #include <stdlib.h>
 #include <sys/unistd.h>
-#include <pthread.h>
 
 struct sector_t
 {
   uchar size = 0;
   uchar value = 0;
 };
+
 
 static void make_path(char path[], ivec cord)
 {
@@ -37,7 +37,7 @@ void region_save(region_t *region)
   // Loop for chunks in region
   for (int i = 0; i < REGION_CHUNK_COUNT; i++)
   {
-    ivec chunkIndex = index3d(i, REGION_CROOT);
+    ivec chunkIndex = index3d(i, REGION_CHUNKS_CROOT);
     int writeTotalVoxels = 0;
     int lastWriteIndex = 0;
     int writeCount = 0;
@@ -46,7 +46,7 @@ void region_save(region_t *region)
     for (int i = 0; i < VOXELS_LENGTH; i++)
     {
       ivec voxelIndex = index3d(i, CHUNK_CROOT);
-      int voxelValue = region->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
+      int  voxelValue = region->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
 
       // Are we at the end?
       if (i == VOXELS_LENGTH - 1){
@@ -94,19 +94,20 @@ void region_save(region_t *region)
   fclose(file);
 }
 
-void region_load(region_t *region)
+region_t region_load(ivec cord)
 {
+  region_t region;
+  region_set_pos(&region, cord);
+
   char path[25] = "gamedata/savedata/r_";
-  make_path(path, region->cord);
+  make_path(path, cord);
 
-  if (access(path, F_OK) != 0) // Does file exist
-  {
-    region_fill_perlin(region);
-    return;
+  // If no save file, then fill with perlin
+  FILE* file = fopen(path, "rb");
+  if (file == NULL){
+    region_fill_perlin(&region);
+    return region;
   }
-
-
-  FILE *file = fopen(path, "rb");
 
   int readTotal = 0;
   int voxel = 0;
@@ -116,7 +117,7 @@ void region_load(region_t *region)
   for (int i = 0; i < REGION_CHUNK_COUNT; i++)
   {
     // Loop until we have uncompressed to VOXELS_LENGTH
-    ivec chunkindex = index3d(i, REGION_CROOT);
+    ivec chunkindex = index3d(i, REGION_CHUNKS_CROOT);
     while (voxel < VOXELS_LENGTH)
     {
       // Read one sector into buffer
@@ -127,23 +128,24 @@ void region_load(region_t *region)
       for (int j = 0; j < buffer.size; j++)
       {
         ivec index = index3d(voxel, CHUNK_CROOT);
-        region->chunks[chunkindex.x][chunkindex.y][chunkindex.z].voxels[index.x][index.y][index.z] = buffer.value;
+        region.chunks[chunkindex.x][chunkindex.y][chunkindex.z].voxels[index.x][index.y][index.z] = buffer.value;
         voxel++;
       }
     }
     voxel = 0;
-    region->chunks[chunkindex.x][chunkindex.y][chunkindex.z].update = true;
+    region.chunks[chunkindex.x][chunkindex.y][chunkindex.z].update = true;
   }
   //assert(readTotal == VOXELS_LENGTH);
 
   fclose(file);
+  return region;
 }
 
 void region_fill_value(region_t *region, uchar value)
 {
   for (int i = 0; i < REGION_CHUNK_COUNT; i++)
   {
-    ivec position = index3d(i, REGION_CROOT);
+    ivec position = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z];
 
     chunk_fill(chunk, value);
@@ -155,7 +157,7 @@ void region_fill_perlin(region_t *region)
 {
   for (int i = 0; i < REGION_CHUNK_COUNT; i++)
   {
-    ivec position = index3d(i, REGION_CROOT);
+    ivec position = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z];
 
     chunk_fill_perlin(chunk);
@@ -169,9 +171,8 @@ void region_set_pos(region_t *region, ivec cord)
   region->cord = cord;
 
   // Set World pos of all chunks
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++)
-  {
-    ivec position = index3d(i, REGION_CROOT);
+  for (int i = 0; i < REGION_CHUNK_COUNT; i++){
+    ivec position  = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z]; 
 
     chunk->pos = vec{position.x * CHUNK_CROOT, position.y * CHUNK_CROOT, position.z * CHUNK_CROOT} + region->pos;

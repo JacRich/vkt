@@ -1,14 +1,14 @@
 #ifndef VENG_H
 #define VENG_H
-#include "globaldef.hpp"
-#include "ivec.hpp"
-#include "vhit.hpp"
+#include "globaldef.h"
+#include "ivec.h"
+#include "vhit.h"
 
-#include "player.hpp"
-#include "region.hpp"
-#include "cursor.hpp"
+#include "player.h"
+#include "region.h"
+#include "cursor.h"
 
-#include "render.hpp"
+#include "render.h"
 
 #define PICK_HIT    0
 #define PICK_NORMAL 1

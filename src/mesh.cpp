@@ -1,5 +1,9 @@
-#include "globaldef.hpp"
-#include "mesh.hpp"
+#include "globaldef.h"
+#include "mesh.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/unistd.h>
+#include <string.h>
 
 mat4 mesh_makematrix(mesh_t* mesh)
 {

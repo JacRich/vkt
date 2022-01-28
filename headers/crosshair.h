@@ -1,7 +1,7 @@
 #ifndef CROSSHAIR_H
 #define CROSSHAIR_H
-#include "globaldef.hpp"
-#include "mesh.hpp"
+#include "globaldef.h"
+#include "mesh.h"
 
 struct crosshair_t
 {

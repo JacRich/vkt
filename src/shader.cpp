@@ -1,28 +1,27 @@
-#include "shader.hpp"
-#include <filesystem>
-#include <fstream>
+#include "shader.h"
 
 static char* load_source(char const* path)
 {
   char* buffer = 0;
   long length;
-  // load the source into memory
-  std::ifstream file(path, std::ios::in | std::ios::binary | std::ios::ate);
-  if (file.is_open())
-  {
-    length = file.tellg();
-    buffer = new char[length + 1];
-    file.seekg(0, std::ios::beg);
-    file.read(buffer, length);
-    file.close();
+  FILE* f = fopen(path, "rb");
+  if(f){
+    fseek(f, 0, SEEK_END);
+    length = ftell(f);
+    fseek(f, 0, SEEK_SET);
+    buffer = (char*)malloc((length+1)*sizeof(char));
+    if(buffer){
+      fread(buffer, sizeof(char), length, f);
+    }
+    fclose(f);
   }
-  else
-  {
-    printf("Failed to open file %s\n", path);
+  else{
+    printf("FAILED TO LOAD SHADER AT: %s, EXITING\n", path);
+    exit(0);
   }
-  buffer[length] = 0;
-  return buffer;
 
+  buffer[length] = '\0';
+  return buffer;
 }
 
 static void compile_shader(shader_t* handle, uint type, char const* source)

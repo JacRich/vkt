@@ -1,6 +1,6 @@
 #ifndef IVEC_H
 #define IVEC_H
-#include "globaldef.hpp"
+#include "globaldef.h"
 
 struct ivec
 {

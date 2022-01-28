@@ -1,6 +1,6 @@
 #ifndef SHADER_H
 #define SHADER_H
-#include "globaldef.hpp"
+#include "globaldef.h"
 
 using shader_t = uint32_t;
 

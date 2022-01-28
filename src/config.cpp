@@ -1,4 +1,4 @@
-#include "config.hpp"
+#include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/unistd.h>
@@ -69,6 +69,11 @@ static void load_config(config_t* config)
     float looksens;
     if (sscanf(linebuf, " looksens = %f", &looksens)){
       config->looksens = looksens;
+    }
+
+    vec spawnpos;
+    if (sscanf(linebuf, " spawnpos = %f%f%f", &spawnpos.x,&spawnpos.y,&spawnpos.z)){
+      config->spawnpos = spawnpos;
     }
   }
 

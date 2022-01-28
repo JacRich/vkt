@@ -1,12 +1,10 @@
 #ifndef RENDER_H
 #define RENDER_H
-#include "globaldef.hpp"
-#include "mesh.hpp"
-#include "cursor.hpp"
-#include "region.hpp"
-#include "player.hpp"
-
-#define CMESH_COUNT 8 * 27
+#include "globaldef.h"
+#include "mesh.h"
+#include "cursor.h"
+#include "region.h"
+#include "player.h"
 
 struct ubo_t
 {

@@ -1,6 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
-#include "globaldef.hpp"
+#include "globaldef.h"
 
 struct entity_t
 {

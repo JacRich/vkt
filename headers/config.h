@@ -1,6 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-
+#include "globaldef.h"
 #include <GLFW/glfw3.h>
 
 struct config_t
@@ -17,6 +17,8 @@ struct config_t
 
   float moveSpeed = 80.0f;
   float friction  = 12.0f;
+
+  vec spawnpos = {0,0,0};
 };
 
 struct config_key_t

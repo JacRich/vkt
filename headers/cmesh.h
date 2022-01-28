@@ -1,12 +1,13 @@
 #ifndef CMESH_H
 #define CMESH_H
-#include "globaldef.hpp"
-#include "chunk.hpp"
+#include "globaldef.h"
+#include "chunk.h"
 
-#define BUFFER_SIZE 2500000
+#define BUFFER_SIZE 1750000
 
 struct cmesh_t
 {
+  bool needsend = false;
   chunk_t* chunk = NULL;
 
   uint vao, vbo;

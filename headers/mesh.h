@@ -1,7 +1,7 @@
 #ifndef MESH_H
 #define MESH_H
-#include "globaldef.hpp"
-#include "shader.hpp"
+#include "globaldef.h"
+#include "shader.h"
 
 #define DF_VIS        0x01
 #define DF_DEPTH_TEST 0x02

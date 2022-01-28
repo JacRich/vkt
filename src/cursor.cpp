@@ -1,6 +1,6 @@
-#include "cursor.hpp"
-#include "shader.hpp"
-#include "render.hpp"
+#include "cursor.h"
+#include "shader.h"
+#include "render.h"
 
 const uchar cursorVertData[] = 
 {

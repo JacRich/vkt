@@ -1,11 +1,11 @@
-#include "globaldef.hpp"
-#include "veng.hpp"
-#include "player.hpp"
-#include "cursor.hpp"
-#include "render.hpp"
-#include "ivec.hpp"
-#include "entity.hpp"
-#include "config.hpp"
+#include "globaldef.h"
+#include "veng.h"
+#include "player.h"
+#include "cursor.h"
+#include "render.h"
+#include "ivec.h"
+#include "entity.h"
+#include "config.h"
 
 float lastTime, deltaTime;
 unsigned long  framecount;

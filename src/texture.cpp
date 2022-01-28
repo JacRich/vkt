@@ -1,7 +1,7 @@
-#include "texture.hpp"
+#include "texture.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.hpp"
+#include "stb_image.h"
 
 void texture_make(texture_t* handle, char const* imagePath) 
 {

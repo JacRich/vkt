@@ -1,9 +1,14 @@
-#include "globaldef.hpp"
-#include "veng.hpp"
-#include "cmesh.hpp"
-#include <pthread.h>
+#include "globaldef.h"
+#include "veng.h"
+#include "cmesh.h"
+#include <thread>
 
 region_t regions[REGION_COUNT];
+ivec     r_cords[REGION_COUNT];
+
+ivec r_cord, r_cordlast;
+
+static std::thread thread;
 
 chunk_t* veng_find_chunk(vec worldpos)
 {
@@ -22,9 +27,6 @@ region_t* veng_find_region(vec worldpos)
 {
   for (int i = 0; i < REGION_COUNT; i++)
   {
-    if(!regions[i].inUse){
-      continue;
-    }
     if (AABB(worldpos, regions[i].pos, regions[i].pos + vec{REGION_WIDTH, REGION_WIDTH, REGION_WIDTH}))
     {
       return &regions[i];
@@ -203,34 +205,94 @@ void veng_change_voxel(vhit voxel, int pickmode, uchar value)
 }
 
 
+bool is_region_inrange(region_t* region)
+{
+  for(int i = 0; i < REGION_COUNT; i++){
+    if(region->cord == r_cords[i]){
+      return true;
+    }
+  }
+  return false;
+}
+
+bool is_cord_filled(ivec cord)
+{
+  for(int i = 0; i < REGION_COUNT; i++){
+    if(regions[i].cord == cord){
+      return true;
+    }
+  }
+  return false;
+}
+
+void update_region()
+{
+  for(int i = 0; i < REGION_COUNT; i++)
+  {
+    if(!is_region_inrange(&regions[i])){
+      for(int j = 0; j < REGION_COUNT; j++)
+      {
+        if(!is_cord_filled(r_cords[j])){
+          region_save(&regions[i]);
+          regions[i] = region_load(r_cords[j]);
+          return;
+        }
+      }
+    }
+  }
+}
+
+void tick_update_regions()
+{
+  while(!glfwWindowShouldClose(window))
+  {
+    update_region();
+  }
+}
+
 
 void veng_init()
 {
-  ivec player_region = region_cord(player.pos); 
+  // We want r_cord to be offset by 32 so that regions will update before we pass their borders
+  r_cord = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cordlast = r_cord;
 
-  for(int i = 0; i < REGION_COUNT; i++)
-  {
-    ivec cord = index3d(i, REGION_CROOT) - ivec{1,1,1};
-    //print_ivec(cord);
-    region_set_pos(&regions[i], cord + player_region);
-    region_load   (&regions[i]);
-    regions[i].inUse = true;
+  // Build a 3x3x3 area of regions with the player in the center
+  for(int i = 0; i < REGION_COUNT; i++){
+    ivec rcord = index3d(i, REGION_COUNT_CROOT);
+    ivec transformed_rcord = region_cord(player.pos) + rcord - ivec{REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2};
+
+    regions[i] = region_load(transformed_rcord);
+    r_cords[i] = transformed_rcord;
   }
 
   render_attach_cmeshes(regions);
+
+  thread = std::thread(tick_update_regions);
+}
+
+void transform_cords(ivec dir)
+{
+  for(int i = 0; i < REGION_COUNT; i++){
+    r_cords[i] = r_cords[i] + dir; 
+  }
 }
 
 void veng_tick()
 {
-  
+  r_cord = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  if(r_cord != r_cordlast){
+    transform_cords(r_cord - r_cordlast);
+  }
+  r_cordlast = r_cord;
 }
 
 void veng_terminate()
 {
   for (int i = 0; i < REGION_COUNT; i++){
-    if(!regions[i].inUse){
-      continue;
-    }
     region_save(&regions[i]);
   }
+
+  thread.join();
+  thread.~thread();
 }

@@ -1,6 +1,6 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
-#include "globaldef.hpp"
+#include "globaldef.h"
 
 using texture_t = uint32_t;
 

@@ -1,7 +1,7 @@
 #ifndef VHIT_H
 #define VHIT_H
-#include "ivec.hpp"
-#include "chunk.hpp"
+#include "ivec.h"
+#include "chunk.h"
 
 #define HIT_NULL  -1
 #define HIT_FALSE  0

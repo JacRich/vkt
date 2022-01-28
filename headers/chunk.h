@@ -1,7 +1,7 @@
 #ifndef CHUNK_H
 #define CHUNK_H
-#include "globaldef.hpp"
-#include "ivec.hpp"
+#include "globaldef.h"
+#include "ivec.h"
 
 struct chunk_t
 {

@@ -1,8 +1,8 @@
 #ifndef CURSOR_H
 #define CURSOR_H
-#include "globaldef.hpp"
-#include "vhit.hpp"
-#include "mesh.hpp"
+#include "globaldef.h"
+#include "vhit.h"
+#include "mesh.h"
 
 struct cursor_t
 {

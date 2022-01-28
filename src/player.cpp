@@ -1,15 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/unistd.h>
-#include "globaldef.hpp"
+#include "globaldef.h"
 
-#include "player.hpp"
-#include "veng.hpp"
-#include "perlin.hpp"
-#include "config.hpp"
+#include "player.h"
+#include "veng.h"
+#include "perlin.h"
+#include "config.h"
 
-double lastX, lastY;
 player_t player;
+double lastX, lastY;
 cursor_t cursor, cursorRange; 
 
 
@@ -190,6 +190,8 @@ static vec make_clip(player_t *player)
 
   for (int i = -2; i < 1; i++)
   {
+
+    
     // Z+
     if (player->vel.z > 0 && veng_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE)
     {
@@ -295,7 +297,7 @@ static void player_move_fly(player_t *player)
 
   // Apply mov vel
   if (glm::length(player->vel) < 12.0f){
-    player->vel += (movedir * config.moveSpeed * 2.0f) * deltaTime;
+    player->vel += (movedir * config.moveSpeed * 5.0f) * deltaTime;
   }
 
   // Collision detection and response
@@ -364,24 +366,18 @@ void player_tick()
 }
 
 
-static int load_player(player_t* player)
+static void load_player(player_t* player)
 {
-  if (access("gamedata/savedata/player", F_OK) != 0){
-    printf("Failed to load player data, falling back to default\n");
-    return 0;
-  }
-
   FILE *file;
   file = fopen("gamedata/savedata/player", "rb");
-  assert(file != NULL);
+  if (file == NULL){
+    printf("Failed to load player save, falling back to default\n");
+    return;
+  }
 
-  // Read saved player data and take the pos
-  player_t buffer;
-  fread((void*)&buffer, sizeof(player_t), 1, file);
-  player->pos = buffer.pos;
+  fread((void*)player, sizeof(player_t), 1, file);
 
   fclose(file);
-  return 1;
 }
 
 static void save_player(player_t* player)
@@ -418,3 +414,5 @@ void player_terminate()
 {
   save_player(&player);
 }
+
+

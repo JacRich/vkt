@@ -22,10 +22,14 @@ using vec4 = glm::vec4;
 #define CHUNK_CROOT   64
 #define VOXELS_LENGTH 64 * 64 * 64
 
-#define REGION_CROOT       2   // Cube root
-#define REGION_WIDTH       128 // 2 * 64
-#define REGION_CHUNK_COUNT 8   // 2^3
-#define REGION_COUNT       27
+#define REGION_CHUNK_COUNT  8   // 2^3
+#define REGION_CHUNKS_CROOT 2   // Cube root
+#define REGION_WIDTH        128 // 2 * CHUNK_CROOT
+
+#define REGION_COUNT        27 // 3^3
+#define REGION_COUNT_CROOT  3  // Cube root
+
+#define CMESH_COUNT REGION_CHUNK_COUNT * REGION_COUNT // A mesh for each chunk in each regions
 
 extern uint sh_world, sh_cursor, sh_cross, sh_hud;
 
