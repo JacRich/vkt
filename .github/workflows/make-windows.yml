@@ -57,13 +57,8 @@ jobs:
     - name: Setup Bazel
       uses: abhinavsingh/setup-bazel@v3
       
-    - name: Use Bazel (Windows only)
-      if: matrix.os == 'windows'
-      run: ./bazel.exe -h
-      
     - name: Bazel Clean (for clang)
-      if: matrix.os != 'windows'
-      run: bazel clean --expunge
+      run: ./bazel.exe clean --expunge
 
     - name: Build Windows
       run: make buildwin_msys
