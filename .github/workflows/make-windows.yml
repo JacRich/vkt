@@ -18,7 +18,6 @@ jobs:
         include:
           - { icon: '✅', sys: mingw64 }
           - { icon: '⚠️', sys: ucrt64  } # Experimental!
-          - { icon: '⚠️', sys: clang64 } # Experimental!
     name: ${{ matrix.icon }} ${{ matrix.sys }}
     defaults:
       run:
@@ -53,10 +52,6 @@ jobs:
 
     - name: Add to Path
       run: export PATH="mingw64/bin:$PATH"
-
-    - name: clang
-      if: matrix.sys == 'clang64'
-      run: alias g++='clang++'
 
     - name: Build Windows
       run: make buildwin_msys
