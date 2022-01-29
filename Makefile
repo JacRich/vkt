@@ -1,4 +1,3 @@
-# Makefile by Igor to Jac Rich
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
@@ -36,7 +35,8 @@ buildwin_msys:
 	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
-
+	@cp lib/glew32.dll bin/windows
+	@cp lib/libwinpthread-1.dll bin/windows
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 

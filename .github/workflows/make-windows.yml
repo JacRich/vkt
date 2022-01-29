@@ -51,7 +51,8 @@ jobs:
       run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm --noconfirm
 
     - name: Add to Path
-      run: export PATH="mingw64/bin:$PATH"
+      run: |
+        export PATH="mingw64/bin:$PATH"
 
     - name: Build Windows
       run: make buildwin_msys
