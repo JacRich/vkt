@@ -32,7 +32,7 @@ buildwin_msys:
 	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
 
-	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME) -static
+	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
 	@cp lib/glew32.dll bin/windows
