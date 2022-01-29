@@ -35,7 +35,7 @@ buildwin_msys:
 	@if [ -d "bin\windows" ]; then \
             rm -r "bin\windows"; \
         fi \
-	@mkdir bin\windows
+	@mkdir "bin\windows"
 	g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 
 	@xcopy assets\ "bin\windows\" /E/H/C/I
