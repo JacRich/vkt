@@ -36,6 +36,7 @@ buildwin_msys:
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
 	@cp lib/glew32.dll bin/windows
+	@cp lib/libwinpthread-1.dll bin/windows
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
