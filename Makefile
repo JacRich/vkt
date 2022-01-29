@@ -45,8 +45,8 @@ all: buildlinux buildwin
 # if on windows, cd to bin/windows/ and run ./$(EXECUTABLE_NAME).exe executable.
 ifeq ($(OS),Windows_NT)
 run:
-	@cd bin/windows/ && $(EXECUTABLE_NAME).exe
-
+	@echo "Running on Windows"
+	@cd bin/windows/; ./$(EXECUTABLE_NAME).exe
 else
 run:
 	@echo "Running on Linux"
