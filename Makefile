@@ -27,7 +27,6 @@ buildwin:
 	x86_64-w64-mingw32-g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows
-	@cp lib/glew32.dll bin/windows
 
 # Command for building to windows from windows (MSYS2)
 buildwin_msys:
