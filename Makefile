@@ -1,9 +1,8 @@
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
-LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm 
-LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608
-# -lglew32
+LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
+LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608 -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic
 objects = $(wildcard src/*.cpp)
 objectsWin = headers/GL/glew.c
 
@@ -37,7 +36,7 @@ buildwin_msys:
 	g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
-	@cp lib/libwinpthread-1.dll bin/windows
+
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
