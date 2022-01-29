@@ -51,7 +51,10 @@ jobs:
       run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm --noconfirm
 
     - name: Add to Path
-      run: export PATH="mingw64/bin:$PATH"
+      run: |
+        export PATH="mingw64/bin:$PATH"
+        pacman -Fsy "libwinpthread-1.dll"
+        pacman -S mingw64/mingw-w64-x86_64-libwinpthread-git
 
     - name: Build Windows
       run: make buildwin_msys
