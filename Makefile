@@ -34,14 +34,16 @@ buildwin_msys:
 	@echo "Compiling for Windows"
 	@if [ -d "bin\windows" ]; then \
             rm -r "bin\windows"; \
+	    mkdir "bin\windows"; \
+	    g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME); \
+	    xcopy assets\ "bin\windows\" /E/H/C/I; \
+	    echo "--------------------------------"; \
+	else \
+	    mkdir "bin\windows"; \
+	    g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME); \
+	    xcopy assets\ "bin\windows\" /E/H/C/I; \
+	    echo "--------------------------------"; \
         fi \
-	mkdir "bin\windows"
-	g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
-
-	@xcopy assets\ "bin\windows\" /E/H/C/I
-	
-	
-	@echo "--------------------------------"
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
