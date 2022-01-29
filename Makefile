@@ -32,7 +32,7 @@ buildwin:
 buildwin_msys:
 	@echo "--------------------------------"
 	@echo "Compiling for Windows"
-	@if exist "bin\windows" rmdir /S "bin\windows"
+	@if exist "bin\windows" rmdir /S "bin\windows" fi
 	@mkdir bin\windows
 	g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 
