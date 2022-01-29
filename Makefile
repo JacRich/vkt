@@ -1,4 +1,3 @@
-# Makefile by Igor to Jac Rich
 # Below are some variables.
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
@@ -30,13 +29,12 @@ buildwin:
 
 # Command for building to windows from windows (MSYS2)
 buildwin_msys:
-	@echo "--------------------------------"
-	@echo "Compiling for Windows"
-	@if [ -a "bin\windows" ]; then rm -rf "bin\windows"; fi;
-	@mkdir -p bin\windows
-	g++ $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
-	@xcopy assets\ bin\windows\ /E/H/C/I
-	@echo "--------------------------------"
+	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
+	@mkdir -p bin/windows
+
+	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
+	@cp -r assets/* bin/windows/
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
