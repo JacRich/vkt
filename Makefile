@@ -30,16 +30,13 @@ buildwin:
 
 # Command for building to windows from windows (MSYS2)
 buildwin_msys:
-	@echo "--------------------------------"
-	@echo "Compiling for Windows"
-	@if exist "bin\windows" rmdir /S "bin\windows"
-	@mkdir bin\windows
-	g++  $(objects) -g $(CPPARAMS) -g $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
+	@mkdir -p bin/windows
 
-	@xcopy assets\ "bin\windows\" /E/H/C/I
-	
-	
-	@echo "--------------------------------"
+	g++ $(objects) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	@echo "Copying assets..."
+	@cp -r assets/* bin/windows/
+
 # if more make Linux build commands are made for other platforms, add them here, this will run them all.
 all: buildlinux buildwin
 
@@ -48,8 +45,8 @@ all: buildlinux buildwin
 # if on windows, cd to bin/windows/ and run ./$(EXECUTABLE_NAME).exe executable.
 ifeq ($(OS),Windows_NT)
 run:
-	@cd bin/windows/ && $(EXECUTABLE_NAME).exe
-
+	@echo "Running on Windows"
+	@cd bin/windows/; ./$(EXECUTABLE_NAME).exe
 else
 run:
 	@echo "Running on Linux"
