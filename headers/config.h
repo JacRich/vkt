@@ -15,7 +15,7 @@ struct config_t
   float looksens = 0.05f;
   float renderdist = 32.0f * 8.0f;
 
-  float moveSpeed = 80.0f;
+  float moveSpeed = 60.0f;
   float friction  = 12.0f;
 
   vec spawnpos = {0,0,0};

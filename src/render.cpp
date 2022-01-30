@@ -6,6 +6,7 @@
 #include "region.h"
 #include "config.h"
 #include "texture.h"
+#include "torch.h"
 
 #include <string>
 #include <thread>
@@ -15,15 +16,39 @@ GLFWwindow* window;
 crosshair_t crosshair;
 
 #define MAX_MESHES 20
-mesh_t meshes[MAX_MESHES]; int meshcount = 0;
+mesh_t meshes[MAX_MESHES]; int mesh_count = 0;
+
+#define MAX_LIGHTS 10
+light_t lights[MAX_LIGHTS]; int light_count = 0;
+
 
 shader_t  sh_world, sh_cursor, sh_cross, sh_hud;
 texture_t tex_atlas;
-ubo_t     ubo_view, ubo_torch, ubo_fullbrighttoggle;
+ubo_t     ubo_view, ubo_lights, ubo_fullbright;
 view_t    worldview;
 
 static std::thread thread; static bool thread_active = true;
 
+
+light_t* render_add_light(vec pos)
+{
+  if(light_count >= MAX_LIGHTS){
+    return NULL;
+  }
+  lights[light_count].pos = vec_to_vec4(pos);
+  light_count++;
+  return &lights[light_count - 1];
+}
+
+mesh_t* render_addmesh()
+{
+  if(mesh_count >= MAX_MESHES){
+    printf("Over Max Meshes!\n");
+    return NULL;
+  }  
+  mesh_count++;
+  return &meshes[mesh_count-1];
+}
 
 static void draw_mesh(mesh_t* mesh)
 {
@@ -67,30 +92,21 @@ static void draw_cmeshes()
   }
 }
 
-static void ubo_make(ubo_t* ubo, uint size, uint binding) 
+static ubo_t ubo_make(uint size, uint binding) 
 {
-  ubo->size = size;
-  glGenBuffers(1, &ubo->handle);
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo->handle);
-  glBufferData(GL_UNIFORM_BUFFER, ubo->size, (const void*)0, GL_DYNAMIC_DRAW);
-  glBindBufferBase(GL_UNIFORM_BUFFER, binding, ubo->handle);
+  ubo_t ubo;
+  ubo.size = size;
+  glGenBuffers(1, &ubo.handle);
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo.handle);
+  glBufferData(GL_UNIFORM_BUFFER, ubo.size, (const void*)0, GL_DYNAMIC_DRAW);
+  glBindBufferBase(GL_UNIFORM_BUFFER, binding, ubo.handle);
+  return ubo;
 }
 
 static void on_resize(GLFWwindow* window, int width, int height) 
 {
   glViewport(0, 0, width, height);
 }
-
-void render_addmesh(mesh_t** mesh)
-{
-  if(meshcount > MAX_MESHES){
-    printf("Over Max Meshes!\n");
-    return;
-  }
-  *mesh = &meshes[meshcount];
-  meshcount++;
-}
-
 
 static void tick_build_cmeshes()
 {
@@ -148,7 +164,6 @@ void render_attach_cmeshes(region_t regions[REGION_COUNT])
 
 
 
-
 void render_init()
 {
   if(glfwInit() != GLFW_TRUE) { 
@@ -163,14 +178,7 @@ void render_init()
   window = glfwCreateWindow(config.width, config.height, "vkt", NULL, NULL);
   
   if(window == NULL) { 
-    printf("GLFW failed to create window with code: ");
-    int code = glfwGetError(NULL);
-    printf("%d\n", code);
-    if (code == 65543) {
-       printf("GLFW_VERSION_UNAVAILABLE: The requested OpenGL or OpenGL ES version (including any requested context or framebuffer hints) is not available on this machine.\n");
-    } else if (code == 65540) {
-       printf("GLFW_INVALID_VALUE: One of the arguments to the function was an invalid value, for example requesting a non-existent OpenGL or OpenGL ES version like 2.7.\n");
-    }
+    printf("GLFW failed to create window\n");
     exit(0); 
   }
   glfwMakeContextCurrent(window);
@@ -199,10 +207,11 @@ void render_init()
 
   texture_make(&tex_atlas, "gamedata/las.jpg");
   
-  ubo_make(&ubo_view , 128, 0);
-  ubo_make(&ubo_torch, 32 * 2, 1);
-  ubo_make(&ubo_fullbrighttoggle, 16, 2);
 
+  ubo_view       = ubo_make(128, 0);
+  ubo_lights     = ubo_make(32 * 10, 1);
+  ubo_fullbright = ubo_make(16, 2);
+  
    
   glViewport(0,0, config.width, config.height);
 
@@ -218,8 +227,6 @@ void render_init()
 }
 
 
-
-
 void render_tick()
 {
   //glViewport(0,0, config.width, config.height);
@@ -229,8 +236,8 @@ void render_tick()
   tick_send_cmeshes();
   draw_cmeshes();
 
-  for(int i = 0; i < meshcount; i++){
-    draw_mesh(&meshes[i]);
+  for(int i = 0; i < MAX_MESHES; i++){
+    draw_mesh(&meshes[i]);  
   }
 
   worldview.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
@@ -239,12 +246,11 @@ void render_tick()
   glBindBuffer(GL_UNIFORM_BUFFER, ubo_view.handle);
   glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(worldview), &worldview);
 
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo_fullbrighttoggle.handle);
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo_fullbright.handle);
   glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(config.fullbright), &config.fullbright);
 
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo_torch.handle);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(vec), &player.pos);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)16, sizeof(vec), &player.lightColor);
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo_lights.handle);
+  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(lights), lights);
 
   glfwSwapBuffers   (window);
   glfwSetWindowTitle(window, ("FPS: " + std::to_string(1.0 / deltaTime)).c_str());

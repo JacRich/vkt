@@ -29,7 +29,8 @@ using vec4 = glm::vec4;
 #define REGION_COUNT        27 // 3^3
 #define REGION_COUNT_CROOT  3  // Cube root
 
-#define CMESH_COUNT REGION_CHUNK_COUNT * REGION_COUNT // A mesh for each chunk in each regions
+#define CMESH_COUNT REGION_CHUNK_COUNT * REGION_COUNT // A mesh for each chunk in each region
+
 
 extern uint sh_world, sh_cursor, sh_cross, sh_hud;
 
@@ -38,6 +39,7 @@ extern unsigned long  framecount;
 extern float gameTime;
 
 extern GLFWwindow* window;
+
 
 
 #endif

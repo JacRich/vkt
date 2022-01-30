@@ -10,7 +10,7 @@ void crosshair_init(crosshair_t* crosshair, float width)
     0.0f, width
   };
 
-  render_addmesh(&crosshair->mesh);
+  crosshair->mesh = render_addmesh();
   crosshair->mesh->drawflags = DF_VIS;
   
   crosshair->mesh->shader = sh_cross;

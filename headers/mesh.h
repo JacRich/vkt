@@ -15,13 +15,12 @@ struct mesh_t
   uint vertcount = 0;
   shader_t shader;
 
-  vec  pos;
-  vec  scale;
+  vec  pos  ;
+  vec  scale = {1.0f,1.0f,1.0f};
   vec4 color = vec4{1.5f, 0.2f, 0.5f, 1.0f};
   int  customAttrib = 1;
 };
 
 mat4 mesh_makematrix(mesh_t* mesh);
-
 
 #endif

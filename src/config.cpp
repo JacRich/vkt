@@ -10,14 +10,13 @@ config_key_t keys;
 
 static void load_config(config_t* config) 
 {
-  if(access("config", F_OK) != 0){      
+	FILE* file = fopen("config", "r");
+  if(file == NULL){
     printf("%s\n", "Failed to load config, falling back to default");
     return;
   }
-
-	FILE *file = fopen("config", "r");
+  
   char linebuf[100];
-
   while(!feof(file)) 
 	{
     fgets(linebuf, 100, file);

@@ -138,16 +138,10 @@ void cursor_setcolor(cursor_t* cursor, vec4 color)
   cursor->mesh->color = color;
 }
 
-
-void cursor_tick()
-{
-
-}
-
 void cursor_init(cursor_t* cursor)
 {
-  render_addmesh(&cursor->mesh);
-  
+  cursor->mesh = render_addmesh();
+
   // Set mesh params
   cursor->mesh->shader = sh_cursor;
   cursor->mesh->vertcount = 48;

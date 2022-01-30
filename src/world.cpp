@@ -4,20 +4,23 @@
 #include "cursor.h"
 #include "render.h"
 #include "ivec.h"
-#include "entity.h"
 #include "config.h"
+#include "thinker.h"
+#include "phys.h"
 
 float lastTime, deltaTime;
 unsigned long  framecount;
 float gameTime = 0.0f;
 
 int main()
-{ 
+{
   // The order matters! Do not touch!
   config_init();
-  render_init(); 
+  render_init();
   player_init();
   veng_init  ();
+  phys_init  ();
+
  
   while(!glfwWindowShouldClose(window))
   {
@@ -25,9 +28,11 @@ int main()
     deltaTime = time - lastTime;
     lastTime  = time;
     
-    player_tick();
-    render_tick();
-    veng_tick  ();
+    player_tick ();
+    render_tick ();
+    veng_tick   ();
+    thinker_tick();
+    phys_tick   ();
     framecount++;
     gameTime += deltaTime;
   }

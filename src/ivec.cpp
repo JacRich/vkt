@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include "ivec.h"
 
+vec vec4_to_vec(vec4 ass)
+{
+  return{ass.x, ass.y, ass.z};
+}
+
+vec4 vec_to_vec4(vec ass)
+{
+  return{ass.x, ass.y, ass.z, 1.0f};
+}
 
 ivec region_cord(vec worldpos)
 {

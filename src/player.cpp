@@ -3,44 +3,53 @@
 #include <sys/unistd.h>
 #include "globaldef.h"
 
+#include "torch.h"
 #include "player.h"
 #include "veng.h"
 #include "perlin.h"
 #include "config.h"
+#include "phys.h"
 
 player_t player;
+cursor_t cursor_single, cursor_range; 
 double lastX, lastY;
-cursor_t cursor, cursorRange; 
 
+torch_t torch;
+
+
+static void inputid(int key)
+{
+  // Someome who is better at coding plz clean this up
+  static char ibuffer[3];
+  static char buffer [3];
+  static int  size = 0;
+  if(glfwGetKey(window, keys.input_id)){
+    if (key >= GLFW_KEY_0 && key <= GLFW_KEY_9){
+      int inputNum = key - GLFW_KEY_0;
+      ibuffer[size] = inputNum;
+      size++;
+      if(size == 3){
+        for (int i = 0; i < 3; i++){
+          sprintf(&buffer[i], "%i", ibuffer[i]);
+        }
+        long number = strtol(buffer, NULL, 10);
+        player.active = (uchar)number;
+        size = 0;
+      }
+    }
+    return;
+  }
+  else{
+    size = 0;
+  }
+}
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
   if (action != GLFW_PRESS){
     return;
   }
-  
-  {// Allow typing in blockIDs while holding TAB
-    static char ibuffer[3];
-    static char buffer [3];
-    static int  size = 0;
-    if(glfwGetKey(window, keys.input_id)){
-      if (key >= GLFW_KEY_0 && key <= GLFW_KEY_9){
-        int inputNum = key - GLFW_KEY_0;
-        ibuffer[size] = inputNum;
-        size++;
-        if(size == 3){
-          for (int i = 0; i < 3; i++){
-            sprintf(&buffer[i], "%i", ibuffer[i]);
-          }
-          long number = strtol(buffer, NULL, 10);
-          player.active = (uchar)number;
-          size = 0;
-        }
-      }
-      return;
-    }
-    else{size = 0;}
-  }
+  inputid(key);
 
   // Switch flying / walking
   if (key == keys.switchmov){
@@ -51,12 +60,12 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
     glfwSetWindowShouldClose(window, GLFW_TRUE);
   }
 
-  if(key == keys.jump && player.grounded){
-    player.vel += vec{0, 6, 0};
+  if(key == GLFW_KEY_HOME){
+    torch.fuel = torch.lifetime;
   }
 
-  if(key == GLFW_KEY_HOME){
-    player.pos = {0.0f,0.0f,0.0f};
+  if(key == keys.jump && player.grounded){
+    player.vel += vec{0, 6, 0};
   }
 
   if(key == keys.im_blocks){
@@ -100,10 +109,10 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 static void ms_scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {
   if (yoffset > 0){
-    cursor_grow(&cursorRange);
+    cursor_grow(&cursor_range);
   }
   else{
-    cursor_shrink(&cursorRange);
+    cursor_shrink(&cursor_range);
   }
 }
 
@@ -117,6 +126,12 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   if (button == GLFW_MOUSE_BUTTON_MIDDLE){
     player.active = *hit.voxel;
   }
+  if (button == GLFW_MOUSE_BUTTON_4){
+    render_add_light(hit.posLast);
+    coll_sphere_t* collider = phys_add_collider();
+    collider->pos = hit.posLast;
+  }
+  
 
   if (button == GLFW_MOUSE_BUTTON_RIGHT)
   {
@@ -127,11 +142,11 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
       break;
 
       case (IM_BLOCKS_RANGE_FILL):
-      veng_change_withcursor(&cursorRange, player.active, HIT_FALSE);
+      veng_change_withcursor(&cursor_range, player.active, HIT_FALSE);
       break;
 
       case (IM_BLOCKS_RANGE_REPLACE):
-      veng_change_withcursor(&cursorRange, player.active, HIT_TRUE);
+      veng_change_withcursor(&cursor_range, player.active, HIT_TRUE);
       break;
     }
   }
@@ -145,11 +160,11 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
       break;
 
       case (IM_BLOCKS_RANGE_FILL):
-      veng_change_withcursor(&cursorRange, 0, HIT_TRUE);
+      veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
       break;
 
       case (IM_BLOCKS_RANGE_REPLACE):
-      veng_change_withcursor(&cursorRange, 0, HIT_TRUE);
+      veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
       break;
     }
   }
@@ -190,8 +205,6 @@ static vec make_clip(player_t *player)
 
   for (int i = -2; i < 1; i++)
   {
-
-    
     // Z+
     if (player->vel.z > 0 && veng_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE)
     {
@@ -241,14 +254,12 @@ static vec make_clip(player_t *player)
   // Y-
   if (player->vel.y < 0 && veng_find_voxel(player->pos + vec{0.0f, -3.0f, 0.0f}).state == HIT_TRUE)
   {
-    if (player->pos.y - trunc(player->pos.y) < marginNeg)
-    {
+    if (player->pos.y - trunc(player->pos.y) < marginNeg){
       clipVector.y = 0;
       player->grounded = true;
     }
   }
-  else
-  {
+  else{
     player->grounded = false;
   }
 
@@ -297,7 +308,7 @@ static void player_move_fly(player_t *player)
 
   // Apply mov vel
   if (glm::length(player->vel) < 12.0f){
-    player->vel += (movedir * config.moveSpeed * 5.0f) * deltaTime;
+    player->vel += (movedir * 120.0f) * deltaTime;
   }
 
   // Collision detection and response
@@ -316,43 +327,41 @@ static void move_cursors()
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if(hit.state != HIT_TRUE){
-    cursor.mesh->drawflags      = DF_DEPTH_TEST;
-    cursorRange.mesh->drawflags = DF_DEPTH_TEST;
+    cursor_single.mesh->drawflags = DF_DEPTH_TEST;
+    cursor_range.mesh->drawflags  = DF_DEPTH_TEST;
     return;
   }
-  cursor_embed (&cursor, hit);
-  cursor_center(&cursorRange, hit);
+  cursor_embed (&cursor_single, hit);
+  cursor_center(&cursor_range, hit);
 
   switch (player.inputMode)
   {
     case IM_BLOCKS:
-      cursor.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursorRange.mesh->drawflags = DF_DEPTH_TEST;
-      cursor_setcolor(&cursor, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursorRange, {0.8f, 0.1f, 0.5f, 1.0f});
+      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+      cursor_range.mesh->drawflags = DF_DEPTH_TEST;
+      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
+      cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
     break;
 
     case IM_BLOCKS_RANGE_FILL:
-      cursor.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursorRange.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_setcolor(&cursor, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursorRange, {0.9f, 0.1f, 0.05f, 1.0f});
+      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+      cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
+      cursor_setcolor(&cursor_range, {0.9f, 0.1f, 0.05f, 1.0f});
     break;
 
     case IM_BLOCKS_RANGE_REPLACE:
-      cursor.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursorRange.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_setcolor(&cursor, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursorRange, {0.8f, 0.1f, 0.5f, 1.0f});
+      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+      cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
+      cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
     break;
   }
 }
 
 void player_tick()
 {
-  float perlin = perlin_sampleOctave(gameTime, gameTime, gameTime,  0.35, 20);
-  float offset = perlin * 0.35f;
-  player.lightColor = vec{1.0f, 0.7f, 0.5f} + offset;
+  torch.light->pos = vec_to_vec4(player.pos);
 
   if(player.editor){
     player_move_fly(&player);
@@ -374,8 +383,9 @@ static void load_player(player_t* player)
     printf("Failed to load player save, falling back to default\n");
     return;
   }
-
-  fread((void*)player, sizeof(player_t), 1, file);
+  player_t buff;
+  fread((void*)&buff, sizeof(player_t), 1, file);
+  player->pos = buff.pos;
 
   fclose(file);
 }
@@ -393,14 +403,14 @@ static void save_player(player_t* player)
 void player_init()
 {
   load_player(&player);
-  
+  torch_init (&torch);
+
+  cursor_init(&cursor_single);
+  cursor_range.size = 5.0f;
+  cursor_init(&cursor_range);
+
+
   glfwGetCursorPos(window, &lastX, &lastY);
-
-  cursor_init(&cursor);
-  cursorRange.size = 5.0f;
-  cursor_init(&cursorRange);
-  cursorRange.size = 5.0f;
-
   // Grab cursor
   //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); 
 

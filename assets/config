@@ -3,7 +3,7 @@ height = 720
 
 fov = 90.0
 looksens = 0.05
-movespeed = 80.0
+movespeed = 60.0
 renderdist = 150.0
 friction = 12.0
 

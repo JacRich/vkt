@@ -5,6 +5,7 @@
 #include "cursor.h"
 #include "region.h"
 #include "player.h"
+#include "light.h"
 
 struct ubo_t
 {
@@ -18,7 +19,9 @@ struct view_t
 };
 
 void render_attach_cmeshes(region_t regions[REGION_COUNT]);
-void render_addmesh(mesh_t** mesh);
+
+mesh_t*  render_addmesh();
+light_t* render_add_light(vec pos);
 
 void render_init();
 void render_tick();

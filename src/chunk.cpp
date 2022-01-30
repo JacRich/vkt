@@ -13,7 +13,7 @@ void chunk_fill_perlin(chunk_t* chunk)
                                     (chunk->pos.y + index.y + 500) / samplingScale, 
                                     (chunk->pos.z + index.z + 500) / samplingScale);
     
-    if(perlinSample > 0.55){
+    if(perlinSample > 0.40){
       chunk->voxels[index.x][index.y][index.z] = 0;
     }
     else {

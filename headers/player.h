@@ -2,7 +2,6 @@
 #define PLAYER_H
 #include "globaldef.h"
 #include "ivec.h"
-#include "entity.h"
 
 enum INPUT_MODES
 {
@@ -41,6 +40,7 @@ struct player_t
   bool grounded = false;
 
   vec lightColor = vec{1.0f, 0.45f, 0.05f};
+  float torchTime = 30.0f;
 };
 
 extern player_t player;

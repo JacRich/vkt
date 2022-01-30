@@ -5,10 +5,10 @@
 
 region_t regions[REGION_COUNT];
 ivec     r_cords[REGION_COUNT];
-
-ivec r_cord, r_cordlast;
+ivec r_cord_now, r_cord_last;
 
 static std::thread thread;
+
 
 chunk_t* veng_find_chunk(vec worldpos)
 {
@@ -205,7 +205,7 @@ void veng_change_voxel(vhit voxel, int pickmode, uchar value)
 }
 
 
-bool is_region_inrange(region_t* region)
+static bool is_region_inrange(region_t* region)
 {
   for(int i = 0; i < REGION_COUNT; i++){
     if(region->cord == r_cords[i]){
@@ -215,7 +215,7 @@ bool is_region_inrange(region_t* region)
   return false;
 }
 
-bool is_cord_filled(ivec cord)
+static bool is_cord_filled(ivec cord)
 {
   for(int i = 0; i < REGION_COUNT; i++){
     if(regions[i].cord == cord){
@@ -225,7 +225,7 @@ bool is_cord_filled(ivec cord)
   return false;
 }
 
-void update_region()
+static void update_region()
 {
   for(int i = 0; i < REGION_COUNT; i++)
   {
@@ -242,10 +242,9 @@ void update_region()
   }
 }
 
-void tick_update_regions()
+static void tick_update_regions()
 {
-  while(!glfwWindowShouldClose(window))
-  {
+  while(!glfwWindowShouldClose(window)){
     update_region();
   }
 }
@@ -253,14 +252,13 @@ void tick_update_regions()
 
 void veng_init()
 {
-  // We want r_cord to be offset by 32 so that regions will update before we pass their borders
-  r_cord = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
-  r_cordlast = r_cord;
+  r_cord_now  = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_last = r_cord_now;
 
   // Build a 3x3x3 area of regions with the player in the center
   for(int i = 0; i < REGION_COUNT; i++){
-    ivec rcord = index3d(i, REGION_COUNT_CROOT);
-    ivec transformed_rcord = region_cord(player.pos) + rcord - ivec{REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2};
+    ivec r_cord = index3d(i, REGION_COUNT_CROOT);
+    ivec transformed_rcord = region_cord(player.pos) + r_cord - ivec{REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2};
 
     regions[i] = region_load(transformed_rcord);
     r_cords[i] = transformed_rcord;
@@ -280,11 +278,11 @@ void transform_cords(ivec dir)
 
 void veng_tick()
 {
-  r_cord = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
-  if(r_cord != r_cordlast){
-    transform_cords(r_cord - r_cordlast);
+  r_cord_now = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  if(r_cord_now != r_cord_last){
+    transform_cords(r_cord_now - r_cord_last);
   }
-  r_cordlast = r_cord;
+  r_cord_last = r_cord_now;
 }
 
 void veng_terminate()
