@@ -12,13 +12,65 @@
 #include "config.h"
 
 
-
 player_t player;
 cursor_t cursor_single, cursor_range; 
 double lastX, lastY;
 
 torch_t torch;
 
+
+static void destroy()
+{
+  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  if (hit.state != HIT_TRUE){
+    return;
+  }
+
+  switch (player.inputMode)
+  {
+    case (IM_BLOCKS):
+    veng_change_voxel(hit, PICK_HIT, 0);
+    break;
+
+    default:
+    veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
+    break;
+  }
+}
+
+static void place()
+{
+  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  if (hit.state != HIT_TRUE){
+    return;
+  }
+
+  switch (player.inputMode)
+  {
+    case (IM_BLOCKS):   
+    veng_change_voxel(hit, PICK_NORMAL, player.active);
+    break;
+
+    case (IM_BLOCKS_RANGE_FILL):
+    veng_change_withcursor(&cursor_range, player.active, HIT_FALSE);
+    break;
+
+    case (IM_BLOCKS_RANGE_REPLACE):
+    veng_change_withcursor(&cursor_range, player.active, HIT_TRUE);
+    break;
+  }
+  
+}
+
+static void pick()
+{
+  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  if (hit.state != HIT_TRUE){
+    return;
+  }
+
+  player.active = *hit.voxel;
+}
 
 static void inputid(int key)
 {
@@ -124,55 +176,24 @@ static void ms_scroll_callback(GLFWwindow *window, double xoffset, double yoffse
 static void ms_button_callback(GLFWwindow *window, int button, int action, int mods)
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if (action != GLFW_PRESS || hit.state != HIT_TRUE){
+  if (action != GLFW_PRESS){
     return;
   }
 
-  if (button == mouse.pickblock){
-    player.active = *hit.voxel;
-  }
   if (button == GLFW_MOUSE_BUTTON_4){
     render_add_light(hit.posLast);
     
     coll_sphere_t* collider = phys_add_collider();
     collider->pos = hit.posLast;
   }
-  
-
-  if (button == mouse.place)
-  {
-    switch (player.inputMode)
-    {
-      case (IM_BLOCKS):   
-      veng_change_voxel(hit, PICK_NORMAL, player.active);
-      break;
-
-      case (IM_BLOCKS_RANGE_FILL):
-      veng_change_withcursor(&cursor_range, player.active, HIT_FALSE);
-      break;
-
-      case (IM_BLOCKS_RANGE_REPLACE):
-      veng_change_withcursor(&cursor_range, player.active, HIT_TRUE);
-      break;
-    }
+  if (button == mouse.place){
+    place();
   }
-
-  if (button == mouse.destroy)
-  {
-    switch (player.inputMode)
-    {
-      case (IM_BLOCKS):
-      veng_change_voxel(hit, PICK_HIT, 0);
-      break;
-
-      case (IM_BLOCKS_RANGE_FILL):
-      veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
-      break;
-
-      case (IM_BLOCKS_RANGE_REPLACE):
-      veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
-      break;
-    }
+  if (button == mouse.destroy){
+    destroy();
+  }  
+  if (button == mouse.pickblock){
+    pick();
   }
 }
 
@@ -203,7 +224,7 @@ static void ms_pos_callback(GLFWwindow* window, double xpos, double ypos)
 }
 
 
-static vec make_clip(player_t *player)
+static vec make_clip(player_t* player)
 {
   vec clipVector = {1, 1, 1};
   float marginNeg = 0.4f;
@@ -212,54 +233,43 @@ static vec make_clip(player_t *player)
   for (int i = -2; i < 1; i++)
   {
     // Z+
-    if (player->vel.z > 0 && veng_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE)
-    {
-      if (player->pos.z - trunc(player->pos.z) > marginPos)
-      {
+    if (player->vel.z > 0 && veng_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE){
+      if (player->pos.z - trunc(player->pos.z) > marginPos){
         clipVector.z = 0;
       }
     }
 
     // Z-
-    if (player->vel.z < 0 && veng_find_voxel(player->pos + vec{0.0f, i, -1.0f}).state == HIT_TRUE)
-    {
-      if (player->pos.z - trunc(player->pos.z) < marginNeg)
-      {
+    if (player->vel.z < 0 && veng_find_voxel(player->pos + vec{0.0f, i, -1.0f}).state == HIT_TRUE){
+      if (player->pos.z - trunc(player->pos.z) < marginNeg){
         clipVector.z = 0;
       }
     }
 
     // X+
-    if (player->vel.x > 0 && veng_find_voxel(player->pos + vec{1.0f, i, 0.0f}).state == HIT_TRUE)
-    {
-      if (player->pos.x - trunc(player->pos.x) > marginPos)
-      {
+    if (player->vel.x > 0 && veng_find_voxel(player->pos + vec{1.0f, i, 0.0f}).state == HIT_TRUE){
+      if (player->pos.x - trunc(player->pos.x) > marginPos){
         clipVector.x = 0;
       }
     }
 
     // X-
-    if (player->vel.x < 0 && veng_find_voxel(player->pos + vec{-1.0f, i, 0.0f}).state == HIT_TRUE)
-    {
-      if (player->pos.x - trunc(player->pos.x) < marginNeg)
-      {
+    if (player->vel.x < 0 && veng_find_voxel(player->pos + vec{-1.0f, i, 0.0f}).state == HIT_TRUE){
+      if (player->pos.x - trunc(player->pos.x) < marginNeg){
         clipVector.x = 0;
       }
     }
   }
 
   // Y+
-  if (player->vel.y > 0 && veng_find_voxel(player->pos + vec{0.0f, 1.0f, 0.0f}).state == HIT_TRUE)
-  {
-    if (player->pos.y - trunc(player->pos.y) > marginPos)
-    {
+  if (player->vel.y > 0 && veng_find_voxel(player->pos + vec{0.0f, 1.0f, 0.0f}).state == HIT_TRUE){
+    if (player->pos.y - trunc(player->pos.y) > marginPos){
       clipVector.y = 0;
     }
   }
 
   // Y-
-  if (player->vel.y < 0 && veng_find_voxel(player->pos + vec{0.0f, -3.0f, 0.0f}).state == HIT_TRUE)
-  {
+  if (player->vel.y < 0 && veng_find_voxel(player->pos + vec{0.0f, -3.0f, 0.0f}).state == HIT_TRUE){
     if (player->pos.y - trunc(player->pos.y) < marginNeg){
       clipVector.y = 0;
       player->grounded = true;
@@ -331,7 +341,30 @@ static void player_move_fly(player_t *player)
 void player_tick()
 {
   glfwPollEvents();
+
+  // Truncated time in Millisecondss
+  int truncMS = truncf(gameTime * 1000);
+
+  static double destroy_timeHeld = 0.0;
+  if(glfwGetMouseButton(window, mouse.destroy)){
+    destroy_timeHeld += deltaTime;
+  }
+  else{ destroy_timeHeld = 0.0; }
+  if(destroy_timeHeld > 0.25 && (truncMS % 5) == 0){
+    destroy();
+  }
   
+
+  static double place_timeHeld = 0.0;
+  if(glfwGetMouseButton(window, mouse.place)){
+    place_timeHeld += deltaTime;
+  }
+  else{ place_timeHeld = 0.0; }
+  if(place_timeHeld > 0.25 && (truncMS % 5) == 0){ 
+    place();
+  }
+  
+
   torch.light->pos = vec_to_vec4(player.pos);
 
   if(player.editor){
@@ -340,16 +373,18 @@ void player_tick()
   else{
     player_move_walk(&player);
   }
+
+
   
   // Move Cursors
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if(hit.state != HIT_TRUE){
-    cursor_single.mesh->drawflags = DF_DEPTH_TEST;
-    cursor_range.mesh->drawflags  = DF_DEPTH_TEST;
+    cursor_single.mesh->drawflags = 0;
+    cursor_range.mesh->drawflags  = 0;
     return;
   }
   cursor_embed (&cursor_single, hit);
-  cursor_center(&cursor_range, hit);
+  cursor_center(&cursor_range, hit) ;
 
   if(player.inputMode == IM_BLOCKS){
     cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
@@ -395,6 +430,9 @@ void player_init()
   cursor_init(&cursor_single);
   cursor_range.size = 5.0f;
   cursor_init(&cursor_range);
+
+
+  printf("%i\n", glfwJoystickPresent(GLFW_JOYSTICK_1));
 
 
   glfwGetCursorPos(window, &lastX, &lastY);
