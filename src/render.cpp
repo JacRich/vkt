@@ -50,6 +50,17 @@ mesh_t* render_addmesh()
   return &meshes[mesh_count-1];
 }
 
+ubo_t ubo_make(uint size, uint binding) 
+{
+  ubo_t ubo;
+  ubo.size = size;
+  glGenBuffers(1, &ubo.handle);
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo.handle);
+  glBufferData(GL_UNIFORM_BUFFER, ubo.size, (const void*)0, GL_DYNAMIC_DRAW);
+  glBindBufferBase(GL_UNIFORM_BUFFER, binding, ubo.handle);
+  return ubo;
+}
+
 static void draw_mesh(mesh_t* mesh)
 {
   if(!(mesh->drawflags & DF_VIS)){
@@ -90,17 +101,6 @@ static void draw_cmeshes()
     glBindVertexArray(cmeshes[i].vao);
     glDrawArrays(GL_TRIANGLES, 0, cmeshes[i].vertcount);
   }
-}
-
-static ubo_t ubo_make(uint size, uint binding) 
-{
-  ubo_t ubo;
-  ubo.size = size;
-  glGenBuffers(1, &ubo.handle);
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo.handle);
-  glBufferData(GL_UNIFORM_BUFFER, ubo.size, (const void*)0, GL_DYNAMIC_DRAW);
-  glBindBufferBase(GL_UNIFORM_BUFFER, binding, ubo.handle);
-  return ubo;
 }
 
 static void on_resize(GLFWwindow* window, int width, int height) 
@@ -150,7 +150,7 @@ void render_attach_cmeshes(region_t regions[REGION_COUNT])
   int mesh = 0;
   for(int i = 0; i < REGION_COUNT; i++)
   {  
-    for(int j = 0; j < REGION_CHUNK_COUNT; j++)
+    for(int j = 0; j < REGION_CHUNKS_LENGTH; j++)
     {
       ivec chunkIndex = index3d(j, REGION_CHUNKS_CROOT);
       cmeshes[mesh].chunk = &regions[i].chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
@@ -161,8 +161,6 @@ void render_attach_cmeshes(region_t regions[REGION_COUNT])
 
   thread = std::thread(tick_build_cmeshes);
 }
-
-
 
 void render_init()
 {
@@ -198,26 +196,26 @@ void render_init()
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable   (GL_BLEND);
   
-  glLineWidth(2.0f);
-
-  shader_make(&sh_world , "gamedata/shaders/world.vert" , "gamedata/shaders/world.frag" );
-  shader_make(&sh_cursor, "gamedata/shaders/cursor.vert", "gamedata/shaders/cursor.frag");
-  shader_make(&sh_cross , "gamedata/shaders/cross.vert" , "gamedata/shaders/cross.frag" );
-  shader_make(&sh_hud   , "gamedata/shaders/hud.vert"   , "gamedata/shaders/hud.frag"   );
-
-  texture_make(&tex_atlas, "gamedata/las.jpg");
   
 
+  // Load Shaders
+  sh_world  = shader_make("gamedata/shaders/world.vert" , "gamedata/shaders/world.frag" );
+  sh_cursor = shader_make("gamedata/shaders/cursor.vert", "gamedata/shaders/cursor.frag");
+  sh_cross  = shader_make("gamedata/shaders/cross.vert" , "gamedata/shaders/cross.frag" );
+  sh_hud    = shader_make("gamedata/shaders/hud.vert"   , "gamedata/shaders/hud.frag"   );
+  // Load Textures
+  tex_atlas = texture_make("gamedata/las.jpg");
+  // Create Uniform Buffer Objects
   ubo_view       = ubo_make(128, 0);
-  ubo_lights     = ubo_make(32 * 10, 1);
+  ubo_lights     = ubo_make(32 * MAX_LIGHTS, 1);
   ubo_fullbright = ubo_make(16, 2);
-  
+
+  // Crosshair
+  glLineWidth(2.0f);
+  crosshair_init(&crosshair, 0.015f);
    
   glViewport(0,0, config.width, config.height);
-
   glfwSetFramebufferSizeCallback(window, on_resize);
-  
-  crosshair_init(&crosshair, 0.015f);
   
   // Init chunk meshes
   cmeshes = (cmesh_t*)malloc(sizeof(cmesh_t) * CMESH_COUNT);
@@ -225,7 +223,6 @@ void render_init()
     cmesh_init(&cmeshes[i]);
   }
 }
-
 
 void render_tick()
 {

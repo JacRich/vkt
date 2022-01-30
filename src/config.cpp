@@ -6,6 +6,7 @@
 
 config_t   config;
 config_key_t keys;
+config_mouse_t mouse;
 
 
 static void load_config(config_t* config) 
@@ -82,7 +83,7 @@ static void load_config(config_t* config)
 static void load_config_key(config_key_t* config)
 {
   if(access("config", F_OK) != 0){      
-    printf("%s\n", "Failed to load config, falling back to default");
+    printf("%s\n", "Failed to load key config, falling back to default");
     return;
   }
 
@@ -97,74 +98,94 @@ static void load_config_key(config_key_t* config)
       continue;
     }
 
-    int backward;
-    if (sscanf(linebuf, " backward = %i", &backward)){
-      config->backward = backward;
+    int buffer;
+    if (sscanf(linebuf, " backward = %i", &buffer)){
+      config->backward = buffer;
     }
 
-    int forward;
-    if (sscanf(linebuf, " forward = %i", &forward)){
-      config->forward = forward;
+    if (sscanf(linebuf, " forward = %i", &buffer)){
+      config->forward = buffer;
     }
 
-    int im_blocks;
-    if (sscanf(linebuf, " im_blocks = %i", &im_blocks)){
-      config->im_blocks = im_blocks;
+    if (sscanf(linebuf, " im_blocks = %i", &buffer)){
+      config->im_blocks = buffer;
     }
 
-    int im_range;
-    if (sscanf(linebuf, " im_range = %i", &im_range)){
-      config->im_range = im_range;
+    if (sscanf(linebuf, " im_range = %i", &buffer)){
+      config->im_range = buffer;
     }
 
-    int im_range_replace;
-    if (sscanf(linebuf, " im_range_replace = %i", &im_range_replace)){
-      config->im_range_replace = im_range_replace;
+    if (sscanf(linebuf, " im_range_replace = %i", &buffer)){
+      config->im_range_replace = buffer;
     }
 
-    int input_id;
-    if (sscanf(linebuf, " input_id = %i", &input_id)){
-      config->input_id = input_id;
+    if (sscanf(linebuf, " input_id = %i", &buffer)){
+      config->input_id = buffer;
     }
 
-    int jump;
-    if (sscanf(linebuf, " jump = %i", &jump)){
-      config->jump = jump;
+    if (sscanf(linebuf, " jump = %i", &buffer)){
+      config->jump = buffer;
     }
 
-    int left;
-    if (sscanf(linebuf, " left = %i", &left)){
-      config->left = left;
+    if (sscanf(linebuf, " left = %i", &buffer)){
+      config->left = buffer;
     }
 
-    int right;
-    if (sscanf(linebuf, " right = %i", &right)){
-      config->right = right;
+    if (sscanf(linebuf, " right = %i", &buffer)){
+      config->right = buffer;
     }
 
-    int toggle_coll;
-    if (sscanf(linebuf, " toggle_coll = %i", &toggle_coll)){
-      config->toggle_coll = toggle_coll;
+    if (sscanf(linebuf, " toggle_coll = %i", &buffer)){
+      config->toggle_coll = buffer;
     }
 
-    int toggle_cursor;
-    if (sscanf(linebuf, " toggle_cursor = %i", &toggle_cursor)){
-      config->toggle_cursor = toggle_cursor;
+    if (sscanf(linebuf, " toggle_cursor = %i", &buffer)){
+      config->toggle_cursor = buffer;
     }
 
-    int toggle_fullbright;
-    if (sscanf(linebuf, " toggle_fullbright = %i", &toggle_fullbright)){
-      config->toggle_fullbright = toggle_fullbright;
+    if (sscanf(linebuf, " toggle_fullbright = %i", &buffer)){
+      config->toggle_fullbright = buffer;
     }
 
-    int toggle_fullscreen;
-    if (sscanf(linebuf, " toggle_fullscreen = %i", &toggle_fullscreen)){
-      config->toggle_fullscreen = toggle_fullscreen;
+    if (sscanf(linebuf, " toggle_fullscreen = %i", &buffer)){
+      config->toggle_fullscreen = buffer;
     }
 
-    int switchmov;
-    if (sscanf(linebuf, " switchmov = %i", &switchmov)){
-      config->switchmov = switchmov;
+    if (sscanf(linebuf, " switchmov = %i", &buffer)){
+      config->switchmov = buffer;
+    }
+  }
+
+  fclose(file);
+}
+
+static void load_config_mouse(config_mouse_t* config)
+{
+  if(access("config", F_OK) != 0){      
+    printf("%s\n", "Failed to load mouse config, falling back to default");
+    return;
+  }
+
+	FILE *file = fopen("config_mouse", "r");
+  char linebuf[100];
+  
+  while(!feof(file)) 
+	{
+    fgets(linebuf, 100, file);
+    // Is line a comment or empty?
+    if (linebuf[0] == '#' || strlen(linebuf) < 4){
+      continue;
+    }
+
+    int buffer;
+    if (sscanf(linebuf, " place = %i", &buffer)){
+      config->place = buffer;
+    }
+    if (sscanf(linebuf, " destroy = %i", &buffer)){
+      config->destroy = buffer;
+    }
+    if (sscanf(linebuf, " pickblock = %i", &buffer)){
+      config->pickblock = buffer;
     }
   }
 
@@ -175,5 +196,6 @@ void config_init()
 {
   load_config(&config);
   load_config_key(&keys);
+  load_config_mouse(&mouse);
 }
 

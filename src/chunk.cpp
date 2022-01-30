@@ -24,14 +24,10 @@ void chunk_fill_perlin(chunk_t* chunk)
 
 void chunk_fill(chunk_t* chunk, uchar value)
 {   
-  for(int x = 0; x < CHUNK_CROOT; x++)
+  for(int i = 0; i < VOXELS_LENGTH; i++)
   {
-    for(int y = 0; y < CHUNK_CROOT; y++)
-    {
-      for(int z = 0; z < CHUNK_CROOT; z++)
-      {             
-        chunk->voxels[x][y][z] = value;            
-      }
-    }
+    ivec index = index3d(i, CHUNK_CROOT);
+
+    chunk->voxels[index.x][index.y][index.z] = value;
   }
 }

@@ -42,26 +42,28 @@ static void compile_shader(shader_t* handle, uint type, char const* source)
   }
 }
 
-void shader_make(shader_t* handle, char const* vertPath, char const* fragPath)
+shader_t shader_make(char const* vertPath, char const* fragPath)
 {
+  shader_t shader;
   char const* vertSource = load_source(vertPath);
   char const* fragSource = load_source(fragPath);
   
-  *handle = glCreateProgram();
+  shader = glCreateProgram();
   uint vs, fs;
   compile_shader(&vs, GL_VERTEX_SHADER  , vertSource);
   compile_shader(&fs, GL_FRAGMENT_SHADER, fragSource);
   free((void*)vertSource);
   free((void*)fragSource);
 
-  glAttachShader(*handle, vs);
-  glAttachShader(*handle, fs);
-  glLinkProgram (*handle);
+  glAttachShader(shader, vs);
+  glAttachShader(shader, fs);
+  glLinkProgram (shader);
 
-  glValidateProgram(*handle); // ERROR HANDLING IS FOR PUSS
+  glValidateProgram(shader); // ERROR HANDLING IS FOR PUSS
 
   glDeleteShader(vs);
   glDeleteShader(fs);
+  return shader;
 }
 
 void shader_setInt(shader_t handle, const char* name, int value)

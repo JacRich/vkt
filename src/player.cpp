@@ -3,12 +3,15 @@
 #include <sys/unistd.h>
 #include "globaldef.h"
 
+#include "phys.h"
+
 #include "torch.h"
 #include "player.h"
 #include "veng.h"
 #include "perlin.h"
 #include "config.h"
-#include "phys.h"
+
+
 
 player_t player;
 cursor_t cursor_single, cursor_range; 
@@ -74,10 +77,12 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   if(key == keys.im_range){
     player.inputMode = IM_BLOCKS_RANGE_FILL;
+    cursor_setcolor(&cursor_range, {0.9f, 0.1f, 0.05f, 1.0f});
   }
 
   if(key == keys.im_range_replace){
     player.inputMode = IM_BLOCKS_RANGE_REPLACE;
+    cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
   }
 
   if(key == keys.toggle_coll){
@@ -123,17 +128,18 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
     return;
   }
 
-  if (button == GLFW_MOUSE_BUTTON_MIDDLE){
+  if (button == mouse.pickblock){
     player.active = *hit.voxel;
   }
   if (button == GLFW_MOUSE_BUTTON_4){
     render_add_light(hit.posLast);
+    
     coll_sphere_t* collider = phys_add_collider();
     collider->pos = hit.posLast;
   }
   
 
-  if (button == GLFW_MOUSE_BUTTON_RIGHT)
+  if (button == mouse.place)
   {
     switch (player.inputMode)
     {
@@ -151,7 +157,7 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
     }
   }
 
-  if (button == GLFW_MOUSE_BUTTON_LEFT)
+  if (button == mouse.destroy)
   {
     switch (player.inputMode)
     {
@@ -322,45 +328,10 @@ static void player_move_fly(player_t *player)
   player->pos += player->vel * deltaTime;
 }
 
-
-static void move_cursors()
-{
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if(hit.state != HIT_TRUE){
-    cursor_single.mesh->drawflags = DF_DEPTH_TEST;
-    cursor_range.mesh->drawflags  = DF_DEPTH_TEST;
-    return;
-  }
-  cursor_embed (&cursor_single, hit);
-  cursor_center(&cursor_range, hit);
-
-  switch (player.inputMode)
-  {
-    case IM_BLOCKS:
-      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_range.mesh->drawflags = DF_DEPTH_TEST;
-      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
-    break;
-
-    case IM_BLOCKS_RANGE_FILL:
-      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursor_range, {0.9f, 0.1f, 0.05f, 1.0f});
-    break;
-
-    case IM_BLOCKS_RANGE_REPLACE:
-      cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-      cursor_setcolor(&cursor_single, {0.9f, 0.4f, 0.0f, 1.0f});
-      cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
-    break;
-  }
-}
-
 void player_tick()
 {
+  glfwPollEvents();
+  
   torch.light->pos = vec_to_vec4(player.pos);
 
   if(player.editor){
@@ -370,8 +341,24 @@ void player_tick()
     player_move_walk(&player);
   }
   
-  move_cursors();
-  glfwPollEvents();
+  // Move Cursors
+  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  if(hit.state != HIT_TRUE){
+    cursor_single.mesh->drawflags = DF_DEPTH_TEST;
+    cursor_range.mesh->drawflags  = DF_DEPTH_TEST;
+    return;
+  }
+  cursor_embed (&cursor_single, hit);
+  cursor_center(&cursor_range, hit);
+
+  if(player.inputMode == IM_BLOCKS){
+    cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+    cursor_range.mesh->drawflags = 0;
+  }
+  else{
+    cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+    cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+  }
 }
 
 

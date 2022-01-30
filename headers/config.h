@@ -43,8 +43,17 @@ struct config_key_t
   int input_id = GLFW_KEY_TAB;
 };
 
-extern config_t   config;
-extern config_key_t keys;
+struct config_mouse_t
+{
+  int place     = GLFW_MOUSE_BUTTON_2;
+  int destroy   = GLFW_MOUSE_BUTTON_1;
+  int pickblock = GLFW_MOUSE_BUTTON_3;
+
+};
+
+extern config_t       config;
+extern config_key_t   keys;
+extern config_mouse_t mouse;
 
 void config_init();
 

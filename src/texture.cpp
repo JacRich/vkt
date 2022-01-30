@@ -3,11 +3,12 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-void texture_make(texture_t* handle, char const* imagePath) 
+texture_t texture_make(char const* imagePath) 
 {
+  texture_t texture;
   glActiveTexture(GL_TEXTURE0);
-  glGenTextures(1, handle);
-  glBindTexture(GL_TEXTURE_2D, *handle);
+  glGenTextures(1, &texture);
+  glBindTexture(GL_TEXTURE_2D, texture);
 
   // Set the texture wrapping and filtering
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
@@ -26,4 +27,5 @@ void texture_make(texture_t* handle, char const* imagePath)
 
   stbi_image_free(data);
   glBindTexture(GL_TEXTURE_2D, 0);
+  return texture;
 }

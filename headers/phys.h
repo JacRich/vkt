@@ -1,7 +1,6 @@
 #ifndef PHYS_H
 #define PHYS_H
 #include "globaldef.h"
-#include "player.h"
 
 
 struct coll_sphere_t
@@ -14,7 +13,6 @@ void phys_init();
 void phys_tick();
 
 coll_sphere_t* phys_add_collider();
-
 
 
 #endif

@@ -35,7 +35,7 @@ void region_save(region_t *region)
   file = fopen(path, "wb");
 
   // Loop for chunks in region
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++)
+  for (int i = 0; i < REGION_CHUNKS_LENGTH; i++)
   {
     ivec chunkIndex = index3d(i, REGION_CHUNKS_CROOT);
     int writeTotalVoxels = 0;
@@ -114,7 +114,7 @@ region_t region_load(ivec cord)
   sector_t buffer;
 
   // Loop for chunks in region
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++)
+  for (int i = 0; i < REGION_CHUNKS_LENGTH; i++)
   {
     // Loop until we have uncompressed to VOXELS_LENGTH
     ivec chunkindex = index3d(i, REGION_CHUNKS_CROOT);
@@ -143,7 +143,7 @@ region_t region_load(ivec cord)
 
 void region_fill_value(region_t *region, uchar value)
 {
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++)
+  for (int i = 0; i < REGION_CHUNKS_LENGTH; i++)
   {
     ivec position = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z];
@@ -155,7 +155,7 @@ void region_fill_value(region_t *region, uchar value)
 
 void region_fill_perlin(region_t *region)
 {
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++)
+  for (int i = 0; i < REGION_CHUNKS_LENGTH; i++)
   {
     ivec position = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z];
@@ -171,7 +171,7 @@ void region_set_pos(region_t *region, ivec cord)
   region->cord = cord;
 
   // Set World pos of all chunks
-  for (int i = 0; i < REGION_CHUNK_COUNT; i++){
+  for (int i = 0; i < REGION_CHUNKS_LENGTH; i++){
     ivec position  = index3d(i, REGION_CHUNKS_CROOT);
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z]; 
 

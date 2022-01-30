@@ -1,0 +1,4 @@
+# Button codes: https://www.glfw.org/docs/latest/group__buttons.html
+place = 1
+destroy = 0
+pickblock = 2

@@ -4,6 +4,6 @@
 
 using texture_t = uint32_t;
 
-void texture_make(texture_t* handle, char const* imagePath);
+texture_t texture_make(char const* imagePath);
 
 #endif

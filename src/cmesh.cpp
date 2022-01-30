@@ -100,7 +100,7 @@ void cmesh_build(cmesh_t* mesh)
     }                                                                        
 
     // Y+
-    if(index.y == (CHUNK_CROOT - 1)) // Litteral "edge" case amirite haha
+    if(index.y == (CHUNK_CROOT - 1))
     {
       addFace(mesh, 0, voxelPos, value);
     }
