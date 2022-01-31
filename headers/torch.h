@@ -16,5 +16,5 @@ struct torch_t
 
 void torch_init(torch_t* torch);
 
-
+extern torch_t torch;
 #endif
