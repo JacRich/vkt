@@ -48,5 +48,6 @@ extern player_t player;
 void player_init();
 void player_tick();
 void player_terminate();
-
+void place();
+void destroy();
 #endif
