@@ -6,7 +6,7 @@
 #include "ivec.h"
 #include "config.h"
 #include "thinker.h"
-#include "phys.h"
+
 
 float lastTime, deltaTime;
 unsigned long  framecount;
@@ -19,8 +19,6 @@ int main()
   render_init();
   player_init();
   veng_init  ();
-  phys_init  ();
-
  
   while(!glfwWindowShouldClose(window))
   {
@@ -32,7 +30,6 @@ int main()
     render_tick ();
     veng_tick   ();
     thinker_tick();
-    phys_tick   ();
     framecount++;
     gameTime += deltaTime;
   }

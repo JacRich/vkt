@@ -3,21 +3,20 @@
 #include <sys/unistd.h>
 #include "globaldef.h"
 
-#include "phys.h"
-
 #include "torch.h"
 #include "player.h"
 #include "veng.h"
 #include "perlin.h"
 #include "config.h"
+#include "hud.h"
 
+extern hud_t hud;
 
 player_t player;
 cursor_t cursor_single, cursor_range; 
 double lastX, lastY;
 
 torch_t torch;
-
 
 static void destroy()
 {
@@ -68,7 +67,6 @@ static void pick()
   if (hit.state != HIT_TRUE){
     return;
   }
-
   player.active = *hit.voxel;
 }
 
@@ -116,7 +114,11 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
   }
 
   if(key == GLFW_KEY_HOME){
-    torch.fuel = torch.lifetime;
+    region_fill_value(veng_find_region(player.pos), 5);
+  }
+
+  if(key == GLFW_KEY_INSERT){
+    region_fill_perlin(veng_find_region(player.pos));
   }
 
   if(key == keys.jump && player.grounded){
@@ -182,9 +184,7 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
 
   if (button == GLFW_MOUSE_BUTTON_4){
     render_add_light(hit.posLast);
-    
-    coll_sphere_t* collider = phys_add_collider();
-    collider->pos = hit.posLast;
+    print_vec(hit.posLast);
   }
   if (button == mouse.place){
     place();
@@ -196,33 +196,6 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
     pick();
   }
 }
-
-static void ms_pos_callback(GLFWwindow* window, double xpos, double ypos)
-{
-  float xDelta = (xpos - lastX) * config.looksens;
-  float yDelta = (lastY - ypos) * config.looksens;
-  lastX = xpos;
-  lastY = ypos;
-  player.yaw   += xDelta;
-  player.pitch += yDelta;
-  player.pitch = player.pitch > 89.0f ? 89.0f : player.pitch < -89.0f ? -89.0f : player.pitch;
-
-  // Make direction vectors for flying
-  vec frontNew;
-  frontNew.x = cos(glm::radians(player.yaw)) * cos(glm::radians(player.pitch));
-  frontNew.y = sin(glm::radians(player.pitch));
-  frontNew.z = sin(glm::radians(player.yaw)) * cos(glm::radians(player.pitch));
-  player.front = glm::normalize(frontNew);
-  player.right = glm::normalize(glm::cross(player.front, player.up));
-
-  // Make direction vectors for walking
-  frontNew.x = cos(glm::radians(player.yaw)) * cos(glm::radians(0.0f));
-  frontNew.y = sin(glm::radians(0.0f));
-  frontNew.z = sin(glm::radians(player.yaw)) * cos(glm::radians(0.0f));
-  player.front_walk = glm::normalize(frontNew);
-  player.right_walk = glm::normalize(glm::cross(player.front_walk, player.up));
-}
-
 
 static vec make_clip(player_t* player)
 {
@@ -338,33 +311,32 @@ static void player_move_fly(player_t *player)
   player->pos += player->vel * deltaTime;
 }
 
+
 void player_tick()
 {
+  hud.mesh->customAttrib = player.active;
   glfwPollEvents();
-
-  // Truncated time in Millisecondss
-  int truncMS = truncf(gameTime * 1000);
+  int truncMS = gameTime * 1000;
 
   static double destroy_timeHeld = 0.0;
   if(glfwGetMouseButton(window, mouse.destroy)){
     destroy_timeHeld += deltaTime;
   }
   else{ destroy_timeHeld = 0.0; }
-  if(destroy_timeHeld > 0.25 && (truncMS % 5) == 0){
+  if(destroy_timeHeld > 0.15 && (truncMS % 5) == 0){
     destroy();
   }
-  
 
   static double place_timeHeld = 0.0;
   if(glfwGetMouseButton(window, mouse.place)){
     place_timeHeld += deltaTime;
   }
   else{ place_timeHeld = 0.0; }
-  if(place_timeHeld > 0.25 && (truncMS % 5) == 0){ 
+  if(place_timeHeld > 0.15 && (truncMS % 5) == 0){ 
     place();
   }
-  
 
+  // Make torch follow player
   torch.light->pos = vec_to_vec4(player.pos);
 
   if(player.editor){
@@ -374,7 +346,31 @@ void player_tick()
     player_move_walk(&player);
   }
 
+  // Update direction vectors
+  double xpos, ypos;
+  glfwGetCursorPos(window, &xpos, &ypos);
+  float xDelta = (xpos - lastX) * config.looksens;
+  float yDelta = (lastY - ypos) * config.looksens;
+  lastX = xpos;
+  lastY = ypos;
+  player.yaw   += xDelta;
+  player.pitch += yDelta;
+  player.pitch = player.pitch > 89.0f ? 89.0f : player.pitch < -89.0f ? -89.0f : player.pitch;
 
+  // Vectors for flying
+  vec frontNew;
+  frontNew.x = cos(glm::radians(player.yaw)) * cos(glm::radians(player.pitch));
+  frontNew.y = sin(glm::radians(player.pitch));
+  frontNew.z = sin(glm::radians(player.yaw)) * cos(glm::radians(player.pitch));
+  player.front = glm::normalize(frontNew);
+  player.right = glm::normalize(glm::cross(player.front, player.up));
+
+  // Vectors for walking
+  frontNew.x = cos(glm::radians(player.yaw)) * cos(glm::radians(0.0f));
+  frontNew.y = sin(glm::radians(0.0f));
+  frontNew.z = sin(glm::radians(player.yaw)) * cos(glm::radians(0.0f));
+  player.front_walk = glm::normalize(frontNew);
+  player.right_walk = glm::normalize(glm::cross(player.front_walk, player.up));
   
   // Move Cursors
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
@@ -384,15 +380,15 @@ void player_tick()
     return;
   }
   cursor_embed (&cursor_single, hit);
-  cursor_center(&cursor_range, hit) ;
+  cursor_center(&cursor_range,  hit);
 
   if(player.inputMode == IM_BLOCKS){
-    cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+    cursor_single.mesh->drawflags =  DF_VIS | DF_DEPTH_TEST;
     cursor_range.mesh->drawflags = 0;
   }
   else{
-    cursor_single.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
-    cursor_range.mesh->drawflags = DF_DEPTH_TEST | DF_VIS;
+    cursor_single.mesh->drawflags = DF_VIS | DF_DEPTH_TEST;
+    cursor_range.mesh->drawflags  = DF_VIS | DF_DEPTH_TEST;
   }
 }
 
@@ -430,19 +426,13 @@ void player_init()
   cursor_init(&cursor_single);
   cursor_range.size = 5.0f;
   cursor_init(&cursor_range);
-
-
-  printf("%i\n", glfwJoystickPresent(GLFW_JOYSTICK_1));
-
-
+  
   glfwGetCursorPos(window, &lastX, &lastY);
   // Grab cursor
   //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); 
-
   glfwSetMouseButtonCallback(window, ms_button_callback);
   glfwSetScrollCallback(window, ms_scroll_callback);
   glfwSetKeyCallback(window, key_callback);
-  glfwSetCursorPosCallback(window, ms_pos_callback);
 }
 
 void player_terminate()

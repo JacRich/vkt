@@ -70,11 +70,11 @@ struct ivec2
 };
 
 vec4 vec_to_vec4(vec ass);
-vec vec4_to_vec(vec4 ass);
+vec  vec4_to_vec(vec4 ass);
 
-ivec region_cord(vec worldpos);
+ivec region_cord_at(vec worldpos);
 
-vec ivec_to_vec(ivec left);
+vec  ivec_to_vec(ivec left);
 ivec vec_to_ivec(vec left);
 
 int taxi_dist(ivec left, ivec right);

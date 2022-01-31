@@ -252,13 +252,13 @@ static void tick_update_regions()
 
 void veng_init()
 {
-  r_cord_now  = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_now  = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
   r_cord_last = r_cord_now;
 
   // Build a 3x3x3 area of regions with the player in the center
   for(int i = 0; i < REGION_COUNT; i++){
     ivec r_cord = index3d(i, REGION_COUNT_CROOT);
-    ivec transformed_rcord = region_cord(player.pos) + r_cord - ivec{REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2};
+    ivec transformed_rcord = region_cord_at(player.pos) + r_cord - ivec{REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2,REGION_COUNT_CROOT / 2};
 
     regions[i] = region_load(transformed_rcord);
     r_cords[i] = transformed_rcord;
@@ -278,7 +278,7 @@ void transform_cords(ivec dir)
 
 void veng_tick()
 {
-  r_cord_now = region_cord(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_now = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
   if(r_cord_now != r_cord_last){
     transform_cords(r_cord_now - r_cord_last);
   }

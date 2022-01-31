@@ -11,7 +11,7 @@ vec4 vec_to_vec4(vec ass)
   return{ass.x, ass.y, ass.z, 1.0f};
 }
 
-ivec region_cord(vec worldpos)
+ivec region_cord_at(vec worldpos)
 {
   ivec result;
   result.x = worldpos.x > 0? int(worldpos.x / REGION_WIDTH) : int(worldpos.x / REGION_WIDTH) + -1;

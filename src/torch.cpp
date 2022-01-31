@@ -10,8 +10,8 @@ static void torch_tick(void* owner)
   // Make torch flicker smoothly to emulate fire light
   float perlin = perlin_sampleOctave(gameTime, gameTime, gameTime,  0.35, 20);
   float offset = perlin * 0.55f;
-  torch->light->color = (vec4{1.0f, 0.7f, 0.5f, 1.0} + offset) * (torch->fuel / torch->lifetime);
-  torch->fuel -= deltaTime;
+  torch->light->color = (vec4{0.8f, 0.5f, 0.3f, 1.0} + offset) * (torch->fuel / torch->lifetime);
+  //torch->fuel -= deltaTime;
 }
 
 void torch_init(torch_t* torch)

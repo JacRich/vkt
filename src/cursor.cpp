@@ -2,7 +2,7 @@
 #include "shader.h"
 #include "render.h"
 
-const uchar cursorVertData[] = 
+static const uchar cursorVertData[] = 
 {
   // Y+        
   1, 1, 1,   
@@ -147,7 +147,7 @@ void cursor_init(cursor_t* cursor)
   cursor->mesh->vertcount = 48;
   cursor->mesh->primtype = GL_LINES;
   cursor->mesh->scale = vec{cursor->size + 0.01f};
-  cursor->mesh->color = {0.9f, 0.4f, 0.0f, 1.0f};
+  cursor->mesh->color = {0.0f, 0.35f, 1.0f, 1.0f};
 
   uint vbo;
   glGenVertexArrays(1, &cursor->mesh->vao);

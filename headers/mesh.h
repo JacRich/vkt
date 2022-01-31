@@ -18,9 +18,12 @@ struct mesh_t
   vec  pos  ;
   vec  scale = {1.0f,1.0f,1.0f};
   vec4 color = vec4{1.5f, 0.2f, 0.5f, 1.0f};
+
+  float rotation = 0.0f;
   int  customAttrib = 1;
 };
 
 mat4 mesh_makematrix(mesh_t* mesh);
+mesh_t mesh_load_obj(const char* path);
 
 #endif

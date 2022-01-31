@@ -7,13 +7,13 @@
 #include "config.h"
 #include "texture.h"
 #include "torch.h"
+#include "hud.h"
 
 #include <string>
 #include <thread>
 
-cmesh_t* cmeshes;
 GLFWwindow* window;
-crosshair_t crosshair;
+cmesh_t* cmeshes;
 
 #define MAX_MESHES 20
 mesh_t meshes[MAX_MESHES]; int mesh_count = 0;
@@ -24,8 +24,10 @@ light_t lights[MAX_LIGHTS]; int light_count = 0;
 
 shader_t  sh_world, sh_cursor, sh_cross, sh_hud;
 texture_t tex_atlas;
-ubo_t     ubo_view, ubo_lights, ubo_fullbright;
-view_t    worldview;
+ubo_t     ubo_view_world, ubo_view_hud, ubo_lights, ubo_fullbright;
+view_t    view_world, view_hud;
+crosshair_t crosshair;
+hud_t hud;
 
 static std::thread thread; static bool thread_active = true;
 
@@ -108,7 +110,7 @@ static void on_resize(GLFWwindow* window, int width, int height)
   glViewport(0, 0, width, height);
 }
 
-static void tick_build_cmeshes()
+static void thread_build_cmeshes()
 {
   while(!glfwWindowShouldClose(window))
   {
@@ -159,7 +161,7 @@ void render_attach_cmeshes(region_t regions[REGION_COUNT])
     }
   }
 
-  thread = std::thread(tick_build_cmeshes);
+  thread = std::thread(thread_build_cmeshes);
 }
 
 void render_init()
@@ -195,9 +197,6 @@ void render_init()
   // Enable Transparency
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glEnable   (GL_BLEND);
-  
-  
-
   // Load Shaders
   sh_world  = shader_make("gamedata/shaders/world.vert" , "gamedata/shaders/world.frag" );
   sh_cursor = shader_make("gamedata/shaders/cursor.vert", "gamedata/shaders/cursor.frag");
@@ -206,14 +205,18 @@ void render_init()
   // Load Textures
   tex_atlas = texture_make("gamedata/las.jpg");
   // Create Uniform Buffer Objects
-  ubo_view       = ubo_make(128, 0);
+  ubo_view_world = ubo_make(128, 0);
   ubo_lights     = ubo_make(32 * MAX_LIGHTS, 1);
   ubo_fullbright = ubo_make(16, 2);
+  ubo_view_hud = ubo_make  (128, 3);
 
   // Crosshair
   glLineWidth(2.0f);
+  hud_init(&hud);
   crosshair_init(&crosshair, 0.015f);
-   
+  
+
+
   glViewport(0,0, config.width, config.height);
   glfwSetFramebufferSizeCallback(window, on_resize);
   
@@ -233,15 +236,21 @@ void render_tick()
   tick_send_cmeshes();
   draw_cmeshes();
 
-  for(int i = 0; i < MAX_MESHES; i++){
+  for(int i = 0; i < mesh_count; i++){
     draw_mesh(&meshes[i]);  
   }
 
-  worldview.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
-  worldview.proj = glm::perspective(glm::radians(float(config.fov)), (float)config.width / (float)config.height, 0.001f, 1000.0f);
+  view_world.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
+  view_world.proj = glm::perspective(glm::radians(float(config.fov)), (float)config.width / (float)config.height, 0.001f, 1000.0f);
+  
+  // Make HUD projection matrix 
+  view_hud.proj = glm::perspective(glm::radians(float(70.0f)), (float)config.width / (float)config.height, 0.001f, 1000.0f);
+  
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo_view_hud.handle);
+  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(view_hud), &view_hud);
 
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo_view.handle);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(worldview), &worldview);
+  glBindBuffer(GL_UNIFORM_BUFFER, ubo_view_world.handle);
+  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(view_world), &view_world);
 
   glBindBuffer(GL_UNIFORM_BUFFER, ubo_fullbright.handle);
   glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, sizeof(config.fullbright), &config.fullbright);
