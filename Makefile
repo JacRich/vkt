@@ -4,6 +4,8 @@ CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels 
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
 LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608 -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic
 objects = $(wildcard src/*.cpp)
+lua = $(wildcard lua/*.cpp)
+
 objectsWin = headers/GL/glew.c
 
 # creates directory bin/linux if not existent
@@ -12,7 +14,7 @@ objectsWin = headers/GL/glew.c
 buildlinux:
 	@echo "Compiling for Linux"
 	@mkdir -p bin/linux
-	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	g++ $(objects) $(lua) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/linux
 
@@ -23,7 +25,7 @@ buildlinux:
 buildwin:
 	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
-	x86_64-w64-mingw32-g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	x86_64-w64-mingw32-g++ $(objects) $(lua) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows
 	@cp lib/libwinpthread-1.dll bin/windows
@@ -33,7 +35,7 @@ buildwin_msys:
 	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
 
-	g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	g++ $(objects) $(lua) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
 
