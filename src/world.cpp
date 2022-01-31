@@ -28,7 +28,7 @@ int main()
         return -1; /*exit program if lua failed to start*/
     luaL_openlibs(L); /*open lua stdlib*/
     lua_bindings_init(L); /*initilize lua bindings so you can use C functions*/
-    if (luaL_loadfile(L, "main.lua")){printf("Error {main.lua} not found. closing..."); return -1} /*load file*/
+    if (luaL_loadfile(L, "main.lua")){printf("Error {main.lua} not found. closing..."); return -1;} /*load file*/
     lua_call(L, 0, 0); /*call the file*/
     lua_getglobal(L,"update"); /*push function to the stack*/
   /*---------------------------------------------------------*/
