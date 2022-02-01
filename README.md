@@ -1,6 +1,6 @@
 <h1 align="center">Vire</h1>
 <p align="center">Vire is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
-<p align="center"> <img width="500" height="500" src="https://cdn.discordapp.com/attachments/934901281703747635/937814644221960212/ouhsx8t71ge81.jpg"> </p>
+<p align="center"> <img width="500" height="500" src="https://cdn.discordapp.com/attachments/934901281703747635/937996224097845258/ouhsx8t71ge81.webp"> </p>
 <br>
 
 ## Downloads
