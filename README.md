@@ -1,6 +1,6 @@
-<h1 align="center">VKT</h1>
-<p align="center">VkT is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
-<p align="center"> <img src="https://cdn.discordapp.com/attachments/934901281703747635/935902064242987108/unknown.png"> </p>
+<h1 align="center">Vire</h1>
+<p align="center">Vire is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
+<p align="center"> <img src="https://cdn.discordapp.com/attachments/934901281703747635/937814644221960212/ouhsx8t71ge81.jpg"> </p>
 <br>
 
 ## Downloads
