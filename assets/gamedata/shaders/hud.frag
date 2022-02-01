@@ -1,4 +1,4 @@
-#version 440 core
+﻿#version 440 core
 layout (binding = 0) uniform sampler2D atlas;
 
 layout (location = 2) uniform int blockId;
@@ -28,5 +28,5 @@ void main()
 	vec3 diffuse = vec3(texture(atlas, cord) * dot(dir, normal)) * vec3(light.color);
 	vec3 ambient = vec3(texture(atlas, cord) * vec4(0.5)) * vec3(light.color);
 	
-    FragColor = vec4(diffuse + ambient, 1.0);
+  FragColor = vec4(diffuse + ambient, 1.0);
 }

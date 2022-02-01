@@ -32,15 +32,14 @@ using vec4 = glm::vec4;
 
 #define CMESH_COUNT REGION_CHUNKS_LENGTH * REGION_COUNT // A mesh for each chunk in each region
 
+#define MAX_ENTS 100
 
-extern uint sh_world, sh_cursor, sh_cross, sh_hud;
+extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item, tex_atlas, tex_item;
 
 extern float lastTime, deltaTime;
 extern unsigned long  framecount;
 extern float gameTime;
 
 extern GLFWwindow* window;
-
-
 
 #endif

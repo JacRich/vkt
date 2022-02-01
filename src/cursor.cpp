@@ -2,6 +2,7 @@
 #include "shader.h"
 #include "render.h"
 
+
 static const uchar cursorVertData[] = 
 {
   // Y+        

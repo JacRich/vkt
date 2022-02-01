@@ -1,8 +1,10 @@
 #include "globaldef.h"
 #include "thinker.h"
 
-thinker_t thinkers[10]; 
+thinker_t thinkers[MAX_ENTS]; 
+bool      inUse   [MAX_ENTS];
 int thinker_count = 0;
+
 
 thinker_t* thinker_add()
 {

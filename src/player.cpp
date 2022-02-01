@@ -9,11 +9,11 @@
 #include "perlin.h"
 #include "config.h"
 #include "hud.h"
+#include "item.h"
 
-extern hud_t hud;
 
 player_t player;
-cursor_t cursor_single, cursor_range; 
+cursor_t cursor_single, cursor_range;
 double lastX, lastY;
 
 torch_t torch;
@@ -183,9 +183,19 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   }
 
   if (button == GLFW_MOUSE_BUTTON_4){
-    render_add_light(hit.posLast);
-    print_vec(hit.posLast);
+    item_t item;
+    item_init(&item, hit.posLast);
+    //mesh_t* mesh = render_addmesh();
+    //if(mesh != NULL){
+    //  *mesh = mesh_load_obj("gamedata/test.obj");
+    //  mesh->shader = sh_item;
+    //  mesh->texture = tex_item;
+    //  mesh->pos = hit.posLast;
+    //}  
+    //render_add_light(hit.posLast);
+    //print_vec(hit.posLast);
   }
+
   if (button == mouse.place){
     place();
   }
@@ -314,7 +324,6 @@ static void player_move_fly(player_t *player)
 
 void player_tick()
 {
-  hud.mesh->customAttrib = player.active;
   glfwPollEvents();
   int truncMS = gameTime * 1000;
 

@@ -38,9 +38,6 @@ struct player_t
   float pitch = 0.0f, yaw = 0.0f;
 
   bool grounded = false;
-
-  vec lightColor = vec{1.0f, 0.45f, 0.05f};
-  float torchTime = 30.0f;
 };
 
 extern player_t player;

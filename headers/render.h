@@ -7,12 +7,6 @@
 #include "player.h"
 #include "light.h"
 
-struct ubo_t
-{
-  uint handle;
-  uint size  ;
-};
-
 struct view_t
 {
   mat4 view, proj;

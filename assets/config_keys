@@ -1,4 +1,4 @@
-# You can find the key codes here https://www.glfw.org/docs/latest/group__keys.html 
+# Key codes: https://www.glfw.org/docs/latest/group__keys.html 
 
 forward  = 87
 backward = 83

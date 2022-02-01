@@ -6,6 +6,7 @@
 #include "ivec.h"
 #include "config.h"
 #include "thinker.h"
+#include "hud.h"
 
 
 float lastTime, deltaTime;
@@ -19,6 +20,7 @@ int main()
   render_init();
   player_init();
   veng_init  ();
+  hud_init   ();
  
   while(!glfwWindowShouldClose(window))
   {
@@ -29,6 +31,7 @@ int main()
     player_tick ();
     render_tick ();
     veng_tick   ();
+    hud_tick    ();
     thinker_tick();
     framecount++;
     gameTime += deltaTime;
