@@ -1,0 +1,66 @@
+name: Make Windows Video Build
+
+on:
+  push:
+    branches: [ video-rec ]
+  pull_request:
+    branches: [ video-rec ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { icon: '✅', sys: mingw64 }
+          - { icon: '⚠️', sys: ucrt64  } # Experimental!
+    name: ${{ matrix.icon }} ${{ matrix.sys }}
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: video-rec
+
+    - name: '${{ matrix.icon }} Setup MSYS2'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{matrix.sys}}
+        update: true
+        install: >-
+          git
+          make
+        pacboy: >-
+          toolchain:p
+          cmake:p
+          ninja:p
+    
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+
+    - name: Install Dependencies
+      run: pacman -S mingw-w64-x86_64-glfw mingw-w64-x86_64-glew mingw-w64-x86_64-glm --noconfirm
+
+    - name: Add to Path
+      run: |
+        export PATH="mingw64/bin:$PATH"
+
+    - name: Build Windows
+      run: make buildwin_msys
+      
+    - name: Upload Windows
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: 'windows ${{ matrix.sys }}'
+        path: ./bin/windows
+      

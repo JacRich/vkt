@@ -1,6 +1,6 @@
-<h1 align="center">VKT</h1>
-<p align="center">VkT is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
-<p align="center"> <img src="https://cdn.discordapp.com/attachments/934901281703747635/935902064242987108/unknown.png"> </p>
+<h1 align="center">Vire</h1>
+<p align="center">Vire is a C++ voxel rendering engine. It is written in C++14 and uses OpenGL for graphics.</p>
+<p align="center"> <img width="500" height="500" src="https://cdn.discordapp.com/attachments/934901281703747635/937996224097845258/ouhsx8t71ge81.webp"> </p>
 <br>
 
 ## Downloads
@@ -27,6 +27,9 @@ If you'd just like to just download and try, there are precompiled binaries avai
 </tr>
 <tr>
 </table>
+
+## MacOS Support
+Though MacOS is currently unsupported, there are plans to support it in the future. This is due to the fact that Apple has deprecated OpenGL with the later versions of MacOS, limiting the use of the library to version 4.1.0. Currently, Vire uses 4.4.0, so once we can downgrade to a lower OpenGL version, MacOS support will be added!
 
 ## Compiling
 ### Linux
