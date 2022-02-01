@@ -1,0 +1,34 @@
+name: Make Linux Video Build
+
+on:
+  push:
+    branches: [ video-rec ]
+  pull_request:
+    branches: [ video-rec ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: video-rec
+
+    - name: Install Dependencies
+      run: sudo apt-get -y install g++ libgl-dev libglew-dev libglfw3-dev libglm-dev libx11-dev libxxf86vm-dev libxrandr-dev libpthread-stubs0-dev libxi-dev libc6-dev libxinerama-dev libxcursor-dev libc6-dev
+
+    - name: Build Linux
+      run: make buildlinux
+      
+    - name: Upload Linux
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        name: "linux"
+        path: ./bin/linux
+      
