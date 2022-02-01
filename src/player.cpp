@@ -18,7 +18,7 @@ double lastX, lastY;
 
 torch_t torch;
 
-static void destroy()
+void destroy()
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if (hit.state != HIT_TRUE){
@@ -37,7 +37,7 @@ static void destroy()
   }
 }
 
-static void place()
+void place()
 {
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if (hit.state != HIT_TRUE){
