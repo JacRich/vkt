@@ -28,6 +28,9 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <tr>
 </table>
 
+## MacOS Support
+Though MacOS is currently unsupported, there are plans to support it in the future. This is due to the fact that Apple has deprecated OpenGL with the later versions of MacOS, limiting the use of the library to version 4.1.0. Currently, Vire uses 4.4.0, so once we can downgrade to a lower OpenGL version, MacOS support will be added!
+
 ## Compiling
 ### Linux
 To compile the project, you will need the following dependencies:
