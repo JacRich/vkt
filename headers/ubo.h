@@ -8,23 +8,10 @@ struct ubo_t
   uint size  ;
 };
 
-ubo_t ubo_make(uint size, uint binding) 
-{
-  ubo_t ubo;
-  ubo.size = size;
-  glGenBuffers(1, &ubo.handle);
-  glBindBuffer(GL_UNIFORM_BUFFER, ubo.handle);
-  glBufferData(GL_UNIFORM_BUFFER, ubo.size, (const void*)0, GL_DYNAMIC_DRAW);
-  glBindBufferBase(GL_UNIFORM_BUFFER, binding, ubo.handle);
-  return ubo;
-}
+ubo_t ubo_make(uint size, uint binding);
+void ubo_set(ubo_t ubo, void* data);
+void ubo_set(ubo_t ubo, void* data, int offset);
 
-void ubo_set(ubo_t ubo, void* data)
-{
-  glBindBuffer   (GL_UNIFORM_BUFFER, ubo.handle);
-  glBufferSubData(GL_UNIFORM_BUFFER, (GLintptr)0, ubo.size, data);
-}
-
-
+extern ubo_t ubo_lights;
 
 #endif

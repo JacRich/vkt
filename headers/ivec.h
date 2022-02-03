@@ -69,6 +69,7 @@ struct ivec2
   int x, y;
 };
 
+
 vec4 vec_to_vec4(vec ass);
 vec  vec4_to_vec(vec4 ass);
 

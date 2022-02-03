@@ -12,15 +12,12 @@ struct sector_t
 static void make_path(char path[], ivec cord)
 {
   char buffer[10];
-
   // X
   sprintf(buffer, "%i_", cord.x);
   strcat(path, buffer);
-
   // Y
   sprintf(buffer, "%i_", cord.y);
   strcat(path, buffer);
-
   // Z
   sprintf(buffer, "%i", cord.z);
   strcat(path, buffer);
@@ -176,7 +173,6 @@ void region_set_pos(region_t *region, ivec cord)
     chunk_t* chunk = &region->chunks[position.x][position.y][position.z]; 
 
     chunk->pos = vec{position.x * CHUNK_CROOT, position.y * CHUNK_CROOT, position.z * CHUNK_CROOT} + region->pos;
-    //chunk_fill_perlin(chunk);
     chunk->update = true;
   }
 }

@@ -6,7 +6,6 @@
 
 #include "player.h"
 #include "region.h"
-#include "cursor.h"
 
 #include "render.h"
 
@@ -18,7 +17,7 @@ void veng_tick();
 void veng_terminate();
 
 void veng_change_voxel(vhit voxel, int pickmode, uchar value);
-void veng_change_withcursor(cursor_t* cursor, uchar newValue, int collMode);
+void veng_change_range(int cubicRange, vec pos, uchar newValue, int filter);
 
 region_t* veng_find_region(vec worldpos);
 chunk_t*  veng_find_chunk (vec worldpos);

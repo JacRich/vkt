@@ -9,28 +9,26 @@ file(COPY ./assets/config DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ./assets/gamedata DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable(vkt
-        headers/chunk.hpp
-        headers/cmesh.hpp
-        headers/config.hpp
-        headers/crosshair.hpp
-        headers/cursor.hpp
-        headers/entity.hpp
-        headers/globaldef.hpp
-        headers/ivec.hpp
-        headers/mesh.hpp
-        headers/perlin.hpp
-        headers/player.hpp
-        headers/region.hpp
-        headers/render.hpp
-        headers/shader.hpp
-        headers/stb_image.hpp
-        headers/veng.hpp
-        headers/vhit.hpp
-        headers/world.hpp
+        headers/chunk.h
+        headers/cmesh.h
+        headers/config.h
+        headers/cursor.h
+        headers/entity.h
+        headers/globaldef.h
+        headers/ivec.h
+        headers/mesh.h
+        headers/perlin.h
+        headers/player.h
+        headers/region.h
+        headers/render.h
+        headers/shader.h
+        headers/stb_image.h
+        headers/veng.h
+        headers/vhit.h
+        headers/world.h
         src/chunk.cpp
         src/cmesh.cpp
         src/config.cpp
-        src/crosshair.cpp
         src/cursor.cpp
         src/ivec.cpp
         src/mesh.cpp

@@ -1,12 +1,11 @@
 #include "globaldef.h"
 #include "veng.h"
 #include "player.h"
-#include "cursor.h"
 #include "render.h"
 #include "ivec.h"
 #include "config.h"
-#include "thinker.h"
 #include "hud.h"
+#include "cmesh.h"
 
 
 float lastTime, deltaTime;
@@ -30,15 +29,17 @@ int main()
     
     player_tick ();
     render_tick ();
+    meshing_tick();
     veng_tick   ();
     hud_tick    ();
-    thinker_tick();
+    lights_tick ();
     framecount++;
     gameTime += deltaTime;
   }
 
-  player_terminate();
-  veng_terminate  ();
-  render_terminate();
+  player_terminate ();
+  veng_terminate   ();
+  meshing_terminate();
+  render_terminate ();
   return 0;
 }

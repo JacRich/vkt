@@ -5,8 +5,9 @@
 struct light_t
 {
   vec4 pos;
-  vec4 color = {1.0f, 0.5f, 0.0f, 0.0f};
+  vec4 color = {0.9f, 0.65f, 0.5f, 1.0};
 };
 
+void lights_tick();
 
 #endif

@@ -4,8 +4,8 @@
 #include <sys/unistd.h>
 #include <string.h>
 
-config_t   config;
-config_key_t keys;
+config_t       config;
+config_key_t   keys;
 config_mouse_t mouse;
 
 
@@ -24,11 +24,6 @@ static void load_config(config_t* config)
     // Is line a comment or empty?
     if(linebuf[0] == '#' || strlen(linebuf) < 4){
       continue;
-    }
-
-    int editor_collision;
-    if(sscanf(linebuf, " editorcoll = %i", &editor_collision)){
-      config->editorcoll = editor_collision;  
     }
 
     int fullbright;

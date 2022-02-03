@@ -5,7 +5,6 @@
 
 struct config_t
 {
-  bool editorcoll = true ;
   bool fullbright = false;
 
   int width  = 1280;

@@ -1,33 +1,54 @@
 #include "hud.h"
 #include "render.h"
+#include "ecs.h"
+#include "player.h"
+#include "veng.h"
 
-mesh_t* crosshair;
-mesh_t* mesh_activeblock;
+entity_t block_display;
+mesh_t* block_display_mesh;
+
+
+entity_t crosshair;
+
+entity_t cursor;
+mesh_t*  cursor_mesh;
+transform_t* cursor_transform;
+
 
 void hud_init()
 {
-  // Make spinny cube thing that shows selected block type
-  mesh_activeblock  = render_addmesh();
-  *mesh_activeblock = mesh_load_obj("gamedata/hud_cube.obj");
-
-  mesh_activeblock->shader = sh_hud;
-  mesh_activeblock->texture = tex_atlas;
-  mesh_activeblock->rotation = 1.0f;
-  mesh_activeblock->vertcount = 28 * 3;
-  mesh_activeblock->pos = vec{2.6f, -1.3f, -3.0f};
-  mesh_activeblock->scale *= 0.75f;
-  mesh_activeblock->drawflags = DF_VIS; // No depth testing 
+  // Make display block thingy
+  block_display = entity_add(C_MESH | C_TRANSFORM);
+  block_display_mesh = &components.meshes[block_display];
+  *block_display_mesh = mesh_load_obj("gamedata/hud_cube.obj", sh_hud, &tex_atlas, DF_NO_DEPTH);
+  components.transforms[block_display].pos   = vec{2.6f, -1.3f, -3.0f};
+  components.transforms[block_display].scale *= 0.7f;
   
   // Make crosshair
-  crosshair = render_addmesh();
-  *crosshair = mesh_load_obj("gamedata/hud_crosshair.obj");
-  crosshair->drawflags = DF_VIS; // No depth testing
-  crosshair->shader    = sh_cross;
+  crosshair = entity_add(C_MESH | C_TRANSFORM);
+  mesh_t* mesh_cross = &components.meshes[crosshair];
+  *mesh_cross = mesh_load_obj("gamedata/hud_crosshair.obj", sh_cross, NULL, DF_NO_DEPTH);
+
+  // Make cursor 
+  cursor = entity_add(C_MESH | C_TRANSFORM);
+  cursor_mesh = &components.meshes[cursor]; 
+  *cursor_mesh = mesh_load_obj("gamedata/hud_cursor.obj", sh_cursor, NULL, 0);
+  cursor_mesh->polymode = GL_LINE;
+  cursor_transform = &components.transforms[cursor]; 
+  cursor_transform->pos = player.pos;
 }
 
 void hud_tick()
 {
   // Make block's texture match the player's active block
-  mesh_activeblock->customAttrib = player.active;
+  block_display_mesh->customAttrib = player.active;
+
+  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  if(hit.state != HIT_TRUE){
+    cursor_mesh->drawflags = DF_NO_DRAW;
+    return;
+  }
+  cursor_mesh->drawflags = 0;
+  cursor_transform->pos = hit.pos;
 }
 

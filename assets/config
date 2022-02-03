@@ -3,9 +3,8 @@ height = 720
 
 fov = 90.0
 looksens = 0.05
-movespeed = 60.0
+movespeed = 100.0
 renderdist = 150.0
 friction = 12.0
 
-editorcoll = 0
 fullbright = 0

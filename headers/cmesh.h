@@ -1,7 +1,7 @@
 #ifndef CMESH_H
 #define CMESH_H
 #include "globaldef.h"
-#include "chunk.h"
+#include "region.h"
 
 #define BUFFER_SIZE 1750000
 
@@ -17,9 +17,8 @@ struct cmesh_t
   uchar vertdata[BUFFER_SIZE];
 };
 
-void cmesh_build(cmesh_t* mesh);
-void cmesh_send (cmesh_t* mesh);
-
-void cmesh_init(cmesh_t* mesh);
+void meshing_init(region_t regions[REGION_COUNT]);
+void meshing_terminate();
+void meshing_tick();
 
 #endif

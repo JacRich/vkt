@@ -3,20 +3,20 @@
 #include <sys/unistd.h>
 #include "globaldef.h"
 
-#include "torch.h"
 #include "player.h"
 #include "veng.h"
 #include "perlin.h"
 #include "config.h"
 #include "hud.h"
-#include "item.h"
+#include "ecs.h"
 
 
 player_t player;
-cursor_t cursor_single, cursor_range;
 double lastX, lastY;
 
-torch_t torch;
+entity_t torch;
+transform_t* torch_tran;
+
 
 static void destroy()
 {
@@ -24,17 +24,7 @@ static void destroy()
   if (hit.state != HIT_TRUE){
     return;
   }
-
-  switch (player.inputMode)
-  {
-    case (IM_BLOCKS):
-    veng_change_voxel(hit, PICK_HIT, 0);
-    break;
-
-    default:
-    veng_change_withcursor(&cursor_range, 0, HIT_TRUE);
-    break;
-  }
+  veng_change_voxel(hit, PICK_HIT, 0);
 }
 
 static void place()
@@ -43,22 +33,7 @@ static void place()
   if (hit.state != HIT_TRUE){
     return;
   }
-
-  switch (player.inputMode)
-  {
-    case (IM_BLOCKS):   
-    veng_change_voxel(hit, PICK_NORMAL, player.active);
-    break;
-
-    case (IM_BLOCKS_RANGE_FILL):
-    veng_change_withcursor(&cursor_range, player.active, HIT_FALSE);
-    break;
-
-    case (IM_BLOCKS_RANGE_REPLACE):
-    veng_change_withcursor(&cursor_range, player.active, HIT_TRUE);
-    break;
-  }
-  
+  veng_change_voxel(hit, PICK_NORMAL, player.active);
 }
 
 static void pick()
@@ -106,7 +81,10 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   // Switch flying / walking
   if (key == keys.switchmov){
-    player.editor = !player.editor;
+    player.flying = !player.flying;
+  }
+  if(key == GLFW_KEY_KP_0){
+    player.flyingColl = !player.flyingColl;
   }
 
   if(key == GLFW_KEY_ESCAPE){
@@ -122,25 +100,7 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
   }
 
   if(key == keys.jump && player.grounded){
-    player.vel += vec{0, 6, 0};
-  }
-
-  if(key == keys.im_blocks){
-    player.inputMode = IM_BLOCKS;
-  }
-
-  if(key == keys.im_range){
-    player.inputMode = IM_BLOCKS_RANGE_FILL;
-    cursor_setcolor(&cursor_range, {0.9f, 0.1f, 0.05f, 1.0f});
-  }
-
-  if(key == keys.im_range_replace){
-    player.inputMode = IM_BLOCKS_RANGE_REPLACE;
-    cursor_setcolor(&cursor_range, {0.8f, 0.1f, 0.5f, 1.0f});
-  }
-
-  if(key == keys.toggle_coll){
-    config.editorcoll = !config.editorcoll;
+    player.vel += vec{0, 8, 0};
   }
 
   if(key == keys.toggle_fullbright){
@@ -168,10 +128,10 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 static void ms_scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {
   if (yoffset > 0){
-    cursor_grow(&cursor_range);
+    
   }
   else{
-    cursor_shrink(&cursor_range);
+    
   }
 }
 
@@ -183,17 +143,8 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   }
 
   if (button == GLFW_MOUSE_BUTTON_4){
-    item_t item;
-    item_init(&item, hit.posLast);
-    //mesh_t* mesh = render_addmesh();
-    //if(mesh != NULL){
-    //  *mesh = mesh_load_obj("gamedata/test.obj");
-    //  mesh->shader = sh_item;
-    //  mesh->texture = tex_item;
-    //  mesh->pos = hit.posLast;
-    //}  
-    //render_add_light(hit.posLast);
-    //print_vec(hit.posLast);
+    entity_t newLight = entity_add(C_TRANSFORM | C_LIGHT);
+    components.transforms[newLight].pos = hit.posLast;
   }
 
   if (button == mouse.place){
@@ -207,6 +158,7 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   }
 }
 
+// This is beyond jank, too bad!
 static vec make_clip(player_t* player)
 {
   vec clipVector = {1, 1, 1};
@@ -265,74 +217,62 @@ static vec make_clip(player_t* player)
   return clipVector;
 }
 
-static void player_move_walk(player_t *player)
+static void player_move()
 {
-  const vec zero = {0, 0, 0};
-  vec movedir    = {0, 0, 0};
+  vec front = player.flying? player.front : player.front_walk;
+  vec right = player.flying? player.right : player.right_walk;
 
-  movedir += glfwGetKey(window, keys.forward) ?  player->front_walk : zero;
-  movedir += glfwGetKey(window, keys.backward)? -player->front_walk : zero;
-  movedir += glfwGetKey(window, keys.left   ) ? -player->right_walk : zero;
-  movedir += glfwGetKey(window, keys.right  ) ?  player->right_walk : zero;
+  const vec zero = {0,0,0};
+  vec movedir    = {0,0,0};
+  
+  movedir += glfwGetKey(window, keys.forward ) ?  front : zero;
+  movedir += glfwGetKey(window, keys.backward) ? -front : zero;
+  movedir += glfwGetKey(window, keys.left    ) ? -right : zero;
+  movedir += glfwGetKey(window, keys.right   ) ?  right : zero;
 
-  // Apply mov vel
-  if (glm::length(player->vel) < 8.0f){
-    player->vel += (movedir * (config.moveSpeed * (player->grounded ? 1.0f : 0.05f))) * deltaTime;
+  // This dumbness is for avoiding an error where normalize returns NAN for zero length vectors
+  movedir  = glm::length(movedir) > 0? glm::normalize(movedir) : zero;
+  movedir *= config.moveSpeed;
+  movedir *= deltaTime;
+
+  if(player.flying)
+  {
+    player.vel += movedir;
+    player.vel *= 1.0f / (1.0f + (config.friction * deltaTime)); // Friction
+    if(player.flyingColl) player.vel *= make_clip(&player);
   }
-  // Gravity
-  player->vel += vec(0.0f, -15.0f, 0.0f) * deltaTime;
- 
-  // Collision detection & response, needs work
-  player->vel *= make_clip(player);
-  vhit ray = veng_raycast(4, player->pos, {0.0f, -1.0f, 0.0f});
-  if(ray.distance < 3.4f){
-    player->pos += vec{0.0f, 0.01f,0.0f};
-  }
-
-  float friction = 1.0f / (1.0f + ((player->grounded ? config.friction : config.friction * 0.001f) * deltaTime));
-  player->vel *= friction;
-
-  player->pos += player->vel * deltaTime;
-}
-
-static void player_move_fly(player_t *player)
-{
-  const vec zero = {0, 0, 0};
-  vec movedir    = {0, 0, 0};
-
-  movedir += glfwGetKey(window, keys.forward ) ?  player->front : zero;
-  movedir += glfwGetKey(window, keys.backward) ? -player->front : zero;
-  movedir += glfwGetKey(window, keys.left    ) ? -player->right : zero;
-  movedir += glfwGetKey(window, keys.right   ) ?  player->right : zero;
-
-  // Apply mov vel
-  if (glm::length(player->vel) < 12.0f){
-    player->vel += (movedir * 120.0f) * deltaTime;
+  else
+  {
+    player.vel += vec{0,-16.0f, 0} * deltaTime;
+    
+    if(player.grounded)
+    {
+      player.vel += movedir;
+      player.vel *= 1.0f / (1.0f + (config.friction * deltaTime)); // Friction
+    }
+    else
+    {
+      player.vel += movedir * 0.1f;
+    }
+    
+    player.vel *= make_clip(&player);
   }
 
-  // Collision detection and response
-  if (config.editorcoll){
-    player->vel *= make_clip(player);
-  }
-
-  float friction = 1.0f / (1.0f + (config.friction * deltaTime));
-  player->vel *= friction;
-
-  player->pos += player->vel * deltaTime;
+  player.pos += player.vel * deltaTime;
 }
 
 
 void player_tick()
 {
   glfwPollEvents();
-  int truncMS = gameTime * 1000;
+  int trunc_ms = int(gameTime * 1000);
 
   static double destroy_timeHeld = 0.0;
   if(glfwGetMouseButton(window, mouse.destroy)){
     destroy_timeHeld += deltaTime;
   }
   else{ destroy_timeHeld = 0.0; }
-  if(destroy_timeHeld > 0.15 && (truncMS % 5) == 0){
+  if(destroy_timeHeld > 0.2 && trunc_ms % 5 == 0){
     destroy();
   }
 
@@ -341,19 +281,12 @@ void player_tick()
     place_timeHeld += deltaTime;
   }
   else{ place_timeHeld = 0.0; }
-  if(place_timeHeld > 0.15 && (truncMS % 5) == 0){ 
+  if(place_timeHeld > 0.2 && trunc_ms % 5 == 0){ 
     place();
   }
 
-  // Make torch follow player
-  torch.light->pos = vec_to_vec4(player.pos);
-
-  if(player.editor){
-    player_move_fly(&player);
-  }
-  else{
-    player_move_walk(&player);
-  }
+  torch_tran->pos = player.pos;
+  player_move();
 
   // Update direction vectors
   double xpos, ypos;
@@ -380,25 +313,6 @@ void player_tick()
   frontNew.z = sin(glm::radians(player.yaw)) * cos(glm::radians(0.0f));
   player.front_walk = glm::normalize(frontNew);
   player.right_walk = glm::normalize(glm::cross(player.front_walk, player.up));
-  
-  // Move Cursors
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if(hit.state != HIT_TRUE){
-    cursor_single.mesh->drawflags = 0;
-    cursor_range.mesh->drawflags  = 0;
-    return;
-  }
-  cursor_embed (&cursor_single, hit);
-  cursor_center(&cursor_range,  hit);
-
-  if(player.inputMode == IM_BLOCKS){
-    cursor_single.mesh->drawflags =  DF_VIS | DF_DEPTH_TEST;
-    cursor_range.mesh->drawflags = 0;
-  }
-  else{
-    cursor_single.mesh->drawflags = DF_VIS | DF_DEPTH_TEST;
-    cursor_range.mesh->drawflags  = DF_VIS | DF_DEPTH_TEST;
-  }
 }
 
 
@@ -430,11 +344,8 @@ static void save_player(player_t* player)
 void player_init()
 {
   load_player(&player);
-  torch_init (&torch);
-
-  cursor_init(&cursor_single);
-  cursor_range.size = 5.0f;
-  cursor_init(&cursor_range);
+  torch = entity_add(C_TRANSFORM | C_LIGHT);
+  torch_tran = &components.transforms[torch];
   
   glfwGetCursorPos(window, &lastX, &lastY);
   // Grab cursor

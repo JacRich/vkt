@@ -1,15 +1,50 @@
 #include "mesh.h"
+#include "ecs.h"
 #include <vector>
 
-mat4 mesh_makematrix(mesh_t* mesh)
+
+void meshes_draw()
 {
-  mat4 matrix = glm::translate(mat4(1.0f), mesh->pos);
-  matrix = glm::scale(matrix, mesh->scale);
+  const uint16_t tagsRequired = C_MESH | C_TRANSFORM;
+
+  for(int i = 0; i < MAX_ENTITIES; i++){
+    if(!entities[i].isValid || !entity_hasTags(i, tagsRequired)){
+      continue;
+    }
+    mesh_t* mesh = &components.meshes[i]; 
+    if(mesh->drawflags & DF_NO_DRAW){
+      continue;
+    }
+
+    if(mesh->drawflags & DF_NO_DEPTH){
+      glDisable(GL_DEPTH_TEST);
+    }
+    else{
+      glEnable(GL_DEPTH_TEST);
+    }
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture  (GL_TEXTURE_2D, mesh->texture);
+    
+    glPolygonMode(GL_FRONT_AND_BACK, mesh->polymode);
+    glBindVertexArray(mesh->vao);
+    glUseProgram     (mesh->shader);
+    glUniformMatrix4fv(0, 1, GL_TRUE, &mesh_makematrix(mesh, &components.transforms[i])[0][0]);
+    glUniform4fv(1, 1, &mesh->color[0]);
+    glUniform1i (2,     mesh->customAttrib);
+    glDrawArrays(GL_TRIANGLES, 0, mesh->vertcount);
+  }
+}
+
+mat4 mesh_makematrix(mesh_t* mesh, transform_t* transform)
+{
+  mat4 matrix = glm::translate(mat4(1.0f), transform->pos);
+  matrix = glm::scale(matrix, transform->scale);
   matrix = glm::rotate(matrix, mesh->rotation * gameTime, {0,1,1});
   return matrix;
 }
 
-mesh_t mesh_load_obj(char const* path)
+mesh_t mesh_load_obj(char const* path, shader_t shader, texture_t* texture, int drawflags)
 {
   FILE* file = fopen(path, "r");
   if(file == NULL){
@@ -66,6 +101,12 @@ mesh_t mesh_load_obj(char const* path)
   }
 
   mesh_t mesh;
+  mesh.shader    = shader;
+  mesh.drawflags = drawflags;
+  if(texture != NULL){
+    mesh.texture = *texture;
+  }
+
   mesh.vertcount = vertexData.size() / 8;
   
   glGenVertexArrays(1, &mesh.vao);

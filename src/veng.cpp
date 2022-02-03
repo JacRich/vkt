@@ -3,9 +3,9 @@
 #include "cmesh.h"
 #include <thread>
 
-region_t regions[REGION_COUNT];
-ivec     r_cords[REGION_COUNT];
-ivec r_cord_now, r_cord_last;
+static region_t regions[REGION_COUNT];
+static ivec     r_cords[REGION_COUNT];
+static ivec     r_cord_now, r_cord_last;
 
 static std::thread thread;
 
@@ -53,7 +53,7 @@ vhit veng_find_voxel(vec worldpos)
 
   ivec chunkIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
   chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
-
+ 
   int voxelValue = region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
   uchar *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
   chunk_t *chunk_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
@@ -172,19 +172,18 @@ vhit veng_raycast(int range, vec rayStart, vec rayDir)
   return lastTest;
 }
 
-void veng_change_withcursor(cursor_t* cursor, uchar newValue, int filter)
+void veng_change_range(int cubicRange, vec pos, uchar newValue, int filter)
 {
-  int cubedRange = cursor->size * cursor->size * cursor->size;
-  ivec truncPos = vec_to_ivec(cursor->mesh->pos);
+  int cubedRange = cubicRange * cubicRange * cubicRange;
+  ivec truncPos = vec_to_ivec(pos);
 
   for (int i = 0; i < cubedRange; i++)
   {
-    ivec cord = index3d(i, cursor->size) + truncPos;
+    ivec cord    = (index3d(i, cubicRange) + truncPos) - ivec{cubicRange / 2,cubicRange / 2,cubicRange / 2};
     vec voxelPos = ivec_to_vec(cord);
     vhit hit = veng_find_voxel(voxelPos);
     // Fill or Replace
-    if (hit.state == filter) 
-    {
+    if (hit.state == filter){
       *hit.voxel = newValue;
       hit.chunk->update = true;
     }
@@ -204,6 +203,13 @@ void veng_change_voxel(vhit voxel, int pickmode, uchar value)
   }
 }
 
+
+static void transform_cords(ivec dir)
+{
+  for(int i = 0; i < REGION_COUNT; i++){
+    r_cords[i] = r_cords[i] + dir; 
+  }
+}
 
 static bool is_region_inrange(region_t* region)
 {
@@ -242,7 +248,7 @@ static void update_region()
   }
 }
 
-static void tick_update_regions()
+static void thread_update_regions()
 {
   while(!glfwWindowShouldClose(window)){
     update_region();
@@ -264,16 +270,8 @@ void veng_init()
     r_cords[i] = transformed_rcord;
   }
 
-  render_attach_cmeshes(regions);
-
-  thread = std::thread(tick_update_regions);
-}
-
-void transform_cords(ivec dir)
-{
-  for(int i = 0; i < REGION_COUNT; i++){
-    r_cords[i] = r_cords[i] + dir; 
-  }
+  meshing_init(regions);
+  thread = std::thread(thread_update_regions);
 }
 
 void veng_tick()

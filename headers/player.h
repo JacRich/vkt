@@ -3,41 +3,27 @@
 #include "globaldef.h"
 #include "ivec.h"
 
-enum INPUT_MODES
-{
-  IM_BLOCKS,
-  IM_BLOCKS_RANGE_FILL,
-  IM_BLOCKS_RANGE_REPLACE
-};
-
-enum MOVEMENT_MODES
-{
-  MM_WALK,
-  MM_FLY
-};
 
 struct player_t
 {
   vec pos = {200.0f, 200.0f, 200.0f};
-  vec vel;
+  vec vel = {0.0f, 0.0f, 0.0f};
 
   vec front = {0.0f, 0.0f,-1.0f};
   vec up    = {0.0f, 1.0f, 0.0f};
   vec right = {1.0f, 0.0f, 0.0f};
-  
+
   vec front_walk = {0.0f, 0.0f, 0.0f};
   vec right_walk = {0.0f, 0.0f, 0.0f};
 
   uchar active = 1;
-
-  int reach = 20;
-  
-  int editor = true;
-  int inputMode = IM_BLOCKS;
+  int   reach = 20;
 
   float pitch = 0.0f, yaw = 0.0f;
 
-  bool grounded = false;
+  bool flyingColl = false;
+  bool flying     = true;
+  bool grounded   = false;
 };
 
 extern player_t player;
