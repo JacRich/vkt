@@ -19,7 +19,7 @@ struct mesh_t
   shader_t  shader  = sh_item;
   texture_t texture = tex_atlas;
 
-  vec4 color = vec4{1.5f, 0.2f, 0.5f, 1.0f};
+  vec4 color = vec4{1.0f, 0.5f, 0.1f, 1.0f};
 
   float rotation = 0.0f;
   int  customAttrib = 1;
