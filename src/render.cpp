@@ -121,7 +121,7 @@ void render_tick()
 
   draw_cmeshes();
 
-  meshes_draw();
+  meshes_tick();
 
   // Make world view matrices
   view_world.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
@@ -136,7 +136,7 @@ void render_tick()
   
   glfwSwapBuffers   (window);
   // Show FPS in window title
-  //glfwSetWindowTitle(window, ("FPS: " + std::to_string(1.0 / deltaTime)).c_str());
+  glfwSetWindowTitle(window, ("FPS: " + std::to_string(1.0 / deltaTime)).c_str());
 } 
 
 void render_terminate()

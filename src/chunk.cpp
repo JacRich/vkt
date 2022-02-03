@@ -17,7 +17,7 @@ void chunk_fill_perlin(chunk_t* chunk)
       chunk->voxels[index.x][index.y][index.z] = 0;
     }
     else {
-      chunk->voxels[index.x][index.y][index.z] = V_STONE_GREY;
+      chunk->voxels[index.x][index.y][index.z] = 5;
     }
   }
 }
