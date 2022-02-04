@@ -10,6 +10,18 @@ static ivec     r_cord_now, r_cord_last;
 static std::thread thread;
 
 
+region_t* veng_find_region(vec worldpos)
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    if (AABB(worldpos, regions[i].pos, regions[i].pos + vec{REGION_WIDTH, REGION_WIDTH, REGION_WIDTH}))
+    {
+      return &regions[i];
+    }
+  }
+  return NULL;
+}
+
 chunk_t* veng_find_chunk(vec worldpos)
 {
   region_t *region_ptr = veng_find_region(worldpos);
@@ -21,18 +33,6 @@ chunk_t* veng_find_chunk(vec worldpos)
   chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
 
   return &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
-}
-
-region_t* veng_find_region(vec worldpos)
-{
-  for (int i = 0; i < REGION_COUNT; i++)
-  {
-    if (AABB(worldpos, regions[i].pos, regions[i].pos + vec{REGION_WIDTH, REGION_WIDTH, REGION_WIDTH}))
-    {
-      return &regions[i];
-    }
-  }
-  return NULL;
 }
 
 vhit veng_find_voxel(vec worldpos)
