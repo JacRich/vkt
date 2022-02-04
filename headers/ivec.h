@@ -1,86 +1,75 @@
 #ifndef IVEC_H
 #define IVEC_H
+
 #include "globaldef.h"
 
-struct ivec
-{
-  int x, y, z;
+struct ivec {
+    int x, y, z;
 
-  int operator==(ivec left)
-  {
-    if (x == left.x && y == left.y && z == left.z)
-    {
-      return 1;
+    int operator==(ivec left) {
+        if (x == left.x && y == left.y && z == left.z) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-    else
-    {
-      return 0;
+
+    int operator!=(ivec left) {
+        if (x != left.x || y != left.y || z != left.z) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-  }
 
-  int operator!=(ivec left)
-  {
-    if (x != left.x || y != left.y || z != left.z)
-    {
-      return 1;
+    ivec operator-(ivec left) {
+        return {x - left.x, y - left.y, z - left.z};
     }
-    else
-    {
-      return 0;
+
+    ivec operator-(vec left) {
+        return {x - int(left.x), y - int(left.y), z - int(left.z)};
     }
-  }
 
-  ivec operator-(ivec left)
-  {
-    return {x - left.x, y - left.y, z - left.z};
-  }
+    ivec operator+(ivec left) {
+        return {x + left.x, y + left.y, z + left.z};
+    }
 
-  ivec operator-(vec left)
-  {
-    return {x - int(left.x), y - int(left.y), z - int(left.z)};
-  }
+    ivec operator+(vec left) {
+        return ivec{x + int(left.x), y + int(left.y), z + int(left.z)};
+    }
 
-  ivec operator+(ivec left)
-  {
-    return {x + left.x, y + left.y, z + left.z};
-  }
+    ivec operator/=(int left) {
+        return ivec{x / left, y / left, z / left};
+    }
 
-  ivec operator+(vec left)
-  {
-    return ivec{x + int(left.x), y + int(left.y), z + int(left.z)};
-  }
+    ivec operator*=(int left) {
+        return ivec{x * left, y * left, z * left};
+    }
 
-  ivec operator/=(int left)
-  {
-    return ivec{x / left, y / left, z / left};
-  }
-  ivec operator*=(int left)
-  {
-    return ivec{x * left, y * left, z * left};
-  }
-  ivec operator%=(int left)
-  {
-    return ivec{x % left, y % left, z % left};
-  }
+    ivec operator%=(int left) {
+        return ivec{x % left, y % left, z % left};
+    }
 };
 
-struct ivec2
-{
-  int x, y;
+struct ivec2 {
+    int x, y;
 };
 
 
 vec4 vec_to_vec4(vec ass);
-vec  vec4_to_vec(vec4 ass);
+
+vec vec4_to_vec(vec4 ass);
 
 ivec region_cord_at(vec worldpos);
 
-vec  ivec_to_vec(ivec left);
+vec ivec_to_vec(ivec left);
+
 ivec vec_to_ivec(vec left);
 
 int taxi_dist(ivec left, ivec right);
 
 ivec index3d(int index1d, int cuberoot);
+
 int index1d(ivec cord, int maxX, int maxY);
 
 void moveCords(ivec *cords, ivec moveDir);
@@ -88,6 +77,7 @@ void moveCords(ivec *cords, ivec moveDir);
 bool AABB(vec a, vec rangeMin, vec rangeMax);
 
 void print_ivec(ivec n);
+
 void print_vec(vec n);
 
 #endif

@@ -1,5 +1,6 @@
 #ifndef VKT_DEF_H
 #define VKT_DEF_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -9,12 +10,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-using uchar = uint8_t ;
-using uint  = uint32_t;
+using uchar = uint8_t;
+using uint = uint32_t;
 
 using mat4 = glm::mat4;
 using vec2 = glm::vec2;
-using vec  = glm::vec3;
+using vec = glm::vec3;
 using vec4 = glm::vec4;
 
 #define VERT_SIZE 5
@@ -36,12 +37,12 @@ using vec4 = glm::vec4;
 // We need these here so that they can be referenced in meshes,
 // this is a stupid system that needs reworking
 extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
-extern uint tex_atlas, tex_item;                                
+extern uint tex_atlas, tex_item;
 
 extern float lastTime, deltaTime;
-extern unsigned long  framecount;
+extern unsigned long framecount;
 extern float gameTime;
 
-extern GLFWwindow* window;
+extern GLFWwindow *window;
 
 #endif
