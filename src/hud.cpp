@@ -10,6 +10,7 @@ mesh_t* block_display_mesh;
 
 
 entity_t crosshair;
+mesh_t*  mesh_cross;
 
 entity_t cursor;
 mesh_t*  cursor_mesh;
@@ -27,7 +28,7 @@ void hud_init()
   
   // Make crosshair
   crosshair = entity_add(C_MESH | C_TRANSFORM);
-  mesh_t* mesh_cross = &components.meshes[crosshair];
+  mesh_cross = &components.meshes[crosshair];
   *mesh_cross = mesh_load_obj("gamedata/hud_crosshair.obj", sh_cross, NULL, DF_NO_DEPTH);
 
   // Make cursor 
@@ -45,7 +46,13 @@ void hud_tick()
   block_display_mesh->customAttrib = player.active;
 
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if(hit.state != HIT_TRUE || config.hideGUI){
+  if (config.hideGUI) {
+      cursor_mesh->drawflags = DF_NO_DRAW;
+      block_display_mesh->drawflags = DF_NO_DRAW;
+      mesh_cross->drawflags = DF_NO_DRAW;
+      return
+  }
+  if(hit.state != HIT_TRUE){
       cursor_mesh->drawflags = DF_NO_DRAW;
       return;
   }
