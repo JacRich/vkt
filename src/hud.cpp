@@ -45,14 +45,9 @@ void hud_tick()
   block_display_mesh->customAttrib = player.active;
 
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if(hit.state != HIT_TRUE){
-    if (config.hideGUI) {
-        cursor_mesh->drawflags = DF_NO_DRAW;
-    } else {
-        cursor_mesh->drawflags = 0;
-    }
-
-    return;
+  if(hit.state != HIT_TRUE || config.hideGUI){
+      cursor_mesh->drawflags = DF_NO_DRAW;
+      return;
   }
   cursor_mesh->drawflags = 0;
   cursor_transform->pos = hit.pos;
