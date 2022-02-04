@@ -23,7 +23,7 @@ using vec4 = glm::vec4;
 #define CHUNK_CROOT   64
 #define VOXELS_LENGTH 64 * 64 * 64
 
-#define REGION_CHUNKS_LENGTH 8  // 2^3
+#define REGION_CHUNKS_LENGTH 8   // 2^3
 #define REGION_CHUNKS_CROOT  2   // Cube root
 #define REGION_WIDTH         128 // REGION_CHUNKS_CROOT * CHUNK_CROOT
 
@@ -32,7 +32,11 @@ using vec4 = glm::vec4;
 
 #define CMESH_COUNT REGION_CHUNKS_LENGTH * REGION_COUNT // A mesh for each chunk in each region
 
-extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item, tex_atlas, tex_item;
+
+// We need these here so that they can be referenced in meshes,
+// this is a stupid system that needs reworking
+extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
+extern uint tex_atlas, tex_item;                                
 
 extern float lastTime, deltaTime;
 extern unsigned long  framecount;

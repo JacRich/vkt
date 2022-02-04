@@ -1,6 +1,6 @@
 #include "chunk.h"
 #include "perlin.h"
-
+#include "ivec.h"
 
 void chunk_fill_perlin(chunk_t* chunk)
 {   
