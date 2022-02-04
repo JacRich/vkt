@@ -11,7 +11,7 @@ config_mouse_t mouse;
 
 static void load_config(config_t* config) 
 {
-	FILE* file = fopen("config", "r");
+	FILE* file = fopen("config", "rb");
   if(file == NULL){
     printf("%s\n", "Failed to load config, falling back to default");
     return;
@@ -92,7 +92,7 @@ static void load_config_key(config_key_t* config)
     return;
   }
 
-	FILE *file = fopen("config_keys", "r");
+	FILE *file = fopen("config_keys", "rb");
   char linebuf[100];
   
   while(!feof(file)) 
@@ -179,7 +179,7 @@ static void load_config_mouse(config_mouse_t* config)
     return;
   }
 
-	FILE *file = fopen("config_mouse", "r");
+	FILE *file = fopen("config_mouse", "rb");
   char linebuf[100];
   
   while(!feof(file)) 

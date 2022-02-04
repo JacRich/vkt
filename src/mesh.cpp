@@ -46,7 +46,7 @@ mat4 mesh_makematrix(mesh_t* mesh, transform_t* transform)
 
 mesh_t mesh_load_obj(char const* path, shader_t shader, texture_t* texture, int drawflags)
 {
-  FILE* file = fopen(path, "r");
+  FILE* file = fopen(path, "rb");
   if(file == NULL){
     printf("FAILED TO LOAD MESH @ %s, EXITING\n", path);
     exit(0);
