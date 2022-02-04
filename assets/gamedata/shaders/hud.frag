@@ -3,8 +3,8 @@ layout (binding = 0) uniform sampler2D atlas;
 
 layout (location = 2) uniform int blockId;
 
-in vec3 normal ;
-in vec4 fragPos ;
+in vec3 normal;
+in vec4 fragPos;
 in vec2 texCoord;
 
 out vec4 FragColor;
@@ -12,8 +12,8 @@ out vec4 FragColor;
 // Grab Player light from UBO
 layout(std140, binding = 1) uniform Light
 {
-vec4 pos;
-vec4 color;
+    vec4 pos;
+    vec4 color;
 } light;
 
 in vec3 pos;

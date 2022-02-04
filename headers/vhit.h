@@ -1,5 +1,6 @@
 #ifndef VHIT_H
 #define VHIT_H
+
 #include "ivec.h"
 #include "chunk.h"
 
@@ -8,20 +9,19 @@
 #define HIT_TRUE   1
 #define HIT_ALL    2
 
-struct vhit
-{
-  int state = HIT_NULL;
-  
-  uchar* voxel     = NULL;
-  uchar* voxelLast = NULL;
-  
-  chunk_t* chunk     = NULL;
-  chunk_t* chunkLast = NULL;
+struct vhit {
+    int state = HIT_NULL;
 
-  vec pos    ;
-  vec posLast;
+    uchar *voxel = NULL;
+    uchar *voxelLast = NULL;
 
-  float distance = 0.0f;
+    chunk_t *chunk = NULL;
+    chunk_t *chunkLast = NULL;
+
+    vec pos;
+    vec posLast;
+
+    float distance = 0.0f;
 };
 
 #endif

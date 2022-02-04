@@ -9,37 +9,35 @@
 
 
 float lastTime, deltaTime;
-unsigned long  framecount;
+unsigned long framecount;
 float gameTime = 0.0f;
 
-int main()
-{
-  // The order matters! Do not touch!
-  config_init();
-  render_init();
-  player_init();
-  veng_init  ();
-  hud_init   ();
- 
-  while(!glfwWindowShouldClose(window))
-  {
-    float time = glfwGetTime();
-    deltaTime = time - lastTime;
-    lastTime  = time;
-    
-    player_tick ();
-    render_tick ();
-    meshing_tick();
-    veng_tick   ();
-    hud_tick    ();
-    lights_tick ();
-    framecount++;
-    gameTime += deltaTime;
-  }
+int main() {
+    // The order matters! Do not touch!
+    config_init();
+    render_init();
+    player_init();
+    veng_init();
+    hud_init();
 
-  player_terminate ();
-  veng_terminate   ();
-  meshing_terminate();
-  render_terminate ();
-  return 0;
+    while (!glfwWindowShouldClose(window)) {
+        float time = glfwGetTime();
+        deltaTime = time - lastTime;
+        lastTime = time;
+
+        player_tick();
+        render_tick();
+        meshing_tick();
+        veng_tick();
+        hud_tick();
+        lights_tick();
+        framecount++;
+        gameTime += deltaTime;
+    }
+
+    player_terminate();
+    veng_terminate();
+    meshing_terminate();
+    render_terminate();
+    return 0;
 }

@@ -20,8 +20,8 @@ layout(std140, binding = 2) uniform FULLBRIGHT
     int doFullbright;
 };
 
-in vec3 normal  ;
-in vec4 fragPos ;
+in vec3 normal;
+in vec4 fragPos;
 in vec2 texCoord;
 
 out vec4 FragColor;
@@ -35,7 +35,7 @@ void main()
     vec3 diffuse;
     vec3 ambient;
 
-    for(int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)
     {
         // Distance from world pixel to light
         float dist = length(vec3(FragPos - light[i].pos));
@@ -48,10 +48,10 @@ void main()
         float diff = max(dot(normal, pLightDir), 0.0) * atten;
 
         diffuse += vec3(texture(atlas, texCoord)) * diff * vec3(light[i].color);
-        if(doFullbright == 1){
-            atten = 1.0 ;/// (1.0 + 0.01 * dist + 0.001 * dist * dist);
+        if (doFullbright == 1){
+            atten = 1.0;/// (1.0 + 0.01 * dist + 0.001 * dist * dist);
         }
-        else{
+        else {
             atten = 1.0 / (1.0 + 0.01 * dist + 0.03 * dist * dist);
         }
 
