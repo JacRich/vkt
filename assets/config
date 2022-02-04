@@ -8,3 +8,5 @@ renderdist = 150.0
 friction = 12.0
 
 fullbright = 0
+hideGUI = false
+recordingMode = false

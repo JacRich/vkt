@@ -11,6 +11,9 @@ toggle_fullscreen = 300
 toggle_coll = 320
 toggle_fullbright = 321
 
+toggle_gui = 290
+toggle_recording = 291
+
 im_blocks = 49
 im_range = 50
 im_range_replace = 51

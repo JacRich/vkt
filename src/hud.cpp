@@ -3,6 +3,7 @@
 #include "ecs.h"
 #include "player.h"
 #include "veng.h"
+#include "config.h"
 
 entity_t block_display;
 mesh_t* block_display_mesh;
@@ -45,7 +46,12 @@ void hud_tick()
 
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
   if(hit.state != HIT_TRUE){
-    cursor_mesh->drawflags = DF_NO_DRAW;
+    if (config.hideGUI) {
+        cursor_mesh->drawflags = DF_NO_DRAW;
+    } else {
+        cursor_mesh->drawflags = 0;
+    }
+
     return;
   }
   cursor_mesh->drawflags = 0;

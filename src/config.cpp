@@ -31,6 +31,16 @@ static void load_config(config_t* config)
       config->fullbright = fullbright; 
     }
 
+    int hideGUI;
+    if (sscanf(linebuf, " hideGUI = %i", &hideGUI)){
+        config->hideGUI = hideGUI;
+    }
+
+    int recordingMode;
+    if (sscanf(linebuf, " recordingMode = %i", &recordingMode)){
+        config->recordingMode = recordingMode;
+    }
+
     int width;
     if (sscanf(linebuf, " width = %i", &width)){
       config->width = width;
@@ -148,6 +158,14 @@ static void load_config_key(config_key_t* config)
 
     if (sscanf(linebuf, " switchmov = %i", &buffer)){
       config->switchmov = buffer;
+    }
+
+    if (sscanf(linebuf, " toggle_gui = %i", &buffer)){
+        config->toggle_gui = buffer;
+    }
+
+    if (sscanf(linebuf, " toggle_recording = %i", &buffer)){
+        config->toggle_recording = buffer;
     }
   }
 

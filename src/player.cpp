@@ -48,6 +48,7 @@ static void pick()
 static void inputid(int key)
 {
   // Someome who is better at coding plz clean this up
+  // idkk howwww halp :((( - garv
   static char ibuffer[3];
   static char buffer [3];
   static int  size = 0;
@@ -105,6 +106,14 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   if(key == keys.toggle_fullbright){
     config.fullbright = !config.fullbright;
+  }
+
+  if(key == keys.toggle_gui){
+      config.hideGUI = !config.hideGUI;
+  }
+
+  if(key == keys.toggle_recording){
+      config.recordingMode = !config.recordingMode;
   }
   
   if(key == keys.toggle_fullscreen){
@@ -295,7 +304,13 @@ void player_tick()
   float yDelta = (lastY - ypos) * config.looksens;
   lastX = xpos;
   lastY = ypos;
-  player.yaw   += xDelta;
+
+  if (config.recordingMode) {
+    player.yaw += 9 * deltaTime;
+  } else {
+    player.yaw += xDelta;
+  }
+
   player.pitch += yDelta;
   player.pitch = player.pitch > 89.0f ? 89.0f : player.pitch < -89.0f ? -89.0f : player.pitch;
 

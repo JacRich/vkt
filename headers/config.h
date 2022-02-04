@@ -6,6 +6,8 @@
 struct config_t
 {
   bool fullbright = false;
+  bool hideGUI = false;
+  bool recordingMode = false;
 
   int width  = 1280;
   int height = 720 ;
@@ -40,6 +42,9 @@ struct config_key_t
 
   int toggle_cursor = GLFW_KEY_GRAVE_ACCENT;
   int input_id = GLFW_KEY_TAB;
+
+  int toggle_gui = GLFW_KEY_F1;
+  int toggle_recording = GLFW_KEY_F2;
 };
 
 struct config_mouse_t
