@@ -49,6 +49,9 @@ void hud_tick() {
         block_display_mesh->drawflags = DF_NO_DRAW;
         mesh_cross->drawflags = DF_NO_DRAW;
         return;
+    } else {
+        block_display_mesh->drawflags = 0;
+        mesh_cross->drawflags = 0;
     }
     if (hit.state != HIT_TRUE) {
         cursor_mesh->drawflags = DF_NO_DRAW;
