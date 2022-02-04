@@ -1,8 +1,9 @@
 #ifndef CHUNK_H
 #define CHUNK_H
 #include "globaldef.h"
-#include "ivec.h"
 
+// Chunks seem to just be something to attach chunk meshes to, maybe
+// this whole thing needs a rework?
 struct chunk_t
 {
   uchar voxels [CHUNK_CROOT][CHUNK_CROOT][CHUNK_CROOT];
@@ -13,7 +14,7 @@ struct chunk_t
 
 enum VOXELTYPES
 {
-  V_STONE_BLACK  = 1,
+  V_STONE_BLACK  = (uchar)1,
   V_STONE_GREY   = 2,
   V_STONE_ORANGE = 3,
   V_STONE_PEPPER = 4

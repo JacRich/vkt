@@ -12,12 +12,6 @@ extern cmesh_t* cmeshes;
 
 GLFWwindow* window;
 
-#define MAX_MESHES 50
-mesh_t meshes[MAX_MESHES]; int mesh_count = 0;
-
-#define MAX_LIGHTS 10
-light_t lights[MAX_LIGHTS]; int light_count = 0;
-
 shader_t  sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
 texture_t tex_atlas, tex_item;
 ubo_t     ubo_view_world, ubo_view_hud, ubo_lights, ubo_fullbright;
@@ -102,7 +96,7 @@ void render_init()
   tex_item = texture_make("gamedata/test.jpg");
   // Create Uniform Buffer Objects
   ubo_view_world = ubo_make(128, 0);
-  ubo_lights     = ubo_make(32 * MAX_LIGHTS, 1);
+  ubo_lights     = ubo_make(32 * 10, 1); // Oh dear this is bad
   ubo_fullbright = ubo_make(16, 2);
   ubo_view_hud = ubo_make  (128, 3);
 
@@ -131,8 +125,7 @@ void render_tick()
   
   ubo_set(ubo_view_hud  , &view_hud);
   ubo_set(ubo_view_world, &view_world);
-  ubo_set(ubo_fullbright, &config.fullbright); 
-  ubo_set(ubo_lights    , &lights);
+  ubo_set(ubo_fullbright, &config.fullbright);
   
   glfwSwapBuffers   (window);
   // Show FPS in window title
