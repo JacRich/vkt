@@ -3,8 +3,8 @@
 #include <sys/unistd.h>
 
 struct sector_t {
-    uchar size = 0;
-    uchar value = 0;
+    uint8 size = 0;
+    uint8 value = 0;
 };
 
 
@@ -128,7 +128,7 @@ region_t region_load(ivec cord) {
     return region;
 }
 
-void region_fill_value(region_t *region, uchar value) {
+void region_fill_value(region_t *region, uint8 value) {
     for (int i = 0; i < REGION_CHUNKS_LENGTH; i++) {
         ivec position = index3d(i, REGION_CHUNKS_CROOT);
         chunk_t *chunk = &region->chunks[position.x][position.y][position.z];

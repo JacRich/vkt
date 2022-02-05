@@ -6,7 +6,7 @@ static std::thread thread;
 static bool thread_active = true;
 
 // Vertex Data of a unit cube
-const uchar unitcube[6][FACE_SIZE] =
+const uint8 unitcube[6][FACE_SIZE] =
         {
                 // Y+        Normal Block ID
                 {
@@ -135,7 +135,7 @@ const uchar unitcube[6][FACE_SIZE] =
                         1, 0, 0, 5, 0,
                         0, 0, 0, 5, 0}};
 
-static void add_face(cmesh_t *mesh, int faceIndex, vec offset, uchar blockID) {
+static void add_face(cmesh_t *mesh, int faceIndex, vec offset, uint8 blockID) {
     int indexOffset = mesh->facecount * FACE_SIZE;
 
     if ((indexOffset + FACE_SIZE + 1) > BUFFER_SIZE) {
@@ -148,9 +148,9 @@ static void add_face(cmesh_t *mesh, int faceIndex, vec offset, uchar blockID) {
     }
     // Transform Position
     for (int i = 0; i < FACE_SIZE; i += VERT_SIZE) {
-        mesh->vertdata[indexOffset + i + 0] += (uchar) offset.x;
-        mesh->vertdata[indexOffset + i + 1] += (uchar) offset.y;
-        mesh->vertdata[indexOffset + i + 2] += (uchar) offset.z;
+        mesh->vertdata[indexOffset + i + 0] += (uint8) offset.x;
+        mesh->vertdata[indexOffset + i + 1] += (uint8) offset.y;
+        mesh->vertdata[indexOffset + i + 2] += (uint8) offset.z;
     }
     // Set Block ID
     for (int i = 4; i < FACE_SIZE; i += VERT_SIZE) {
@@ -219,7 +219,7 @@ static void cmesh_send(cmesh_t *mesh) {
     mesh->vertcount = mesh->facecount * 6;
     glBindVertexArray(mesh->vao);
     glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-    glBufferSubData(GL_ARRAY_BUFFER, (GLintptr) 0, sizeof(uchar) * (VERT_SIZE * mesh->vertcount), mesh->vertdata);
+    glBufferSubData(GL_ARRAY_BUFFER, (GLintptr) 0, sizeof(uint8) * (VERT_SIZE * mesh->vertcount), mesh->vertdata);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     mesh->facecount = 0;
 }

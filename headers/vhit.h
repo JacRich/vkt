@@ -12,8 +12,8 @@
 struct vhit {
     int state = HIT_NULL;
 
-    uchar *voxel = NULL;
-    uchar *voxelLast = NULL;
+    uint8 *voxel = NULL;
+    uint8 *voxelLast = NULL;
 
     chunk_t *chunk = NULL;
     chunk_t *chunkLast = NULL;

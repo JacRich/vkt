@@ -20,9 +20,9 @@ void veng_tick();
 
 void veng_terminate();
 
-void veng_change_voxel(vhit voxel, int pickmode, uchar value);
+void veng_change_voxel(vhit voxel, int pickmode, uint8 value);
 
-void veng_change_range(int cubicRange, vec pos, uchar newValue, int filter);
+void veng_change_range(int cubicRange, vec pos, uint8 newValue, int filter);
 
 region_t *veng_find_region(vec worldpos);
 

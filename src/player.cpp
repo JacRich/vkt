@@ -58,7 +58,7 @@ static void inputid(int key) {
                     sprintf(&buffer[i], "%i", ibuffer[i]);
                 }
                 long number = strtol(buffer, NULL, 10);
-                player.active = (uchar) number;
+                player.active = (uint8) number;
                 size = 0;
             }
         }

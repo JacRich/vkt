@@ -6,23 +6,27 @@
 #include "texture.h"
 #include "transform.h"
 
-
+#define DF_DEFAULT  0
 #define DF_NO_DRAW  0x01
 #define DF_NO_DEPTH 0x02
 
-struct mesh_t {
-    uchar drawflags = 0;
-    int polymode = GL_FILL;
+#define DF_HUD      0x02
 
-    uint vao = 0;
-    uint vertcount = 0;
-    shader_t shader = sh_item;
-    texture_t texture = tex_atlas;
 
-    vec4 color = vec4{1.0f, 0.5f, 0.1f, 1.0f};
+struct mesh_t 
+{
+  uint8 drawflags = 0;
+  int polymode = GL_FILL;
 
-    float rotation = 0.0f;
-    int customAttrib = 1;
+  uint vao = 0;
+  uint vertcount = 0;
+  shader_t shader = sh_item;
+  texture_t texture = tex_atlas;
+
+  vec4 color = vec4{1.0f, 0.5f, 0.1f, 1.0f};
+
+  float rotation = 0.0f;
+  int customAttrib = 1;
 };
 
 mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform);

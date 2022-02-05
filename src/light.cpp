@@ -8,7 +8,7 @@ void lights_tick() {
     uint16_t requiredComps = C_TRANSFORM | C_LIGHT;
 
     for (int i = 0; i < MAX_ENTITIES; i++) {
-        if (!entities[i].isValid || !entity_hasTags(i, requiredComps)) {
+        if (!ent_tags[i].isValid || !entity_hasTags(i, requiredComps)) {
             continue;
         }
         components.lights[i].pos = vec_to_vec4(components.transforms[i].pos);

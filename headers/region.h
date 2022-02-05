@@ -13,7 +13,7 @@ struct region_t {
 
 void region_fill_perlin(region_t *region);
 
-void region_fill_value(region_t *region, uchar value);
+void region_fill_value(region_t *region, uint8 value);
 
 void region_set_pos(region_t *region, ivec cord);
 

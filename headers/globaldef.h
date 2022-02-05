@@ -10,12 +10,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-using uchar = uint8_t;
-using uint = uint32_t;
+using uint8  = uint8_t ;
+using uint16 = uint16_t;
+using uint   = uint32_t;
 
 using mat4 = glm::mat4;
 using vec2 = glm::vec2;
-using vec = glm::vec3;
+using vec  = glm::vec3;
 using vec4 = glm::vec4;
 
 #define VERT_SIZE 5
@@ -35,7 +36,7 @@ using vec4 = glm::vec4;
 
 
 // We need these here so that they can be referenced in meshes,
-// this is a stupid system that needs reworking
+// this is a stupid system that needs reworking - Jac
 extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
 extern uint tex_atlas, tex_item;
 

@@ -50,7 +50,7 @@ vhit veng_find_voxel(vec worldpos) {
     chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
 
     int voxelValue = region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
-    uchar *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
+    uint8 *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
     chunk_t *chunk_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
     if (voxelValue != 0) {
         hit.state = HIT_TRUE;
@@ -145,7 +145,7 @@ vhit veng_raycast(int range, vec rayStart, vec rayDir) {
     return lastTest;
 }
 
-void veng_change_range(int cubicRange, vec pos, uchar newValue, int filter) {
+void veng_change_range(int cubicRange, vec pos, uint8 newValue, int filter) {
     int cubedRange = cubicRange * cubicRange * cubicRange;
     ivec truncPos = vec_to_ivec(pos);
 
@@ -161,7 +161,7 @@ void veng_change_range(int cubicRange, vec pos, uchar newValue, int filter) {
     }
 }
 
-void veng_change_voxel(vhit voxel, int pickmode, uchar value) {
+void veng_change_voxel(vhit voxel, int pickmode, uint8 value) {
     // PICK_HIT means to change hit voxel, otherwise change voxelLast
     if (pickmode == PICK_HIT) {
         *voxel.voxel = value;

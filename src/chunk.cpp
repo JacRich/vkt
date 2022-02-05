@@ -19,7 +19,7 @@ void chunk_fill_perlin(chunk_t *chunk) {
     }
 }
 
-void chunk_fill(chunk_t *chunk, uchar value) {
+void chunk_fill(chunk_t *chunk, uint8 value) {
     for (int i = 0; i < VOXELS_LENGTH; i++) {
         ivec index = index3d(i, CHUNK_CROOT);
 

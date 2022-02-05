@@ -16,7 +16,7 @@ struct player_t {
     vec front_walk = {0.0f, 0.0f, 0.0f};
     vec right_walk = {0.0f, 0.0f, 0.0f};
 
-    uchar active = 1;
+    uint8 active = 1;
     int reach = 20;
 
     float pitch = 0.0f, yaw = 0.0f;
