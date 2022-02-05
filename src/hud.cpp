@@ -21,8 +21,6 @@ void hud_init() {
   block_display = entity_add(C_MESH | C_TRANSFORM);
   block_display_mesh = &components.meshes[block_display];
   *block_display_mesh = mesh_load_obj("gamedata/hud_cube.obj", sh_hud, &tex_atlas, DF_NO_DEPTH);
-  components.transforms[block_display].pos = vec{2.6f, -1.3f, -3.0f};
-  components.transforms[block_display].scale *= 0.7f;
 
   // Make crosshair
   crosshair = entity_add(C_MESH | C_TRANSFORM);

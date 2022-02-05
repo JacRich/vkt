@@ -4,7 +4,7 @@ ent_tag_t ent_tags[MAX_ENTITIES];
 components_t components;
 
 
-entity_t entity_add(uint16_t tags) 
+entity_t entity_add(uint16 tags) 
 {
   for (int i = 0; i < MAX_ENTITIES; i++) {
     // Find an un-used entity, return it's index
@@ -28,6 +28,7 @@ bool entity_hasTags(entity_t entity, uint16_t tags)
 {
   return (ent_tags[entity].tags & tags) == tags;
 }
+
 
 void ecs_init() 
 {

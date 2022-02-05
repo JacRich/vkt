@@ -10,7 +10,7 @@
 #define DF_NO_DRAW  0x01
 #define DF_NO_DEPTH 0x02
 
-#define DF_HUD      0x02
+#define DF_HUD      DF_NO_DEPTH
 
 
 struct mesh_t 

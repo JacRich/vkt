@@ -30,7 +30,7 @@ struct components_t
 extern ent_tag_t ent_tags[MAX_ENTITIES];
 extern components_t components;
 
-entity_t entity_add(uint16_t tags);
+entity_t entity_add(uint16 tags);
 
 void entity_remove(entity_t index);
 
