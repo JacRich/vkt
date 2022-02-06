@@ -2,7 +2,7 @@
 EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm
-LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608 -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic
+LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608 -Wl,-Bstatic -lstdc++ -lstdc++fs -lpthread -Wl,-Bdynamic
 objects = $(wildcard src/*.cpp)
 objectsWin = headers/GL/glew.c
 
