@@ -90,7 +90,7 @@ void render_init() {
     sh_hud = shader_make("gamedata/shaders/hud.vert", "gamedata/shaders/hud.frag");
     sh_item = shader_make("gamedata/shaders/item.vert", "gamedata/shaders/item.frag");
     // Load Textures
-    tex_atlas = texture_make("gamedata/las.jpg");
+    tex_atlas = texture_make("gamedata/merged_textures.png");
     tex_item = texture_make("gamedata/test.jpg");
     // Create Uniform Buffer Objects
     ubo_view_world = ubo_make(128, 0);

@@ -6,7 +6,7 @@
 #include "config.h"
 #include "hud.h"
 #include "cmesh.h"
-
+#include "texture_merge.h"
 
 float lastTime, deltaTime;
 unsigned long framecount;
@@ -15,6 +15,7 @@ float gameTime = 0.0f;
 int main() {
     // The order matters! Do not touch!
     config_init();
+    create_tex_atlas();
     render_init();
     player_init();
     veng_init();
