@@ -28,8 +28,7 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <tr>
 </table>
 
-Default controls
-----------------
+## Default controls
 All controls are re-bindable using the config files.
 
 | Button                        | Action                                                         |
