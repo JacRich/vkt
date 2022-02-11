@@ -28,10 +28,28 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <tr>
 </table>
 
+## Default controls
+All controls are re-bindable using the config files.
+
+- Look Around: <kbd>Move Mouse</kbd>
+- Move: <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+- Jump: <kbd>Space</kbd>
+- switchmov?: <kbd>Left Shift</kbd>
+- Toggle GUI: <kbd>F1</kbd>
+- Toggle Spin Mode: <kbd>F2</kbd>
+- Toggle Fullscreen: <kbd>F11</kbd>
+- toggle_coll?: <kbd>Keypad 0</kbd>
+- Toggle Fullbright: <kbd>Keypad 1</kbd>
+- Toggle Cursor: <kbd>`</kbd>
+- Place Block: <kbd>RClick</kbd>
+- Destroy Block: <kbd>LClick</kbd>
+- Pick Block: <kbd>Side Mouse Button</kbd>
+
 ## MacOS Support
 Though MacOS is currently unsupported, there are plans to support it in the future. This is due to the fact that Apple has deprecated OpenGL with the later versions of MacOS, limiting the use of the library to version 4.1.0. Currently, Vire uses 4.4.0, so once we can downgrade to a lower OpenGL version, MacOS support will be added!
 
 ## Compiling
+> :warning: **You might not need to compile**: you only need to compile from the source if you want to set up a dev environment, or if something isn't working right. The precompiled binaries are automatic, and always up to date with the main branch, so unless you *need* it for some reason (such as contributing to the repo), you don't really have to compile from source
 ### Linux
 To compile the project, you will need the following dependencies:
 
