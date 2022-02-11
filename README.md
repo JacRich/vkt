@@ -28,6 +28,26 @@ If you'd just like to just download and try, there are precompiled binaries avai
 <tr>
 </table>
 
+## Default controls
+All controls are re-bindable using the config files.
+
+| Button                        | Action                                                         |
+|-------------------------------|----------------------------------------------------------------|
+| Move mouse                    | Look Around                                                    |
+| W, A, S, D                    | Move                                                           |
+| Space                         | Jump                                                           |
+| Left Shift                    | switchmov?                                                     |
+| F1                            | Toggle GUI                                                     |
+| F2                            | Toggle Spin Mode                                               |
+| F11                           | Toggle Fullscreen                                              |
+| Keypad 0                      | toggle_coll?                                                   |
+| Keypad 1.                     | Toggle Fullbright                                              |
+| \`                            | Toggle Cursor                                                  |
+| Right Click                   | Place Block                                                    |
+| Left Click                    | Destroy Block                                                  |
+| Side Mouse Button             | Pick Block                                                     |
+
+
 ## MacOS Support
 Though MacOS is currently unsupported, there are plans to support it in the future. This is due to the fact that Apple has deprecated OpenGL with the later versions of MacOS, limiting the use of the library to version 4.1.0. Currently, Vire uses 4.4.0, so once we can downgrade to a lower OpenGL version, MacOS support will be added!
 
