@@ -14,7 +14,7 @@ struct view_t
 
 void window_init();
 
-void render_tick();
+void window_tick();
 
 void render_terminate();
 

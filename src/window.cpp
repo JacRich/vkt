@@ -12,7 +12,7 @@
 GLFWwindow *window;
 
 shader_t sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
-texture_t tex_atlas, tex_item;
+texture_t tex_atlas;
 ubo_t ubo_view_world, ubo_view_hud, ubo_lights, ubo_fullbright;
 view_t view_world, view_hud;
 
@@ -71,7 +71,7 @@ void window_init()
   sh_item = shader_make("gamedata/shaders/item.vert", "gamedata/shaders/item.frag");
   // Load Textures
   tex_atlas = texture_make("gamedata/merged_textures.png");
-  tex_item = texture_make("gamedata/test.jpg");
+
   // Create Uniform Buffer Objects
   ubo_view_world = ubo_make(128, 0);
   ubo_lights = ubo_make(32 * 10, 1); // Oh dear this is bad
@@ -85,15 +85,13 @@ void window_init()
   glfwSetFramebufferSizeCallback(window, on_resize);
 }
 
-void render_tick()
+void window_tick()
 {
   //glViewport(0,0, config.width, config.height);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   cmesh_draw();
-
-  cmeshes_tick();
   static_meshes_tick();
 
   // Make world view matrices

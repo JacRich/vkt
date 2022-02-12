@@ -28,13 +28,13 @@ int main()
     deltaTime = time - lastTime;
     lastTime = time;
 
-    
     player_tick();
-    render_tick();
+    window_tick();
     cmeshes_tick();
     veng_tick();
     hud_tick();
     lights_tick();
+
     framecount++;
     gameTime += deltaTime;
   }

@@ -3,12 +3,14 @@
 #include "perlin.h"
 #include "ivec.h"
 
+void lights_tick()
+{
+  uint16 requiredComps = C_TRANSFORM | C_LIGHT;
 
-void lights_tick() {
-    uint16_t requiredComps = C_TRANSFORM | C_LIGHT;
-
-  for (int i = 0; i < MAX_ENTITIES; i++) {
-    if (!ent_tags[i].isValid || !entity_hasTags(i, requiredComps)) {
+  for (int i = 0; i < MAX_ENTITIES; i++)
+  {
+    if (!ent_tags[i].isValid || !entity_hasTags(i, requiredComps))
+    {
       continue;
     }
     components.lights[i].pos = vec_to_vec4(components.transforms[i].pos);

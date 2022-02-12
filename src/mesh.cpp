@@ -37,7 +37,6 @@ void static_meshes_tick()
 mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform) {
   mat4 matrix = glm::translate(mat4(1.0f), transform->pos);
   matrix = glm::scale(matrix, transform->scale);
-  matrix = glm::rotate(matrix, mesh->rotation * gameTime, {0, 1, 1});
   return matrix;
 }
 

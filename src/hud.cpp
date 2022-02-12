@@ -5,18 +5,22 @@
 #include "veng.h"
 #include "config.h"
 
+
+entity_t gh;
+mesh_t* torch_mesh;
+
 entity_t block_display;
-mesh_t* block_display_mesh;
+mesh_t *block_display_mesh;
 
 entity_t crosshair;
-mesh_t* mesh_cross;
+mesh_t *mesh_cross;
 
 entity_t cursor;
-mesh_t* cursor_mesh;
-transform_t* cursor_transform;
+mesh_t *cursor_mesh;
+transform_t *cursor_transform;
 
-
-void hud_init() {
+void hud_init()
+{
   // Make display block thingy
   block_display = entity_add(C_MESH | C_TRANSFORM);
   block_display_mesh = &components.meshes[block_display];
@@ -36,27 +40,28 @@ void hud_init() {
   cursor_transform->pos = player.pos;
 }
 
-void hud_tick() 
+void hud_tick()
 {
-  if(config.hideGUI){
-    cursor_mesh->drawflags =        DF_NO_DRAW;
+  if (config.hideGUI)
+  {
+    cursor_mesh->drawflags = DF_NO_DRAW;
     block_display_mesh->drawflags = DF_NO_DRAW;
-    mesh_cross->drawflags =         DF_NO_DRAW;
+    mesh_cross->drawflags = DF_NO_DRAW;
     return;
   }
-  cursor_mesh->drawflags        = DF_DEFAULT;
+  cursor_mesh->drawflags = DF_DEFAULT;
   block_display_mesh->drawflags = DF_HUD;
-  mesh_cross->drawflags         = DF_HUD;
+  mesh_cross->drawflags = DF_HUD;
 
   // Make block's texture match the player's active block
   block_display_mesh->customAttrib = player.active;
 
   vhit hit = veng_raycast(player.reach, player.pos, player.front);
-  if (hit.state != HIT_TRUE) {
+  if (hit.state != HIT_TRUE)
+  {
     cursor_mesh->drawflags = DF_NO_DRAW;
     return;
   }
-  
+
   cursor_transform->pos = hit.pos;
 }
-

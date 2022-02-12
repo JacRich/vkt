@@ -24,10 +24,13 @@ void entity_remove(entity_t index)
   ent_tags[index].tags = 0;
 }
 
-bool entity_hasTags(entity_t entity, uint16_t tags) 
+bool entity_hasTags(entity_t entity, uint16 tags) 
 {
   return (ent_tags[entity].tags & tags) == tags;
 }
+
+
+
 
 
 void ecs_init() 

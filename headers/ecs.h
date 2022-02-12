@@ -35,6 +35,6 @@ entity_t entity_add(uint16 tags);
 void entity_remove(entity_t index);
 
 bool entity_hasTags(entity_t entity, uint16_t tags);
-
+void* entity_get_comp(entity_t entity, uint16 componentType);
 
 #endif
