@@ -1,4 +1,4 @@
-#include "render.h"
+#include "window.h"
 #include "shader.h"
 #include "cmesh.h"
 #include "mesh.h"
@@ -8,7 +8,6 @@
 #include "ubo.h"
 #include <string>
 
-extern cmesh_t *cmeshes;
 
 GLFWwindow *window;
 
@@ -17,38 +16,15 @@ texture_t tex_atlas, tex_item;
 ubo_t ubo_view_world, ubo_view_hud, ubo_lights, ubo_fullbright;
 view_t view_world, view_hud;
 
-static void draw_cmeshes()
-{
-  glUseProgram(sh_world);
-  //glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, tex_atlas);
-  glEnable(GL_DEPTH_TEST);
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-  mat4 m_model;
-  for (int i = 0; i < CMESH_COUNT; i++)
-  {
-    // Janky way to limit render dist
-    if (glm::length((cmeshes[i].chunk->pos + vec{32.0f, 32.0f, 32.0f}) - player.pos) > config.renderdist){
-      continue;
-    }
-
-    m_model = glm::translate(mat4(1.0f), cmeshes[i].chunk->pos);
-    shader_setMat4(sh_world, "m_model", &m_model[0][0]);
-    glBindVertexArray(cmeshes[i].vao);
-    glDrawArrays(GL_TRIANGLES, 0, cmeshes[i].vertcount);
-  }
-}
 
 static void on_resize(GLFWwindow *window, int width, int height)
 {
   glViewport(0, 0, width, height);
 }
 
-void render_init()
+void window_init()
 {
-  if (glfwInit() != GLFW_TRUE)
-  {
+  if (glfwInit() != GLFW_TRUE){
     printf("GLFW failed to init\n");
     exit(0);
   }
@@ -59,25 +35,21 @@ void render_init()
 
   window = glfwCreateWindow(config.width, config.height, "vkt", NULL, NULL);
 
-  if (window == NULL)
-  {
+  if (window == NULL){
     printf("GLFW failed to create window with code: ");
     int code = glfwGetError(NULL);
     printf("%d\n", code);
-    if (code == 65543)
-    {
+    if (code == 65543){
       printf("GLFW_VERSION_UNAVAILABLE: The requested OpenGL or OpenGL ES version (including any requested context or framebuffer hints) is not available on this machine.\n");
     }
-    else if (code == 65540)
-    {
+    else if (code == 65540){
       printf("GLFW_INVALID_VALUE: One of the arguments to the function was an invalid value, for example requesting a non-existent OpenGL or OpenGL ES version like 2.7.\n");
     }
     exit(0);
   }
   glfwMakeContextCurrent(window);
 
-  if (glewInit() != GLEW_OK)
-  {
+  if (glewInit() != GLEW_OK){
     printf("GLEW failed to init\n");
     exit(0);
   }
@@ -119,9 +91,10 @@ void render_tick()
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  draw_cmeshes();
+  cmesh_draw();
 
-  meshes_tick();
+  cmeshes_tick();
+  static_meshes_tick();
 
   // Make world view matrices
   view_world.view = glm::lookAt(player.pos, player.pos + player.front, player.up);

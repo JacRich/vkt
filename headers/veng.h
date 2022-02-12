@@ -8,7 +8,7 @@
 #include "player.h"
 #include "region.h"
 
-#include "render.h"
+#include "window.h"
 
 #define PICK_HIT    0
 #define PICK_NORMAL 1

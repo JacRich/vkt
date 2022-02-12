@@ -18,10 +18,10 @@ struct cmesh_t
   uint8 vertdata[BUFFER_SIZE];
 };
 
+void cmesh_draw();
 void meshing_init(region_t regions[REGION_COUNT]);
 
+void cmeshes_tick();
 void meshing_terminate();
-
-void meshing_tick();
 
 #endif

@@ -3,7 +3,7 @@
 #include <vector>
 
 
-void meshes_tick() 
+void static_meshes_tick() 
 {
   const uint16_t tagsRequired = C_MESH | C_TRANSFORM;
 
