@@ -31,7 +31,7 @@ struct mesh_t
 
 mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform);
 
-mesh_t mesh_load_obj(char const *path, shader_t shader, texture_t *texture, int drawflags);
+mesh_t mesh_load(char const *path, shader_t shader, texture_t *texture, int drawflags);
 
 void static_meshes_tick();
 

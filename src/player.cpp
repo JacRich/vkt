@@ -4,7 +4,7 @@
 #include "globaldef.h"
 
 #include "player.h"
-#include "veng.h"
+#include "world.h"
 #include "perlin.h"
 #include "config.h"
 #include "hud.h"
@@ -20,27 +20,27 @@ transform_t *torch_tran;
 
 static void destroy()
 {
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  vhit hit = world_raycast(player.reach, player.pos, player.front);
   if (hit.state != HIT_TRUE)
   {
     return;
   }
-  veng_change_voxel(hit, PICK_HIT, 0);
+  world_change(hit, PICK_HIT, 0);
 }
 
 static void place()
 {
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  vhit hit = world_raycast(player.reach, player.pos, player.front);
   if (hit.state != HIT_TRUE)
   {
     return;
   }
-  veng_change_voxel(hit, PICK_NORMAL, player.active);
+  world_change(hit, PICK_NORMAL, player.active);
 }
 
 static void pick()
 {
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  vhit hit = world_raycast(player.reach, player.pos, player.front);
   if (hit.state != HIT_TRUE)
   {
     return;
@@ -106,12 +106,12 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   if (key == GLFW_KEY_HOME)
   {
-    region_fill_value(veng_find_region(player.pos), 5);
+    region_fill_value(world_find_region(player.pos), 5);
   }
 
   if (key == GLFW_KEY_INSERT)
   {
-    region_fill_perlin(veng_find_region(player.pos));
+    region_fill_perlin(world_find_region(player.pos));
   }
 
   if (key == keys.jump && player.grounded)
@@ -169,7 +169,7 @@ static void ms_scroll_callback(GLFWwindow *window, double xoffset, double yoffse
 
 static void ms_button_callback(GLFWwindow *window, int button, int action, int mods)
 {
-  vhit hit = veng_raycast(player.reach, player.pos, player.front);
+  vhit hit = world_raycast(player.reach, player.pos, player.front);
   if (action != GLFW_PRESS) {
     return;
   }
@@ -204,7 +204,7 @@ static vec make_clip(player_t *player)
   for (int i = -2; i < 1; i++)
   {
     // Z+
-    if (player->vel.z > 0 && veng_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE)
+    if (player->vel.z > 0 && world_find_voxel(player->pos + vec{0.0f, i, 1.0f}).state == HIT_TRUE)
     {
       if (player->pos.z - trunc(player->pos.z) > marginPos)
       {
@@ -213,7 +213,7 @@ static vec make_clip(player_t *player)
     }
 
     // Z-
-    if (player->vel.z < 0 && veng_find_voxel(player->pos + vec{0.0f, i, -1.0f}).state == HIT_TRUE)
+    if (player->vel.z < 0 && world_find_voxel(player->pos + vec{0.0f, i, -1.0f}).state == HIT_TRUE)
     {
       if (player->pos.z - trunc(player->pos.z) < marginNeg)
       {
@@ -222,7 +222,7 @@ static vec make_clip(player_t *player)
     }
 
     // X+
-    if (player->vel.x > 0 && veng_find_voxel(player->pos + vec{1.0f, i, 0.0f}).state == HIT_TRUE)
+    if (player->vel.x > 0 && world_find_voxel(player->pos + vec{1.0f, i, 0.0f}).state == HIT_TRUE)
     {
       if (player->pos.x - trunc(player->pos.x) > marginPos)
       {
@@ -231,7 +231,7 @@ static vec make_clip(player_t *player)
     }
 
     // X-
-    if (player->vel.x < 0 && veng_find_voxel(player->pos + vec{-1.0f, i, 0.0f}).state == HIT_TRUE)
+    if (player->vel.x < 0 && world_find_voxel(player->pos + vec{-1.0f, i, 0.0f}).state == HIT_TRUE)
     {
       if (player->pos.x - trunc(player->pos.x) < marginNeg)
       {
@@ -241,7 +241,7 @@ static vec make_clip(player_t *player)
   }
 
   // Y+
-  if (player->vel.y > 0 && veng_find_voxel(player->pos + vec{0.0f, 1.0f, 0.0f}).state == HIT_TRUE)
+  if (player->vel.y > 0 && world_find_voxel(player->pos + vec{0.0f, 1.0f, 0.0f}).state == HIT_TRUE)
   {
     if (player->pos.y - trunc(player->pos.y) > marginPos)
     {
@@ -250,7 +250,7 @@ static vec make_clip(player_t *player)
   }
 
   // Y-
-  if (player->vel.y < 0 && veng_find_voxel(player->pos + vec{0.0f, -3.0f, 0.0f}).state == HIT_TRUE)
+  if (player->vel.y < 0 && world_find_voxel(player->pos + vec{0.0f, -3.0f, 0.0f}).state == HIT_TRUE)
   {
     if (player->pos.y - trunc(player->pos.y) < marginNeg)
     {

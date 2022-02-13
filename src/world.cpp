@@ -1,47 +1,309 @@
 #include "globaldef.h"
-#include "veng.h"
-#include "player.h"
-#include "window.h"
-#include "ivec.h"
-#include "config.h"
-#include "hud.h"
+#include "world.h"
 #include "cmesh.h"
-#include "texture_merge.h"
+#include "ecs.h"
 
-float lastTime, deltaTime;
-unsigned long framecount;
-float gameTime = 0.0f;
+#include <thread>
 
-int main()
+static region_t regions[REGION_COUNT];
+static ivec r_cords    [REGION_COUNT];
+static ivec r_cord_now, r_cord_last;
+
+static std::thread thread;
+
+region_t* world_find_region(vec worldpos)
 {
-  // The order matters! Do not touch!
-  config_init();
-  create_tex_atlas();
-  window_init();
-  player_init();
-  veng_init();
-  hud_init();
-
-  while (!glfwWindowShouldClose(window))
+  for (int i = 0; i < REGION_COUNT; i++)
   {
-    float time = glfwGetTime();
-    deltaTime = time - lastTime;
-    lastTime = time;
+    if (AABB(worldpos, regions[i].pos, regions[i].pos + vec{REGION_WIDTH, REGION_WIDTH, REGION_WIDTH}))
+    {
+      return &regions[i];
+    }
+  }
+  return NULL;
+}
 
-    player_tick();
-    window_tick();
-    cmeshes_tick();
-    veng_tick();
-    hud_tick();
-    lights_tick();
+chunk_t* world_find_chunk(vec worldpos)
+{
+  region_t *region_ptr = world_find_region(worldpos);
+  if (region_ptr == NULL)
+  {
+    return NULL;
+  }
+  vec relativepos = worldpos - region_ptr->pos;
+  ivec chunkIndex = vec_to_ivec(relativepos);
+  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
 
-    framecount++;
-    gameTime += deltaTime;
+  return &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
+}
+
+vhit world_find_voxel(vec worldpos)
+{
+  vhit hit;
+  vec pos_regiontest = worldpos + vec{0.1f, 0.1f, 0.1f}; // Offset the pos we test for bc reasons?
+
+  // Find reigon to search
+  region_t *region_ptr = world_find_region(pos_regiontest);
+  if (region_ptr == NULL)
+  {
+    hit.state = HIT_NULL;
+    return hit;
+  }
+  vec relativepos = worldpos - region_ptr->pos;
+
+  ivec voxelIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
+  voxelIndex = ivec{voxelIndex.x % CHUNK_CROOT, voxelIndex.y % CHUNK_CROOT, voxelIndex.z % CHUNK_CROOT};
+
+  ivec chunkIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
+  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
+
+  int voxelValue = region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
+  uint8 *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
+  chunk_t *chunk_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
+  if (voxelValue != 0)
+  {
+    hit.state = HIT_TRUE;
+    hit.voxel = voxel_ptr;
+    hit.chunk = chunk_ptr;
+    hit.pos = worldpos;
+    return hit;
+  }
+  else
+  {
+    hit.state = HIT_FALSE;
+    hit.voxel = voxel_ptr;
+    hit.chunk = chunk_ptr;
+    hit.pos = worldpos;
+    return hit;
+  }
+}
+
+vhit world_raycast(int range, vec rayStart, vec rayDir)
+{
+  vhit lastTest;
+
+  int stepCount = 0;
+  vec rayUnitStepSize = {abs(1.0f / rayDir.x), abs(1.0f / rayDir.y), abs(1.0f / rayDir.z)};
+  ivec step;
+  vec rayLength1D;
+  ivec voxelCheck = {int(rayStart.x), int(rayStart.y), int(rayStart.z)};
+
+  // Establish Starting Conditions
+  if (rayDir.x < 0)
+  {
+    step.x = -1;
+    rayLength1D.x = (rayStart.x - (float)(voxelCheck.x)) * rayUnitStepSize.x;
+  }
+  else
+  {
+    step.x = 1;
+    rayLength1D.x = ((float)(voxelCheck.x + 1) - rayStart.x) * rayUnitStepSize.x;
+  }
+  if (rayDir.y < 0)
+  {
+    step.y = -1;
+    rayLength1D.y = (rayStart.y - (float)(voxelCheck.y)) * rayUnitStepSize.y;
+  }
+  else
+  {
+    step.y = 1;
+    rayLength1D.y = ((float)(voxelCheck.y + 1) - rayStart.y) * rayUnitStepSize.y;
+  }
+  if (rayDir.z < 0)
+  {
+    step.z = -1;
+    rayLength1D.z = (rayStart.z - (float)(voxelCheck.z)) * rayUnitStepSize.z;
+  }
+  else
+  {
+    step.z = 1;
+    rayLength1D.z = ((float)(voxelCheck.z + 1) - rayStart.z) * rayUnitStepSize.z;
   }
 
-  player_terminate();
-  veng_terminate();
-  meshing_terminate();
-  render_terminate();
-  return 0;
+  bool voxelFound = false;
+  float maxDistance = float(range);
+  float distance = 0.0f;
+
+  while (!voxelFound && distance < maxDistance)
+  {
+    // Step along shortest path
+    if (rayLength1D.x < rayLength1D.y && rayLength1D.x < rayLength1D.z)
+    {
+      voxelCheck.x += step.x;
+      distance = rayLength1D.x;
+      rayLength1D.x += rayUnitStepSize.x;
+    }
+    else if (rayLength1D.y < rayLength1D.x && rayLength1D.y < rayLength1D.z)
+    {
+      voxelCheck.y += step.y;
+      distance = rayLength1D.y;
+      rayLength1D.y += rayUnitStepSize.y;
+    }
+    else
+    {
+      voxelCheck.z += step.z;
+      distance = rayLength1D.z;
+      rayLength1D.z += rayUnitStepSize.z;
+    }
+
+    vhit test = world_find_voxel(vec{voxelCheck.x, voxelCheck.y, voxelCheck.z});
+
+    if (test.state == HIT_TRUE)
+    {
+      if (stepCount < 1) // If we hit at first step, set last hit data equal to current
+      {
+        lastTest.voxel = test.voxel;
+        lastTest.pos = test.pos;
+        lastTest.chunk = test.chunk;
+      }
+      voxelFound = true;
+      test.voxelLast = lastTest.voxel;
+      test.posLast = lastTest.pos;
+      test.chunkLast = lastTest.chunk;
+
+      test.distance = glm::length(test.pos - rayStart);
+
+      return test;
+    }
+    else
+    {
+      lastTest = test;
+    }
+    stepCount++;
+  }
+
+  return lastTest;
+}
+
+void world_change_range(int cubicRange, vec pos, uint8 newValue, int filter)
+{
+  int cubedRange = cubicRange * cubicRange * cubicRange;
+  ivec truncPos = vec_to_ivec(pos);
+
+  for (int i = 0; i < cubedRange; i++)
+  {
+    ivec cord = (index3d(i, cubicRange) + truncPos) - ivec{cubicRange / 2, cubicRange / 2, cubicRange / 2};
+    vec voxelPos = ivec_to_vec(cord);
+    vhit hit = world_find_voxel(voxelPos);
+    // Fill or Replace
+    if (hit.state == filter)
+    {
+      *hit.voxel = newValue;
+      hit.chunk->update = true;
+    }
+  }
+}
+
+void world_change(vhit voxel, int pickmode, uint8 value)
+{
+  // PICK_HIT means to change hit voxel, otherwise change voxelLast
+  if (pickmode == PICK_HIT)
+  {
+    *voxel.voxel = value;
+    voxel.chunk->update = true;
+  }
+  else if (voxel.voxelLast != NULL)
+  {
+    *voxel.voxelLast = value;
+    voxel.chunkLast->update = true;
+  }
+}
+
+static void transform_cords(ivec dir)
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    r_cords[i] = r_cords[i] + dir;
+  }
+}
+
+static bool is_region_inrange(region_t *region)
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    if (region->cord == r_cords[i])
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
+static bool is_cord_filled(ivec cord)
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    if (regions[i].cord == cord)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
+static void update_region()
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    if (!is_region_inrange(&regions[i]))
+    {
+      for (int j = 0; j < REGION_COUNT; j++)
+      {
+        if (!is_cord_filled(r_cords[j]))
+        {
+          region_save(&regions[i]);
+          regions[i] = region_load(r_cords[j]);
+          return;
+        }
+      }
+    }
+  }
+}
+
+static void thread_update_regions()
+{
+  while (!glfwWindowShouldClose(window))
+  {
+    update_region();
+  }
+}
+
+void world_init()
+{
+  r_cord_now = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_last = r_cord_now;
+
+  // Build a 3x3x3 area of regions with the player in the center one
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    ivec r_cord = index3d(i, REGION_COUNT_CROOT);
+    ivec transformed_rcord = region_cord_at(player.pos) + r_cord -
+                             ivec{REGION_COUNT_CROOT / 2, REGION_COUNT_CROOT / 2, REGION_COUNT_CROOT / 2};
+    regions[i] = region_load(transformed_rcord);
+    r_cords[i] = transformed_rcord;
+  }
+
+  meshing_init(regions);
+  thread = std::thread(thread_update_regions);
+}
+
+void world_tick()
+{
+  r_cord_now = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
+  if (r_cord_now != r_cord_last)
+  {
+    transform_cords(r_cord_now - r_cord_last);
+  }
+  r_cord_last = r_cord_now;
+}
+
+void world_terminate()
+{
+  for (int i = 0; i < REGION_COUNT; i++)
+  {
+    region_save(&regions[i]);
+  }
+
+  thread.join();
+  thread.~thread();
 }

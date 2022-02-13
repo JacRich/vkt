@@ -40,7 +40,7 @@ mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform) {
   return matrix;
 }
 
-mesh_t mesh_load_obj(char const *path, shader_t shader, texture_t *texture, int drawflags) 
+mesh_t mesh_load(char const *path, shader_t shader, texture_t *texture, int drawflags) 
 {
   FILE *file = fopen(path, "r");
   if (file == NULL) {
