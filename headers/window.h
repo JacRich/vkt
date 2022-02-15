@@ -2,10 +2,10 @@
 #define RENDER_H
 
 #include "globaldef.h"
-#include "mesh.h"
+#include "comp_mesh.h"
 #include "region.h"
 #include "player.h"
-#include "light.h"
+#include "comp_light.h"
 
 struct view_t
 {
@@ -16,6 +16,6 @@ void window_init();
 
 void window_tick();
 
-void render_terminate();
+void window_terminate();
 
 #endif

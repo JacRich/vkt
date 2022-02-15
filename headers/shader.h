@@ -6,6 +6,7 @@
 using shader_t = uint32_t;
 
 shader_t shader_make(char const *vertPath, char const *fragPath);
+shader_t shader_make(char const *vertPath, char const *geoPath, char const *fragPath);
 
 void shader_setInt(shader_t handle, const char *name, int value);
 

@@ -209,6 +209,7 @@ void world_change(vhit voxel, int pickmode, uint8 value)
   }
 }
 
+
 static void transform_cords(ivec dir)
 {
   for (int i = 0; i < REGION_COUNT; i++)

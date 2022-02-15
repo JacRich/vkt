@@ -194,7 +194,7 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   }
 }
 
-// This is beyond jank, too bad!
+// This is beyond jank
 static vec make_clip(player_t *player)
 {
   vec clipVector = {1, 1, 1};

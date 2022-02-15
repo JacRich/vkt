@@ -3,9 +3,10 @@
 
 #include "globaldef.h"
 
-struct ubo_t {
-    uint handle;
-    uint size;
+struct ubo_t 
+{
+  uint handle;
+  uint size;
 };
 
 ubo_t ubo_make(uint size, uint binding);

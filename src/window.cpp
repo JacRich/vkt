@@ -1,7 +1,7 @@
 #include "window.h"
 #include "shader.h"
 #include "cmesh.h"
-#include "mesh.h"
+#include "comp_mesh.h"
 #include "config.h"
 #include "texture.h"
 #include "hud.h"
@@ -91,8 +91,8 @@ void window_tick()
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  cmesh_draw();
-  static_meshes_tick();
+  meshing_draw();
+  meshes_tick();
 
   // Make world view matrices
   view_world.view = glm::lookAt(player.pos, player.pos + player.front, player.up);
@@ -111,7 +111,7 @@ void window_tick()
   glfwSetWindowTitle(window, ("FPS: " + std::to_string(1.0 / deltaTime)).c_str());
 }
 
-void render_terminate()
+void window_terminate()
 {
   glfwDestroyWindow(window);
   glfwTerminate();

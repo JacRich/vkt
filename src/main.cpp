@@ -30,7 +30,7 @@ int main()
 
     player_tick();
     window_tick();
-    cmeshes_tick();
+    meshing_tick();
     world_tick();
     hud_tick();
     lights_tick();
@@ -42,6 +42,6 @@ int main()
   player_terminate();
   world_terminate();
   meshing_terminate();
-  render_terminate();
+  window_terminate();
   return 0;
 }

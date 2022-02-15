@@ -5,10 +5,11 @@
 #include "chunk.h"
 #include "ivec.h"
 
-struct region_t {
-    vec pos = {0, 0, 0};
-    ivec cord = {0, 0, 0};
-    chunk_t chunks[REGION_CHUNKS_CROOT][REGION_CHUNKS_CROOT][REGION_CHUNKS_CROOT];
+struct region_t 
+{
+  vec pos   = {0, 0, 0};
+  ivec cord = {0, 0, 0};
+  chunk_t chunks[REGION_CHUNKS_CROOT][REGION_CHUNKS_CROOT][REGION_CHUNKS_CROOT];
 };
 
 void region_fill_perlin(region_t *region);

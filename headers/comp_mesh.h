@@ -4,7 +4,7 @@
 #include "globaldef.h"
 #include "shader.h"
 #include "texture.h"
-#include "transform.h"
+#include "comp_transform.h"
 
 #define DF_DEFAULT  0
 #define DF_NO_DRAW  0x01
@@ -33,6 +33,6 @@ mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform);
 
 mesh_t mesh_load(char const *path, shader_t shader, texture_t *texture, int drawflags);
 
-void static_meshes_tick();
+void meshes_tick();
 
 #endif

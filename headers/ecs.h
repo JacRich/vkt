@@ -2,9 +2,9 @@
 #define ECS_H
 
 #include "globaldef.h"
-#include "mesh.h"
-#include "transform.h"
-#include "light.h"
+#include "comp_mesh.h"
+#include "comp_transform.h"
+#include "comp_light.h"
 
 #define MAX_ENTITIES 100
 

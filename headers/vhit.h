@@ -9,19 +9,20 @@
 #define HIT_TRUE   1
 #define HIT_ALL    2
 
-struct vhit {
-    int state = HIT_NULL;
+struct vhit 
+{
+  int state = HIT_NULL;
 
-    uint8 *voxel = NULL;
-    uint8 *voxelLast = NULL;
+  uint8 *voxel = NULL;
+  uint8 *voxelLast = NULL;
 
-    chunk_t *chunk = NULL;
-    chunk_t *chunkLast = NULL;
+  chunk_t *chunk = NULL;
+  chunk_t *chunkLast = NULL;
 
-    vec pos;
-    vec posLast;
+  vec pos;
+  vec posLast;
 
-    float distance = 0.0f;
+  float distance = 0.0f;
 };
 
 #endif

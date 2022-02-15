@@ -1,11 +1,11 @@
-#include "mesh.h"
+#include "comp_mesh.h"
 #include "ecs.h"
 #include <vector>
 
 
-void static_meshes_tick() 
+void meshes_tick() 
 {
-  const uint16_t tagsRequired = C_MESH | C_TRANSFORM;
+  const uint16 tagsRequired = C_MESH | C_TRANSFORM;
 
   for (int i = 0; i < MAX_ENTITIES; i++) {
     if (!ent_tags[i].isValid || !entity_hasTags(i, tagsRequired)) {
