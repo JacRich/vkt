@@ -3,6 +3,7 @@
 
 #include "globaldef.h"
 #include "ivec.h"
+#include "region.h"
 
 struct player_t
 {
@@ -24,6 +25,10 @@ struct player_t
   bool flyingColl = false;
   bool flying = true;
   bool grounded = false;
+
+  region_t* selected_region = NULL;
+  int range = 3;
+  bool useRange = false;
 };
 
 extern player_t player;

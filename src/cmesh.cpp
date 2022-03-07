@@ -109,7 +109,7 @@ static void cmesh_build(cmesh_t *mesh)
 {
   for (int i = 0; i < VOXELS_LENGTH; i++)
   {
-    ivec index = index3d(i, CHUNK_CROOT);
+    ivec index = index3d(i, VOXELS_CROOT);
     vec voxelPos = ivec_to_vec(index);
 
     int value = mesh->chunk->voxels[index.x][index.y][index.z];
@@ -120,7 +120,7 @@ static void cmesh_build(cmesh_t *mesh)
     }
 
     // Y+
-    if (index.y == (CHUNK_CROOT - 1))
+    if (index.y == (VOXELS_CROOT - 1))
     {
       add_face(mesh, 0, voxelPos, value);
     }
@@ -130,7 +130,7 @@ static void cmesh_build(cmesh_t *mesh)
     }
 
     // X+
-    if (index.x == (CHUNK_CROOT - 1))
+    if (index.x == (VOXELS_CROOT - 1))
     {
       add_face(mesh, 1, voxelPos, value);
     }
@@ -160,7 +160,7 @@ static void cmesh_build(cmesh_t *mesh)
     }
 
     // Z+
-    if (index.z == (CHUNK_CROOT - 1))
+    if (index.z == (VOXELS_CROOT - 1))
     {
       add_face(mesh, 4, voxelPos, value);
     }
@@ -223,6 +223,7 @@ void meshing_draw()
   //glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, tex_atlas);
   glEnable(GL_DEPTH_TEST);
+  glEnable(GL_CULL_FACE);
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
   mat4 m_model;

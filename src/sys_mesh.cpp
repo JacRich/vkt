@@ -12,14 +12,19 @@ void meshes_tick()
       continue;
     }
     mesh_t *mesh = &components.meshes[i];
+
     if (mesh->drawflags & DF_NO_DRAW){
       continue;
     }
-
     if (mesh->drawflags & DF_NO_DEPTH){
       glDisable(GL_DEPTH_TEST);
     } else {
       glEnable(GL_DEPTH_TEST);
+    }
+    if(mesh->drawflags & DF_NO_CULL){
+      glDisable(GL_CULL_FACE);
+    } else {
+      glEnable(GL_CULL_FACE);
     }
 
     glActiveTexture(GL_TEXTURE0); // Why must we do this?
@@ -34,7 +39,8 @@ void meshes_tick()
   }
 }
 
-mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform) {
+mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform) 
+{
   mat4 matrix = glm::translate(mat4(1.0f), transform->pos);
   matrix = glm::scale(matrix, transform->scale);
   return matrix;

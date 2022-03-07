@@ -11,6 +11,7 @@ static ivec r_cord_now, r_cord_last;
 
 static std::thread thread;
 
+
 region_t* world_find_region(vec worldpos)
 {
   for (int i = 0; i < REGION_COUNT; i++)
@@ -32,7 +33,7 @@ chunk_t* world_find_chunk(vec worldpos)
   }
   vec relativepos = worldpos - region_ptr->pos;
   ivec chunkIndex = vec_to_ivec(relativepos);
-  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
+  chunkIndex = ivec{chunkIndex.x / VOXELS_CROOT, chunkIndex.y / VOXELS_CROOT, chunkIndex.z / VOXELS_CROOT};
 
   return &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z];
 }
@@ -52,10 +53,10 @@ vhit world_find_voxel(vec worldpos)
   vec relativepos = worldpos - region_ptr->pos;
 
   ivec voxelIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
-  voxelIndex = ivec{voxelIndex.x % CHUNK_CROOT, voxelIndex.y % CHUNK_CROOT, voxelIndex.z % CHUNK_CROOT};
+  voxelIndex = ivec{voxelIndex.x % VOXELS_CROOT, voxelIndex.y % VOXELS_CROOT, voxelIndex.z % VOXELS_CROOT};
 
   ivec chunkIndex = ivec{int(relativepos.x), int(relativepos.y), int(relativepos.z)};
-  chunkIndex = ivec{chunkIndex.x / CHUNK_CROOT, chunkIndex.y / CHUNK_CROOT, chunkIndex.z / CHUNK_CROOT};
+  chunkIndex = ivec{chunkIndex.x / VOXELS_CROOT, chunkIndex.y / VOXELS_CROOT, chunkIndex.z / VOXELS_CROOT};
 
   int voxelValue = region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
   uint8 *voxel_ptr = &region_ptr->chunks[chunkIndex.x][chunkIndex.y][chunkIndex.z].voxels[voxelIndex.x][voxelIndex.y][voxelIndex.z];
@@ -175,7 +176,7 @@ vhit world_raycast(int range, vec rayStart, vec rayDir)
   return lastTest;
 }
 
-void world_change_range(int cubicRange, vec pos, uint8 newValue, int filter)
+void world_change_range(int cubicRange, vec pos, voxel_t newValue, int filter)
 {
   int cubedRange = cubicRange * cubicRange * cubicRange;
   ivec truncPos = vec_to_ivec(pos);
@@ -194,7 +195,7 @@ void world_change_range(int cubicRange, vec pos, uint8 newValue, int filter)
   }
 }
 
-void world_change(vhit voxel, int pickmode, uint8 value)
+void world_change(vhit voxel, int pickmode, voxel_t value)
 {
   // PICK_HIT means to change hit voxel, otherwise change voxelLast
   if (pickmode == PICK_HIT)
@@ -271,10 +272,10 @@ static void thread_update_regions()
 
 void world_init()
 {
-  r_cord_now = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_now = region_cord_at(player.pos + vec{64, 64, 64});
   r_cord_last = r_cord_now;
 
-  // Build a 3x3x3 area of regions with the player in the center one
+  // Build a 3x3x3 area of regions with the player in the center
   for (int i = 0; i < REGION_COUNT; i++)
   {
     ivec r_cord = index3d(i, REGION_COUNT_CROOT);
@@ -290,7 +291,7 @@ void world_init()
 
 void world_tick()
 {
-  r_cord_now = region_cord_at(player.pos + vec{32.0f, 32.0f, 32.0f});
+  r_cord_now = region_cord_at(player.pos + vec{64, 64, 64});
   if (r_cord_now != r_cord_last)
   {
     transform_cords(r_cord_now - r_cord_last);

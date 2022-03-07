@@ -13,11 +13,11 @@ struct vhit
 {
   int state = HIT_NULL;
 
-  uint8 *voxel = NULL;
-  uint8 *voxelLast = NULL;
+  voxel_t* voxel     = NULL;
+  voxel_t* voxelLast = NULL;
 
-  chunk_t *chunk = NULL;
-  chunk_t *chunkLast = NULL;
+  chunk_t* chunk     = NULL;
+  chunk_t* chunkLast = NULL;
 
   vec pos;
   vec posLast;

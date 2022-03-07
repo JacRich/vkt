@@ -17,25 +17,34 @@ entity_t torch;
 transform_t *torch_tran;
 
 
-
 static void destroy()
 {
   vhit hit = world_raycast(player.reach, player.pos, player.front);
-  if (hit.state != HIT_TRUE)
-  {
+  if (hit.state != HIT_TRUE){
     return;
   }
-  world_change(hit, PICK_HIT, 0);
+
+  if(player.useRange){
+    world_change_range(player.range, hit.pos, 0, HIT_TRUE);
+  }
+  else{
+    world_change(hit, PICK_HIT, 0);
+  }
 }
 
 static void place()
 {
   vhit hit = world_raycast(player.reach, player.pos, player.front);
-  if (hit.state != HIT_TRUE)
-  {
+  if (hit.state != HIT_TRUE){
     return;
   }
-  world_change(hit, PICK_NORMAL, player.active);
+  
+  if(player.useRange){
+    world_change_range(player.range, hit.pos, player.active, HIT_TRUE);
+  }
+  else{
+    world_change(hit, PICK_NORMAL, player.active);
+  }
 }
 
 static void pick()
@@ -106,7 +115,8 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
   if (key == GLFW_KEY_HOME)
   {
-    region_fill_value(world_find_region(player.pos), 5);
+    player.useRange = !player.useRange;
+    //region_fill_value(world_find_region(player.pos), 5);
   }
 
   if (key == GLFW_KEY_INSERT)
@@ -159,11 +169,14 @@ static void key_callback(GLFWwindow *window, int key, int scancode, int action, 
 
 static void ms_scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
 {
+  // if scrolling up, else down. Why is it setup like this?
   if (yoffset > 0)
   {
+    player.range++;
   }
   else
   {
+    player.range--;
   }
 }
 
@@ -176,8 +189,15 @@ static void ms_button_callback(GLFWwindow *window, int button, int action, int m
   
   if (button == GLFW_MOUSE_BUTTON_4)
   {
-    entity_t newLight = entity_add(C_TRANSFORM | C_LIGHT);
+    player.selected_region = world_find_region(hit.pos);
+    
+    printf("Region: ");
+    print_ivec(player.selected_region->cord);
+    
+    entity_t newLight = entity_add(C_TRANSFORM | C_MESH);
+    ent_tags[newLight].tags |= C_LIGHT;
     components.transforms[newLight].pos = hit.posLast;
+    components.meshes[newLight] = mesh_load("gamedata/models/test.obj", sh_cursor, NULL, DF_DEFAULT);
   }
 
   if (button == mouse.place)

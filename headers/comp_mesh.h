@@ -9,6 +9,7 @@
 #define DF_DEFAULT  0
 #define DF_NO_DRAW  0x01
 #define DF_NO_DEPTH 0x02
+#define DF_NO_CULL  0x04
 
 #define DF_HUD      DF_NO_DEPTH
 
@@ -29,10 +30,8 @@ struct mesh_t
   int customAttrib = 1;
 };
 
-mat4 mesh_makematrix(mesh_t *mesh, transform_t *transform);
-
+mat4   mesh_makematrix(mesh_t *mesh, transform_t *transform);
 mesh_t mesh_load(char const *path, shader_t shader, texture_t *texture, int drawflags);
-
-void meshes_tick();
+void   meshes_tick();
 
 #endif

@@ -14,6 +14,7 @@ using uint8  = uint8_t ;
 using uint16 = uint16_t;
 using uint   = uint32_t;
 
+// Types inside of namespaces can bite me
 using mat4 = glm::mat4;
 using vec2 = glm::vec2;
 using vec  = glm::vec3;
@@ -22,7 +23,7 @@ using vec4 = glm::vec4;
 #define VERT_SIZE 5
 #define FACE_SIZE 30
 
-#define CHUNK_CROOT   64
+#define VOXELS_CROOT  64
 #define VOXELS_LENGTH 64 * 64 * 64
 
 #define REGION_CHUNKS_LENGTH 8   // 2^3
@@ -35,7 +36,7 @@ using vec4 = glm::vec4;
 #define CMESH_COUNT REGION_CHUNKS_LENGTH * REGION_COUNT // A mesh for each chunk in each region
 
 
-// We need these here so that they can be referenced in meshes,
+// We have these here so that they can be referenced in meshes,
 // this is a stupid system that needs reworking - Jac
 extern uint sh_world, sh_cursor, sh_cross, sh_hud, sh_item;
 extern uint tex_atlas, tex_item;
