@@ -3,8 +3,8 @@ EXECUTABLE_NAME = "vkt"
 CPPARAMS = -g -std=gnu++14 -fdiagnostics-color=always -fdiagnostics-show-labels -Wall -Wno-unused-result
 LDLINUXFLAGS = -I headers -lGL -lGLEW -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor -lm -lstdc++fs
 LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgcc -lopengl32 -lglfw3 -lgdi32 -lm -Wl,--stack,8388608 -Wl,-Bstatic -lstdc++ -lstdc++fs -lpthread -Wl,-Bdynamic
-objects = $(wildcard src/*.cpp)
-objectsWin = headers/GL/glew.c
+sources = $(wildcard src/*.cpp)
+sourcesWin = headers/GL/glew.c
 
 # creates directory bin/linux if not existent
 # compiles the program to the folder using g++ and use the EXECUTABLE_NAME variable as the name of the executable.
@@ -12,7 +12,7 @@ objectsWin = headers/GL/glew.c
 buildlinux:
 	@echo "Compiling for Linux"
 	@mkdir -p bin/linux
-	g++ $(objects) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	g++ $(sources) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/linux
 
@@ -23,7 +23,7 @@ buildlinux:
 buildwin:
 	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
-	x86_64-w64-mingw32-g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	x86_64-w64-mingw32-g++ $(sources) $(sourcesWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows
 	@cp lib/libwinpthread-1.dll bin/windows
@@ -33,7 +33,7 @@ buildwin_msys:
 	@echo "Compiling for Windows \033[1;31m!Experimental!\033[0m"
 	@mkdir -p bin/windows
 
-	g++ $(objects) $(objectsWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
+	g++ $(sources) $(sourcesWin) -g $(CPPARAMS) $(LDWINDOWSFLAGS) -o bin/windows/$(EXECUTABLE_NAME)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/windows/
 
