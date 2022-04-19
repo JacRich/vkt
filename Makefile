@@ -6,15 +6,24 @@ LDWINDOWSFLAGS = -I headers -DGLEW_STATIC -L lib -static-libstdc++ -static-libgc
 sources = $(wildcard src/*.cpp)
 sourcesWin = headers/GL/glew.c
 
+objects = $(patsubst src/%.cpp, obj/%.o, $(sources))
+dirs = obj
+
 # creates directory bin/linux if not existent
 # compiles the program to the folder using g++ and use the EXECUTABLE_NAME variable as the name of the executable.
 # then copy all files inside "assets/" to the folder "bin/linux/" but not assets itself.
-buildlinux:
+buildlinux: $(objects)
 	@echo "Compiling for Linux"
 	@mkdir -p bin/linux
-	g++ $(sources) -g $(CPPARAMS) $(LDLINUXFLAGS) -o bin/linux/$(EXECUTABLE_NAME)
+	$(CXX) -o bin/linux/$(EXECUTABLE_NAME) $^ -g $(CPPARAMS) $(LDLINUXFLAGS)
 	@echo "Copying assets..."
 	@cp -r assets/* bin/linux
+
+obj/%.o: src/%.cpp Makefile | $(dirs)
+	$(CXX) -o $@ -g $(CPPARAMS) $(LDLINUXFLAGS) -c $<
+
+$(dirs):
+	mkdir -p $@
 
 # creates directory bin/windows if not existent
 # compiles the program to the folder using MinGW g++ and use the EXECUTABLE_NAME variable as the name of the executable.
